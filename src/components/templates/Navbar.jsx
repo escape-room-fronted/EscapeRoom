@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { FaUserAlt, FaBars, FaPlus } from "react-icons/fa";
 import logo from "../../assets/logo.svg";
 import { Link } from "react-router-dom";
+import LinkLogo from "../atoms/LinkLogo";
+import LinkNavbar from "../atoms/LinkNavbar";
+import NavItems from "../molecules/NavItems";
 
 const Navbar = () => {
   let Links = [
@@ -23,13 +26,7 @@ const Navbar = () => {
   return (
     <nav className="shadow-md w-full fixed top-0 left-0 z-50">
       <div className="flex items-center justify-between bg-dark py-7  md:px-13 px-7 mx-auto">
-        <Link
-          to="/"
-          className="font-bold text-2xl cursor-pointer flex items-center font-hind 
-            text-gray-800"
-        >
-          <img className="mr-3 h-6 sm:h-9" src={logo} alt="logoeducamas" />
-        </Link>
+        <LinkLogo path="/" img={logo} alt="logoeducamas" />
         <div className="flex items-center justify-between md:order-2 md:w-full">
           <div
             onClick={() => setOpen(!open)}
@@ -45,23 +42,7 @@ const Navbar = () => {
             <FaUserAlt className="text-white text-2xl mr-2 hover:text-yellow" />
             <span className="text-white hover:text-yellow">sign in</span>
           </div>
-
-          <ul
-            className={`bg-dark md:flex md:items-center md:pb-0 pb-6 absolute md:static md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 md:order-1 transition-all duration-300 ease-in ${
-              open ? "top-20 " : "top-[-490px]"
-            }`}
-          >
-            {Links.map((link) => (
-              <li key={link.name} className="md:ml-8 text-xl md:my-0 my-7">
-                <a
-                  href={link.link}
-                  className="text-white duration-500 font-hind hover:underline underline-offset-8 decoration-yellow"
-                >
-                  {link.name}
-                </a>
-              </li>
-            ))}
-          </ul>
+          <NavItems links={Links} isOpen={open} />
         </div>
       </div>
     </nav>

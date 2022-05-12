@@ -10,6 +10,7 @@ module.exports = {
       },
       backgroundImage: (theme) => ({
         haker: "url('/src/assets/banner__landing.png')",
+        banner: "url('/src/assets/banner__img.jpg')",
       }),
     },
     fontFamily: {
