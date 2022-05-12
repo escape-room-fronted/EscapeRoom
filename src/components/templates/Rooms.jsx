@@ -7,8 +7,8 @@ const Rooms = () => {
   return (
     <div className="bg-dark h-full p-10">
       <div className="flex flex-wrap gap-12 flex-col content-center">
-        <CardRooms title="Lógica" text={text} pos={1} />
-        <CardRooms title="Código" text={text} pos={2} />
+        <CardRooms title="Lógica" text={text} />
+        <CardRooms title="Código" text={text} position={1} />
       </div>
     </div>
   );
