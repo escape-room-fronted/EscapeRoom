@@ -21,7 +21,7 @@ const Navbar = () => {
     };
   }, []);
   return (
-    <nav className="shadow-md w-full fixed top-0 left-0">
+    <nav className="shadow-md w-full fixed top-0 left-0 z-50">
       <div className="flex items-center justify-between bg-dark py-7  md:px-13 px-7 mx-auto">
         <Link
           to="/"
@@ -47,7 +47,7 @@ const Navbar = () => {
           </div>
 
           <ul
-            className={`bg-yellow md:flex md:items-center md:pb-0 pb-6 absolute md:static bg-white md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 md:order-1 transition-all duration-300 ease-in ${
+            className={`bg-dark md:flex md:items-center md:pb-0 pb-6 absolute md:static md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 md:order-1 transition-all duration-300 ease-in ${
               open ? "top-20 " : "top-[-490px]"
             }`}
           >

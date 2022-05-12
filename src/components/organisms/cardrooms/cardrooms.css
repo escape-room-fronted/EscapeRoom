@@ -1,0 +1,14 @@
+.card__room__landing {
+    filter: drop-shadow(10px 0 20px black);
+    min-height: 25rem;
+    width: 21rem;
+}
+
+.card__room__landing:hover {
+    filter: drop-shadow(0 0 2px black);
+}
+
+.card__room__landing__img {
+    width: 24rem;
+    height: 16rem;
+}

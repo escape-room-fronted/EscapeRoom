@@ -9,7 +9,7 @@ module.exports = {
         dark: "#1B1B1B",
       },
       backgroundImage: (theme) => ({
-        haker: "url('/src/assets/bg-haker.jpg')",
+        haker: "url('/src/assets/banner__landing.png')",
       }),
     },
     fontFamily: {
