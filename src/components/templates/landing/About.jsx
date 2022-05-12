@@ -6,7 +6,7 @@ import { IoMdPulse } from 'react-icons/io';
 
 const About = () => {
   return (
-    <div className=' p-2'>
+    <div className='bg-dark p-2 pt-20'>
         <div className='pt-10 text-center '>
           <h1 className='text-white hover:text-yellow text-5xl font-hind font-semibold'>¿Cómo funciona?</h1>
         </div>
