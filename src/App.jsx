@@ -1,21 +1,21 @@
 import './App.css'
+import About from './components/templates/landing/About'
+import Contact from './components/templates/landing/Contact'
+import Educamás from './components/templates/landing/Educamás'
+import Footer from './components/templates/landing/Footer'
+
 
 
 function App() {
 
 
   return (
-    <div className="App">
-    <div className='min-h-screen  text-white'>
-      <h1 className='font-monserrat bg-yellow text-dark text-4xl'>Hola mundo</h1>
-      <h1 className='font-hind bg-light text-4xl'>Hola mundo</h1>
-      <h1 className='font-hind bg-gray text-4xl'>Hola mundo</h1>
-      <div className='pt-8'>
-      <button className='btn-yellow'>Ver más</button>
-      <button className='btn-dark'>Enviar mensaje</button>
-      </div>
+    <div className="App  bg-dark">
+      <About />
+      <Contact />
+      <Educamás />
+      <Footer />
     </div>
-  </div>
   )
 }
 

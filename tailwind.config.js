@@ -11,6 +11,9 @@ module.exports = {
         'yellow': '#FFC300',
         'light': '#717171',
       },
+      backgroundImage: {
+        'hero': "url('https://github.com/DanielaTob/img/blob/main/footer.jpg?raw=true')",
+      }
     },
     fontFamily: {
         'hind': ['Hind'],
