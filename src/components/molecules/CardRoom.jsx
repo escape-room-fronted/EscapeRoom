@@ -1,8 +1,8 @@
 import React from "react";
-import "./cardrooms.css";
+import "./cardroom.css";
 import { FaRegClock } from "react-icons/fa";
-import LockItems from "../../molecules/LockItems";
-const CardRooms = ({ text, title, position = 0 }) => {
+import LockItems from "../molecules/LockItems";
+const CardRoom = ({ text, title, position = 0 }) => {
   return (
     <div className="flex">
       <div
@@ -25,4 +25,4 @@ const CardRooms = ({ text, title, position = 0 }) => {
   );
 };
 
-export default CardRooms;
+export default CardRoom;
