@@ -16,7 +16,7 @@ const CardRooms = ({ text, title, position = 0 }) => {
           <FaRegClock /> <span className="text-light font-medium">60</span>
         </span>
         <p className="text-white">{text}</p>
-        <button className="text-white my-3">Read More</button>
+        <button className="btn-yellow">Read More</button>
       </div>
       <div className={`hidden md:flex items-center`}>
         <div className="card__room__landing__img bg-dark bg-haker bg-cover"></div>

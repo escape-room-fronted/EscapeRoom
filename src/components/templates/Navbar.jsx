@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaUserAlt, FaBars, FaPlus } from "react-icons/fa";
 import logo from "../../assets/logo.svg";
-import { Link } from "react-router-dom";
 import LinkLogo from "../atoms/LinkLogo";
-import LinkNavbar from "../atoms/LinkNavbar";
 import NavItems from "../molecules/NavItems";
 
 const Navbar = () => {

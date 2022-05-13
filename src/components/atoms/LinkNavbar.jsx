@@ -5,7 +5,7 @@ const LinkNavbar = ({ path, text }) => {
   return (
     <Link
       to={path}
-      className="text-white duration-500 font-hind hover:underline underline-offset-8 decoration-yellow"
+      className="text-white duration-500 font-hind hover:underline underline-offset-8 decoration-yellow font-medium"
     >
       {text}
     </Link>
