@@ -3,7 +3,7 @@ import Banner from '../../atoms/Banner'
 
 const BannerHome = () => {
   return (
-    <div>
+    <div id="home">
         <Banner/>
     </div>
   )

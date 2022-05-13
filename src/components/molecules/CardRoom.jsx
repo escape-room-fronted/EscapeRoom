@@ -13,10 +13,10 @@ const CardRoom = ({ text, title, position = 0 }) => {
         <LockItems />
         <h3 className="text-white text-4xl font-semibold">{title}</h3>
         <span className="text-white flex gap-3 items-center text-xl">
-          <FaRegClock /> <span className="text-light font-medium">60</span>
+          <FaRegClock /> <span className="text-light font-medium">30</span>
         </span>
         <p className="text-white">{text}</p>
-        <button className="text-white my-3 btn-yellow">Read More</button>
+        <button className="text-white my-3 btn-yellow">Leer más</button>
       </div>
       <div className={`hidden md:flex items-center`}>
         <div className="card__room__landing__img bg-dark bg-haker bg-cover"></div>

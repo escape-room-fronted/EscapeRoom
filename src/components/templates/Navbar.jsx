@@ -8,11 +8,11 @@ import NavItems from "../molecules/NavItems";
 
 const Navbar = () => {
   let Links = [
-    { name: "Home", link: "/" },
-    { name: "About", link: "/" },
-    { name: "Rooms", link: "/" },
-    { name: "Contact", link: "/" },
-    { name: "Educamás", link: "/" },
+    { name: "Inicio", link: "#home" },
+    { name: "Rooms", link: "#rooms" },
+    { name: "Acerca", link: "#about" },
+    { name: "Contacto", link: "#contact" },
+    { name: "Educamás", link: "#educamas" },
   ];
   const [open, setOpen] = useState(false);
 

@@ -14,7 +14,7 @@ const CardEducamas = () => {
           
             <div className="flex justify-center items-center pt-2">
                 <a className="btn-yellow"
-                href="">Leer más</a>
+                target="_blank"  href="https://educamas.com.co/">Leer más</a>
             </div>
 
     </div>

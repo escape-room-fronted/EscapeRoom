@@ -4,7 +4,7 @@ import CardEducamas from '../../molecules/CardEducamas'
 const BannerEducamas = () => {
   return (
    
-    <div>
+    <div id='educamas'>
         <div className="bg-white">
         <div className="container mx-auto flex flex-col items-center py-12 sm:py-24">
             <div className="w-11/12 sm:w-2/3 lg:flex justify-center items-center flex-col  mb-5 sm:mb-10">
