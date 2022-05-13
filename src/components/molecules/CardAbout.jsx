@@ -1,14 +1,12 @@
 import React from 'react'
-import IconAbout from '../atoms/IconAbout'
-import TextAbout from '../atoms/TextAbout'
+import ItemsAbout from '../atoms/ItemsAbout'
+
+
 
 const CardAbout = () => {
   return (
     <div>
-        <div>
-            <IconAbout/>
-            <TextAbout/>
-        </div>
+      <ItemsAbout/>
     </div>
   )
 }
