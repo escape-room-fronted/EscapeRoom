@@ -6,11 +6,11 @@ import NavItems from "../molecules/NavItems";
 
 const Navbar = () => {
   let Links = [
-    { name: "Home", link: "/" },
-    { name: "About", link: "/" },
-    { name: "Rooms", link: "/" },
-    { name: "Contact", link: "/" },
-    { name: "Educamás", link: "/" },
+    { name: "Inicio", link: "/#home" },
+    { name: "Rooms", link: "/#rooms" },
+    { name: "Acerca", link: "/#about" },
+    { name: "Contacto", link: "/#contact" },
+    { name: "Educamás", link: "/#educamas" },
   ];
   const [open, setOpen] = useState(false);
 
@@ -38,7 +38,7 @@ const Navbar = () => {
           </div>
           <div className="md:order-2 my-1 mr-12 lg:mr-2 md:ml-5 flex cursor-pointer ">
             <FaUserAlt className="text-white text-2xl mr-2 hover:text-yellow" />
-            <span className="text-white hover:text-yellow">Login</span>
+            <Link to="Login" className="text-white hover:text-yellow">Login</Link>
           </div>
           <NavItems links={Links} isOpen={open} />
         </div>

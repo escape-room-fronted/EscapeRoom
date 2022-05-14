@@ -1,8 +1,8 @@
 import React from "react";
-import "./cardrooms.css";
+import "./cardroom.css";
 import { FaRegClock } from "react-icons/fa";
-import LockItems from "../../molecules/LockItems";
-const CardRooms = ({ text, title, position = 0 }) => {
+import LockItems from "../molecules/LockItems";
+const CardRoom = ({ text, title, position = 0 }) => {
   return (
     <div className="flex">
       <div
@@ -13,10 +13,14 @@ const CardRooms = ({ text, title, position = 0 }) => {
         <LockItems />
         <h3 className="text-white text-4xl font-semibold">{title}</h3>
         <span className="text-white flex gap-3 items-center text-xl">
-          <FaRegClock /> <span className="text-light font-medium">60</span>
+          <FaRegClock /> <span className="text-light font-medium">30</span>
         </span>
         <p className="text-white">{text}</p>
+<<<<<<< HEAD:src/components/organisms/cardrooms/CardRooms.jsx
         <button className="btn-yellow">Read More</button>
+=======
+        <button className="text-white my-3 btn-yellow">Leer más</button>
+>>>>>>> 0670068baf1d5ea4b1496478478ca451c246b755:src/components/molecules/CardRoom.jsx
       </div>
       <div className={`hidden md:flex items-center`}>
         <div className="card__room__landing__img bg-dark bg-haker bg-cover"></div>
@@ -25,4 +29,4 @@ const CardRooms = ({ text, title, position = 0 }) => {
   );
 };
 
-export default CardRooms;
+export default CardRoom;
