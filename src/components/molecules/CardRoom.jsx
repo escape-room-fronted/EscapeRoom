@@ -2,7 +2,9 @@ import React from "react";
 import "./cardroom.css";
 import { FaRegClock } from "react-icons/fa";
 import LockItems from "../molecules/LockItems";
+import { useNavigate } from "react-router-dom";
 const CardRoom = ({ text, title, position = 0 }) => {
+  const navigate = useNavigate();
   return (
     <div className="flex">
       <div
@@ -16,7 +18,14 @@ const CardRoom = ({ text, title, position = 0 }) => {
           <FaRegClock /> <span className="text-light font-medium">30</span>
         </span>
         <p className="text-white">{text}</p>
-        <button className="text-white my-3 btn-yellow">Leer más</button>
+        <button
+          className="text-white my-3 btn-yellow"
+          onClick={() => {
+            navigate("/logica");
+          }}
+        >
+          Leer más
+        </button>
       </div>
       <div className={`hidden md:flex items-center`}>
         <div className="card__room__landing__img bg-dark bg-haker bg-cover"></div>
