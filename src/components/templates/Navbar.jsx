@@ -3,6 +3,7 @@ import { FaUserAlt, FaBars, FaPlus } from "react-icons/fa";
 import logo from "../../assets/logo.svg";
 import LinkLogo from "../atoms/LinkLogo";
 import NavItems from "../molecules/NavItems";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   let Links = [
@@ -38,7 +39,9 @@ const Navbar = () => {
           </div>
           <div className="md:order-2 my-1 mr-12 lg:mr-2 md:ml-5 flex cursor-pointer ">
             <FaUserAlt className="text-white text-2xl mr-2 hover:text-yellow" />
-            <Link to="Login" className="text-white hover:text-yellow">Login</Link>
+            <Link to="Login" className="text-white hover:text-yellow">
+              Login
+            </Link>
           </div>
           <NavItems links={Links} isOpen={open} />
         </div>
