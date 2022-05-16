@@ -27,14 +27,14 @@ const TimeCounter = () => {
   }
 
   return isGame ? (
-    <div className="text-white flex items-center pt-5">
+    <div className="text-white flex items-center pt-4">
       <FaRegClock className="text-2xl mr-2 text-yellow" />
       <div className="text-2xl text-yellow">
         {min < 10 ? `0${min}` : min}:{seg < 10 ? `0${seg}` : seg}
       </div>
     </div>
   ) : (
-    <div className="text-white flex items-center pt-5">
+    <div className="text-white flex items-center pt-4">
       <FaRegClock className="text-2xl mr-2 text-red-700" />
       <div className="text-2xl text-red-700 line-through">00:00</div>
     </div>
