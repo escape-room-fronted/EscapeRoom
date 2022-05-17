@@ -6,6 +6,7 @@ import LogicDescription from "./pages/LogicDescription";
 import LandingPage from "./pages/LandingPage";
 import Login from "./pages/Login";
 import Footer from "./components/organisms/Footer";
+import TableUsers from "./pages/TableUsers";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/Login" element={<Login />} />
         <Route path="/logic-room" element={<LogicRoom />}></Route>
         <Route path="/logica" element={<LogicDescription />}></Route>
+        <Route path="/tableusers" element={<TableUsers />}></Route>
       </Routes>
       <Footer />
     </BrowserRouter>
