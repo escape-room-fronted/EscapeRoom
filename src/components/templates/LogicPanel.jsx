@@ -1,5 +1,5 @@
 import React from 'react'
-import SideBarUser from '../molecules/SideBarUser'
+import SideBarUser from '../molecules/SidebarUser';
 import TimeCounter from '../atoms/TimeCounter'
 import { MdExtension} from 'react-icons/md';
 import { HiCode } from 'react-icons/hi';
@@ -79,7 +79,7 @@ const LogicPanel = () => {
         
 
         <div>
-          <SideBarUser/>
+          <SideBarUser />
         </div>
 
         
