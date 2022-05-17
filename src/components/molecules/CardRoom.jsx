@@ -1,5 +1,4 @@
 import React from "react";
-import "./cardroom.css";
 import { FaRegClock } from "react-icons/fa";
 import LockItems from "../molecules/LockItems";
 import { useNavigate } from "react-router-dom";

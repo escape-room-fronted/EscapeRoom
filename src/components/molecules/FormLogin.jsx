@@ -5,7 +5,7 @@ const FormLogin = () => {
     <div className="">
       <div className=" flex justify-center items-center">
         <div className="lg:w-2/5 md:w-1/2 w-2/3">
-          <form className="bg-gray card__form p-10 min-w-full">
+          <form className="bg-gray card__animate p-10 min-w-full">
             <h1 className="pb-4 text-end mb-6 text-white hover:text-yellow text-4xl font-hind font-semibold">
               Login
             </h1>

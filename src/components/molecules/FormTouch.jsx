@@ -1,12 +1,12 @@
 import React from 'react'
-import "./formtouch.css";
+
 
 const FormTouch = () => {
   return (
     <div>
         
         <div className='p-8'>
-                <div className='bg-gray card__form  w-full h-96'>
+                <div className='bg-gray card__animate  w-full h-96'>
 
                 <div className='text-white hover:text-yellow text-4xl font-hind font-semibold p-8'>
                     <p>Contáctanos</p>
