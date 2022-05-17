@@ -175,15 +175,7 @@ const Logica = () => {
             quisquam qui voluptatem architecto culpa adipisci magni nihil nisi?
             Recusandae facilis eligendi ipsum dicta quae cum, fuga praesentium
             ullam rerum dolorem. Beatae, a aspernatur laboriosam maxime id ut
-            optio dolor. Voluptas incidunt aperiam a! Delectus, molestiae.
-            Repudiandae omnis est, cumque a aperiam eos, accusamus, ducimus
-            expedita ut numquam placeat dolorem. Quis culpa perferendis hic
-            quidem recusandae, rerum expedita ut, labore saepe eum est
-            consequuntur laboriosam aliquid maxime obcaecati beatae unde
-            adipisci quos repellendus impedit at fugiat fuga cupiditate ratione.
-            Eaque enim dolorum iste nemo sint, aspernatur minima, quo maxime
-            inventore impedit odio est dicta rem accusamus qui repellendus
-            perspiciatis?
+            optio dolor. Voluptas incidunt aperiam a! 
           </p>
         </div>
       </div>
