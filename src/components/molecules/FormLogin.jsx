@@ -16,8 +16,8 @@ const FormLogin = () => {
       const response = await axios.post(
         LOGIN_URL,
         JSON.stringify({
-          email: "admin@educamas",
-          password: "1234",
+          email: formValues.email,
+          password: formValues.password,
         }),
         {
           headers: { "Content-Type": "application/json" },
@@ -26,7 +26,7 @@ const FormLogin = () => {
       const accesToken = response.data.token;
       console.log(response);
       setAuth({
-        email: "admin@educamas.com",
+        email: formValues.email,
         accesToken,
       });
       navigate("/logic-room");
