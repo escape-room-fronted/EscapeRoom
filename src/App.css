@@ -14,3 +14,33 @@ body::-webkit-scrollbar {
     background-color: #FFC300;
     border-radius: 10px;
   }
+
+
+  .card__room__landing {
+    filter: drop-shadow(10px 0 20px black);
+    min-height: 25rem;
+    width: 21rem;
+}
+
+.card__room__landing:hover {
+    filter: drop-shadow(0 0 2px black);
+}
+
+.card__room__landing__img {
+    width: 24rem;
+    height: 16rem;
+}
+
+@media (max-width: 450px){
+    .card__room__landing {
+        width: auto;
+    }
+}
+
+.card__form {
+  filter: drop-shadow(10px 0 20px black);
+}
+
+.card__form:hover {
+  filter: drop-shadow(0 0 2px black);
+}

@@ -1,10 +1,13 @@
-import { data } from "autoprefixer";
+import { useContext } from "react";
 import React, { useState, useEffect } from "react";
 import { FaRegClock } from "react-icons/fa";
+import AuthContext from "../../context/AuthProvider";
 
 const TimeCounter = () => {
-  const [min, setMin] = useState(0);
-  const [seg, setSeg] = useState(10);
+  const { auth } = useContext(AuthContext);
+  console.log(auth);
+  const [min, setMin] = useState(60);
+  const [seg, setSeg] = useState(0);
   const [isGame, setIsGame] = useState(true);
 
   useEffect(() => {
@@ -18,7 +21,7 @@ const TimeCounter = () => {
     setSeg((prev) => {
       if (prev === 0) {
         if (prev === 0 && min === 0) setIsGame((prev) => false);
-        setMin(min - 1);
+        setMin((prev) => prev - 1);
         return 59;
       } else {
         return prev - 1;
