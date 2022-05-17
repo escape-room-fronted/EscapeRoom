@@ -4,7 +4,7 @@ import axios from "../../services/axios";
 import AuthContext from "../../context/AuthProvider";
 import { useNavigate } from "react-router-dom";
 
-const LOGIN_URL = "identificarPersona";
+const LOGIN_URL = "auth/signin";
 
 const FormLogin = () => {
   const { setAuth } = useContext(AuthContext);
@@ -16,17 +16,17 @@ const FormLogin = () => {
       const response = await axios.post(
         LOGIN_URL,
         JSON.stringify({
-          user: formValues.email,
-          key: formValues.password,
+          email: "admin@educamas",
+          password: "1234",
         }),
         {
           headers: { "Content-Type": "application/json" },
         }
       );
-      const accesToken = response.data.tk;
+      const accesToken = response.data.token;
       console.log(response);
       setAuth({
-        email: formValues.email,
+        email: "admin@educamas.com",
         accesToken,
       });
       navigate("/logic-room");
@@ -36,7 +36,6 @@ const FormLogin = () => {
       setTimeout(() => {
         setIsLogin(false);
       }, 3000);
-      console.log(values);
     }
   };
   return (
@@ -69,7 +68,7 @@ const FormLogin = () => {
             }}
             onSubmit={(values, { resetForm }) => {
               resetForm();
-              // verifyUser(values);
+              verifyUser(values);
             }}
           >
             {({ errors }) => (
