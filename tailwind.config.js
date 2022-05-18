@@ -11,7 +11,8 @@ module.exports = {
       backgroundImage: (theme) => ({
         haker: "url('/src/assets/banner__landing.png')",
         banner: "url('/src/assets/banner__img.jpg')",
-        hero : "url('https://github.com/DanielaTob/img/blob/main/footer.png?raw=true')",
+        hero:
+          "url('https://github.com/DanielaTob/img/blob/main/footer.png?raw=true')",
       }),
     },
     fontFamily: {
