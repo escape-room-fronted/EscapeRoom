@@ -45,7 +45,7 @@ const FormLogin = () => {
         email: dataUser.email,
         name: dataUser.name,
         userName: dataUser.username,
-        rol: isRol(dataUser.roles[0]),
+        rol: isRol(dataUser.roles),
         accesToken,
       });
       document.cookie = `token=${accesToken}; path=/; samesite=strict`;
@@ -53,7 +53,7 @@ const FormLogin = () => {
 
       isRol(dataUser.roles[0]) === "user"
         ? navigate("/logic-room")
-        : navigate("/");
+        : navigate("/logic-room");
     } catch (err) {
       console.log(err);
       setIsLogin(true);

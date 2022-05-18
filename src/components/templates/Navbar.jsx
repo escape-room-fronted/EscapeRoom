@@ -39,7 +39,7 @@ const Navbar = () => {
           </div>
           <div className="md:order-2 my-1 mr-12 lg:mr-2 md:ml-5 flex cursor-pointer ">
             <FaUserAlt className="text-white text-2xl mr-2 hover:text-yellow" />
-            <Link to="Login" className="text-white hover:text-yellow">
+            <Link to="/login" className="text-white hover:text-yellow">
               Login
             </Link>
           </div>
