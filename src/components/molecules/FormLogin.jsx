@@ -26,7 +26,7 @@ const FormLogin = () => {
       const accesToken = response.data.token;
       console.log(response);
       setAuth({
-        email: "admin@educamas.com",
+        email: formValues.email,
         accesToken,
       });
       navigate("/logic-room");

@@ -1,7 +1,10 @@
 import React from "react";
 
 const CardRoomLogic = () => {
-  return <div>CardRoomLogic</div>;
+  return 
+  <div>
+
+  </div>;
 };
 
 export default CardRoomLogic;
