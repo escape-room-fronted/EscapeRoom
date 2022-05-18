@@ -13,10 +13,15 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <Routes>
+        {/* Public Routes */}
         <Route path="/" element={<LandingPage />} />
         <Route path="/Login" element={<Login />} />
-        <Route path="/logic-room" element={<LogicRoom />}></Route>
         <Route path="/logica" element={<LogicDescription />}></Route>
+
+        {/* Private Routes */}
+        <Route path="/logic-room" element={<LogicRoom />}></Route>
+
+        {/* All */}
       </Routes>
       <Footer />
     </BrowserRouter>

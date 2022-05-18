@@ -1,15 +1,29 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "../../services/axios";
-import AuthContext from "../../context/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import { isRol, isEmail } from "../../Helpers/helpers";
 
 const LOGIN_URL = "auth/signin";
+const GET_USER = "users/getuser";
 
 const FormLogin = () => {
-  const { setAuth } = useContext(AuthContext);
+  const { setAuth } = useAuth();
   const [isLogin, setIsLogin] = useState(false);
   const navigate = useNavigate();
+
+  const getUser = async (tk) => {
+    try {
+      const response = await axios.get(GET_USER, {
+        headers: { "x-access-token": tk },
+      });
+      console.log(response.data);
+      return response.data;
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const verifyUser = async (formValues) => {
     try {
@@ -23,13 +37,23 @@ const FormLogin = () => {
           headers: { "Content-Type": "application/json" },
         }
       );
+
       const accesToken = response.data.token;
-      console.log(response);
+      const dataUser = await getUser(accesToken);
       setAuth({
-        email: formValues.email,
+        id: dataUser._id,
+        email: dataUser.email,
+        name: dataUser.name,
+        userName: dataUser.username,
+        rol: isRol(dataUser.roles[0]),
         accesToken,
       });
-      navigate("/logic-room");
+      document.cookie = `token=${accesToken}; path=/; samesite=strict`;
+      // console.log(document.cookie);
+
+      isRol(dataUser.roles[0]) === "user"
+        ? navigate("/logic-room")
+        : navigate("/");
     } catch (err) {
       console.log(err);
       setIsLogin(true);
@@ -51,11 +75,7 @@ const FormLogin = () => {
               let errors = {};
               if (!values.email) {
                 errors.email = "Ingrese un Correo Electrónico";
-              } else if (
-                !/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(
-                  values.email
-                )
-              ) {
+              } else if (!isEmail(values.email)) {
                 errors.email =
                   "El correo solo puede contener letras, puntos y _";
               }
@@ -67,7 +87,6 @@ const FormLogin = () => {
               return errors;
             }}
             onSubmit={(values, { resetForm }) => {
-              resetForm();
               verifyUser(values);
             }}
           >
