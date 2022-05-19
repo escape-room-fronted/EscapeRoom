@@ -1,5 +1,4 @@
 import React from "react";
-import "./cardroom.css";
 import { FaRegClock } from "react-icons/fa";
 import LockItems from "../molecules/LockItems";
 import { useNavigate } from "react-router-dom";
@@ -35,5 +34,4 @@ const CardRoomLogic = ({ text, title, position = 0 }) => {
   </div>
 );
 };
-
 export default CardRoomLogic;

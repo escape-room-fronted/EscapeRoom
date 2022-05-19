@@ -1,13 +1,10 @@
 import React from "react";
-import TimeCounter from "../components/atoms/TimeCounter";
+import LogicPanel from "../components/templates/LogicPanel";
 
 const LogicRoom = () => {
   return (
-    <div className="h-screen p-10 bg-dark" style={{ paddingTop: "6rem" }}>
-      <div>
-        <TimeCounter />
-      </div>
-      <div></div>
+    <div className="bg-dark">
+      <LogicPanel />
     </div>
   );
 };
