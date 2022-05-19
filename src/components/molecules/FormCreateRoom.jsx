@@ -1,4 +1,9 @@
 import React from 'react'
+import ModalWindowOk from '../atoms/molecules/ModalWindowOk'
+const handleSaveButton = () => { 
+  setShowModal(false)
+  ModalWindowOk("guardado exitoso")
+}
 
 const FormCreateRoom = () => {
   return (
@@ -371,7 +376,9 @@ const FormCreateRoom = () => {
     </div>
 
     <div className='flex justify-end pr-20 pb-6'>
-    <button className='btn-yellow'>Guardar</button>
+    <button className="btn-yellow"
+    type="button"
+    onClick={() => handleSaveButton() }>Guardar</button>
     </div>
 
     </div>
