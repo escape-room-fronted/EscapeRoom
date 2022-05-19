@@ -2,7 +2,7 @@ import React from "react";
 import CardLogic from "../molecules/CardLogic";
 import Questions from "../molecules/Questions";
 
-const LogicPanel = () => {
+const LogicPanel = ({handleViewRoom}) => {
   return (
 
 
@@ -12,7 +12,7 @@ const LogicPanel = () => {
                 <CardLogic />
               </div>
               <div className="flex justify-center pt-10">
-                <Questions />
+                <Questions handleViewRoom={handleViewRoom}/>
               </div>
             </div>
           </div>

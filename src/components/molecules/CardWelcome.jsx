@@ -2,7 +2,7 @@ import React from 'react'
 
 
 
-const CardWelcome = () => {
+const CardWelcome = ({handleViewRoom}) => {
   return (
 
     <div>
@@ -28,7 +28,7 @@ const CardWelcome = () => {
     </div>
 
     <div className='flex justify-center pt-10'>
-        <button className='btn-dark'>Continuar</button>
+        <button onClick={() => (handleViewRoom())} className='btn-dark'>Continuar</button>
     </div>
     
     </div>

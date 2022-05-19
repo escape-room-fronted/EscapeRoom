@@ -1,17 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import TimeCounter from '../components/atoms/TimeCounter'
 import ModalUserHelp from '../components/molecules/ModalUserHelp'
 import { MdExtension } from "react-icons/md";
 import { HiCode } from "react-icons/hi";
 import SideBarUser from '../components/molecules/SidebarUser'
 import CardAvatarWelcome from "../components/molecules/CardAvatarWelcome";
-/*  import CardWelcome from "../components/molecules/CardWelcome"; */
-/* import LogicPanel from '../components/templates/LogicPanel' */
+import CardWelcome from "../components/molecules/CardWelcome"; 
+import LogicPanel from '../components/templates/LogicPanel' 
 
 
 
 
 const LogicRoom = () => {
+
+  const [isViewLogicRoom, setIsViewLogicRoom] = useState(1)
+
+  const handleViewRoom = () =>{
+      setIsViewLogicRoom(isViewLogicRoom + 1);
+  }
   return (
     <div className="bg-dark">
     <div className="flex flex-row ">
@@ -25,17 +31,28 @@ const LogicRoom = () => {
           </div>
         </div>
 
-        {/* <LogicPanel/> */}
+        {isViewLogicRoom === 1 && (
+            <CardWelcome handleViewRoom={handleViewRoom}/>
+        ) }
 
-        {/* <CardWelcome/> */}
+        {isViewLogicRoom === 2 &&(
+            <CardAvatarWelcome handleViewRoom={handleViewRoom}
+            isAvatarJuli={true} isTextOne={true}/>  
+          )}
+        
+        {isViewLogicRoom === 3 &&(
+          <LogicPanel handleViewRoom={handleViewRoom} />
+        )}
 
-        <CardAvatarWelcome 
-        isAvatarJuli={false} 
-        isAvatarLaura={false} 
-        isAvatarJuliyLau={true}
-        isTextOne={false}
-        isTextTwo={false}
-        isTextThree={true}/> 
+        {isViewLogicRoom === 4 &&(
+            <CardAvatarWelcome handleViewRoom={handleViewRoom}
+            isAvatarLaura={true} isTextTwo={true}/>  
+          )}
+
+        {isViewLogicRoom === 5 &&(
+            <CardAvatarWelcome handleViewRoom={handleViewRoom}
+            isAvatarJuliyLau={true} isTextThree={true}/>  
+          )}
 
         <div className="drop-shadow-2xl py-4 2xl:hidden xl:hidde lg:hidden md:hidden bg-dark">
           <div className="grid gris-cols-2 gap-10 justify-center">

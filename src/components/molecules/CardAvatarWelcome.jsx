@@ -3,7 +3,7 @@ import avatarjuli from '../../assets/avatarju.png'
 import avatarlau from '../../assets/avatarlau.png'
 import avatarjuliylau from '../../assets/boths.png'
 
-const CardAvatarWelcome = ({isAvatarJuli, isAvatarLaura, isAvatarJuliyLau, isTextOne, isTextTwo, isTextThree}) => {
+const CardAvatarWelcome = ({isAvatarJuli, isAvatarLaura, isAvatarJuliyLau, isTextOne, isTextTwo, isTextThree, handleViewRoom}) => {
   return (
     <div>
 
@@ -71,7 +71,7 @@ const CardAvatarWelcome = ({isAvatarJuli, isAvatarLaura, isAvatarJuliyLau, isTex
             </div>
 
             <div className='pt-4 flex justify-end pr-10'>
-            <button className='btn-dark'>Continuar</button>
+            <button onClick={() => handleViewRoom()} className='btn-dark'>Continuar</button>
             </div>
         </div>
 

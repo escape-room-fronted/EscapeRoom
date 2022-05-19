@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ModalWindowOk from '../atoms/molecules/ModalWindowOk'
-const handleSaveButton = () => { 
-  setShowModal(false)
-  ModalWindowOk("guardado exitoso")
-}
+
 
 const FormCreateRoom = () => {
+
+  const[ showModal, setShowModal] = useState(false)
+
+  const handleSaveButton = () => { 
+    setShowModal(true)
+    ModalWindowOk("guardado exitoso")
+  }
   return (
 
 <div className='bg-dark min-h-screen'>
