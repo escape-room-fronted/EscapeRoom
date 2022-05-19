@@ -39,6 +39,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logica" element={<LogicDescription />} />
+        <Route path="/codigo" element={<CodeDescription />} />
         <Route path="/unauthorized" element={<Unauthorized />} />
 
         {/* Private Routes */}

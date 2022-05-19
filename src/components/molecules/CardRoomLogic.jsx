@@ -33,5 +33,4 @@ const CardRoomLogic = ({ text, title, position = 0 }) => {
     </div>
   );
 };
-
 export default CardRoomLogic;

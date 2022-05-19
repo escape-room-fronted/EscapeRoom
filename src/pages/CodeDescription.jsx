@@ -32,7 +32,7 @@ const Code = () => {
             Si logras escapar a tiempo felicidades, nos haz desafiado y haz conseguido tu objetivo.
             Pero después de agotado el tiempo, el juego se dará por terminado.
             <br/><br/>
-            2- La clave para salir de la sala será resolver un abanico de enigmas, pruebas y acertijos que 
+            2- La clave para salir de la sala será resolver pruebas y acertijos que 
             irán apareciendo a medida que vayas avanzando.
             <br/><br/>
             3- En cada cierto tiempo se brindarán pistas.
