@@ -53,7 +53,7 @@ const FormLogin = () => {
 
       isRol(dataUser.roles[0]) === "user"
         ? navigate("/logic-room")
-        : navigate("/logic-room");
+        : navigate("/view-admin");
     } catch (err) {
       console.log(err);
       setIsLogin(true);

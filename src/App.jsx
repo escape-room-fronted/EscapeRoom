@@ -11,6 +11,8 @@ import Layout from "./components/templates/Layout";
 import RequireAuth from "./context/auth/RequireAuth";
 import Unauthorized from "./pages/Unauthorized";
 import useAuth from "./hooks/useAuth";
+import ViewAdmin from "./pages/ViewAdmin";
+import CreateRoom from "./pages/CreateRoom";
 
 function App() {
   const { auth } = useAuth();
@@ -30,8 +32,14 @@ function App() {
         <Route path="/unauthorized" element={<Unauthorized />} />
 
         {/* Private Routes */}
+        {/* User */}
         <Route element={<RequireAuth allowedRoles={"user"} />}>
           <Route path="/logic-room" element={<LogicRoom />}></Route>
+        </Route>
+        {/* Admin */}
+        <Route element={<RequireAuth allowedRoles={"admin"} />}>
+          <Route path="/create-room" element={<CreateRoom />}></Route>
+          <Route path="/view-admin" element={<ViewAdmin />}></Route>
         </Route>
 
         {/* All */}
