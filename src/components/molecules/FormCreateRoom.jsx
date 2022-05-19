@@ -1,11 +1,12 @@
 import React from 'react'
 import ModalWindowOk from '../atoms/molecules/ModalWindowOk'
-const handleSaveButton = () => { 
-  setShowModal(false)
-  ModalWindowOk("guardado exitoso")
-}
+
 
 const FormCreateRoom = () => {
+  const handleSaveButton = () => { 
+    setShowModal(false)
+    ModalWindowOk("guardado exitoso")
+  }
   return (
 
 <div className='bg-dark min-h-screen'>

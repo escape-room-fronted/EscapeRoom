@@ -85,6 +85,7 @@ export default function ModalFormAdmin() {
                       />
                     </div>
 
+
                 </div>
                 <div className="text-colortitle font-paragraph flex items-start justify-between p-5">
                   <button
