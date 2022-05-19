@@ -3,6 +3,7 @@ import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LogicRoom from "./pages/LogicRoom";
 import LogicDescription from "./pages/LogicDescription";
+import CodeDescription from "./pages/CodeDescription";
 import LandingPage from "./pages/LandingPage";
 import Login from "./pages/Login";
 import Footer from "./components/organisms/Footer";
@@ -58,6 +59,5 @@ function App() {
     </BrowserRouter>
   );
 }
-
 
 export default App;
