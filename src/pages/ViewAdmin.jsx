@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import SideBarAdmin from '../components/molecules/SideBarAdmin'
+import SidebarRespAdmin from '../components/molecules/SidebarRespAdmin';
 import TableListar from '../components/molecules/TableListar';
 import TableListarAdmin from '../components/molecules/TableListarAdmin';
 import TableQuestions from '../components/molecules/TableQuestions';
@@ -24,8 +25,13 @@ const ViewAdmin = () => {
                 {isTable === 1 && (<TableListar/>)}
                 {isTable === 2 && (<TableQuestions/>)}
                 {isTable === 3 && (<TableListarAdmin/>)}
-                {isTable === 3 && (<div/>)}
+                {isTable === 4 && (<div/>)}
+           
            </div>
+
+
+        
+          <SidebarRespAdmin handleShow={setIstable}/>
        
        </main>
        </div>

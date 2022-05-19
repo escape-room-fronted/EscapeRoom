@@ -1,6 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
+import ModalWindowOk from '../atoms/molecules/ModalWindowOk'
+
 
 const FormCreateRoom = () => {
+
+  const[ showModal, setShowModal] = useState(false)
+
+  const handleSaveButton = () => { 
+    setShowModal(true)
+    ModalWindowOk("guardado exitoso")
+  }
   return (
 
 <div className='bg-dark min-h-screen'>
@@ -371,7 +380,9 @@ const FormCreateRoom = () => {
     </div>
 
     <div className='flex justify-end pr-20 pb-6'>
-    <button className='btn-yellow'>Guardar</button>
+    <button className="btn-yellow"
+    type="button"
+    onClick={() => handleSaveButton() }>Guardar</button>
     </div>
 
     </div>
