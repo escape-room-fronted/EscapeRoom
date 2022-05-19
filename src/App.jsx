@@ -34,8 +34,14 @@ function App() {
         <Route path="/create-room" element={<CreateRoom />} />
 
         {/* Private Routes */}
+        {/* User */}
         <Route element={<RequireAuth allowedRoles={"user"} />}>
           <Route path="/logic-room" element={<LogicRoom />}></Route>
+        </Route>
+        {/* Admin */}
+        <Route element={<RequireAuth allowedRoles={"admin"} />}>
+          <Route path="/create-room" element={<CreateRoom />}></Route>
+          <Route path="/view-admin" element={<ViewAdmin />}></Route>
         </Route>
 
         {/* All */}
