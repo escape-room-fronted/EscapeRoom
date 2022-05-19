@@ -30,8 +30,6 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/logica" element={<LogicDescription />} />
         <Route path="/unauthorized" element={<Unauthorized />} />
-        <Route path="/view-admin" element={<ViewAdmin />} />
-        <Route path="/create-room" element={<CreateRoom />} />
 
         {/* Private Routes */}
         {/* User */}
