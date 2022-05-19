@@ -1,11 +1,19 @@
 import React from 'react'
 import { AiFillEye } from 'react-icons/ai';
+import ModalFormUser from '../organisms/ModalFormUser';
 
 
 const TableListar = () => {
   return (
-    <div>
+    <div>    
+      
        <h1 className="font-bold pt-2 text-2xl text-yellow">Usuarios</h1> 
+       <div className='flex gap-4 justify-end pr-10'>  
+            <ModalFormUser />
+            <button className="btn-yellow gap-20"
+             type="button" > Cargar usuarios </button>
+
+        </div>
 
         <div className="pt-4 z-0">
  

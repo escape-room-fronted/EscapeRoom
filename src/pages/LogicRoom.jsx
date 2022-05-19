@@ -8,6 +8,9 @@ import CardAvatarWelcome from "../components/molecules/CardAvatarWelcome";
 /*  import CardWelcome from "../components/molecules/CardWelcome"; */
 /* import LogicPanel from '../components/templates/LogicPanel' */
 
+
+
+
 const LogicRoom = () => {
   return (
     <div className="bg-dark">
