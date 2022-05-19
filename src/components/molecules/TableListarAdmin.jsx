@@ -1,19 +1,13 @@
 import React from 'react'
-import { AiFillEye } from 'react-icons/ai';
-import ModalFormUser from '../organisms/ModalFormUser';
+import { FaTrash } from 'react-icons/fa';
 
-
-const TableListar = () => {
+const TableListarAdmin = () => {
   return (
-    <div>    
-      
-       <h1 className="font-bold pt-2 text-2xl text-yellow">Usuarios</h1> 
-       <div className='flex gap-4 justify-end pr-10'>  
-            <ModalFormUser />
-            <button className="btn-yellow gap-20"
-             type="button" > Cargar usuarios </button>
+    
 
-            </div>
+
+<div>
+       <h1 className="font-bold pt-2 text-2xl text-yellow">Administradores</h1> 
 
         <div className="pt-4 z-0">
  
@@ -27,9 +21,7 @@ const TableListar = () => {
             <th className="py-2 ... border-b-2 border-yellow">ID</th>
             <th className="py-2 ... h-20 border-b-2 border-yellow">Nombre</th>
             <th className="py-2 ... h-40 border-b-2 border-yellow">Correo electrónico</th>
-            <th className="py-2 ... border-b-2 border-yellow">Edad</th>
             <th className="py-2 ... border-b-2 border-yellow">User name</th>
-            <th className="py-2 ... border-b-2 border-yellow">Prueba</th>
             <th className="py-2 ... border-b-2 border-yellow">Acciones</th>
           </tr>
          
@@ -48,20 +40,14 @@ const TableListar = () => {
               christian@gmail.com
             </td>
             <td className="py-2 pl-4 border-b-2 border-gray-300">
-             20
-            </td>
-            <td className="py-2 pl-4 border-b-2 border-gray-300">
               christian10
-            </td>
-            <td className="py-2 pl-4 border-b-2 border-gray-300">
-              true
             </td>
             <td className="py-[0.31rem] pl-4 flex">
               
               <form  method="POST">
                 <input type="hidden"Name value=""/>
                 <button type="submit" className=" text-yellow px-3 py-2 rounded-sm">
-                <AiFillEye/></button>
+                <FaTrash/></button>
               </form>
             </td>
 
@@ -77,9 +63,7 @@ const TableListar = () => {
             <th className="w-8 py-4 pl-2 pr-2 ... ">ID</th>
             <th className="py-4 ...">Nombre</th>
             <th className="w-40 md:w-[15rem] py-4 ...">Correo electrónico</th>
-            <th className="py-4 ...">Edad</th>
             <th className="py-4 ...">User name</th>
-            <th className="py-4 ...">Prueba</th>
             <th className="py-4 ... ">Acciones</th>
           </tr>
         </thead>
@@ -96,19 +80,13 @@ const TableListar = () => {
              christian@gmail.com
             </td>
             <td className="p-3 ">
-              20
-            </td>
-            <td className="p-3 ">
               christian10
-            </td>
-            <td className="p-3 ">
-              true
             </td>
             <td className="p-3 flex flex-wrap" >
               <form action="" method="POST">
                 <input type="hidden" />
                 <button className=" text-yellow text-xl px-3 py-1 " type="submit" >
-                  <AiFillEye/> </button>
+                <FaTrash/></button>
               </form>
               
             </td>
@@ -125,7 +103,11 @@ const TableListar = () => {
 
 
     </div>
+
+
+
+    
   )
 }
 
-export default TableListar
+export default TableListarAdmin
