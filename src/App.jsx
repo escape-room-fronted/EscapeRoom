@@ -7,20 +7,38 @@ import LandingPage from "./pages/LandingPage";
 import Login from "./pages/Login";
 import Footer from "./components/organisms/Footer";
 import Navbar from "./components/templates/Navbar";
+import Layout from "./components/templates/Layout";
+import RequireAuth from "./context/auth/RequireAuth";
+import Unauthorized from "./pages/Unauthorized";
+import useAuth from "./hooks/useAuth";
 import ViewAdmin from "./pages/ViewAdmin";
 import CreateRoom from "./pages/CreateRoom";
 
 function App() {
+  const { auth } = useAuth();
+  console.log(auth);
+  const roles = {
+    user: "6283d02f50ac8e92a7bd50e5",
+    admin: "6283d02f50ac8e92a7bd50e6",
+  };
   return (
     <BrowserRouter>
       <Navbar />
-      <Routes>
+      <Routes path="/" element={<Layout />}>
+        {/* Public Routes */}
         <Route path="/" element={<LandingPage />} />
-        <Route path="/Login" element={<Login />} />
-        <Route path="/logic-room" element={<LogicRoom />}></Route>
-        <Route path="/logica" element={<LogicDescription />}></Route>
-        <Route path="/create-room" element={<CreateRoom />}></Route>
-        <Route path="/view-admin" element={<ViewAdmin />}></Route>
+        <Route path="/login" element={<Login />} />
+        <Route path="/logica" element={<LogicDescription />} />
+        <Route path="/unauthorized" element={<Unauthorized />} />
+        <Route path="/view-admin" element={<ViewAdmin />} />
+        <Route path="/create-room" element={<CreateRoom />} />
+
+        {/* Private Routes */}
+        <Route element={<RequireAuth allowedRoles={"user"} />}>
+          <Route path="/logic-room" element={<LogicRoom />}></Route>
+        </Route>
+
+        {/* All */}
       </Routes>
       <Footer />
     </BrowserRouter>

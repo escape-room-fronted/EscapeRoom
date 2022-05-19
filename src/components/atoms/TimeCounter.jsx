@@ -1,11 +1,7 @@
-import { useContext } from "react";
 import React, { useState, useEffect } from "react";
 import { FaRegClock } from "react-icons/fa";
-import AuthContext from "../../context/AuthProvider";
 
 const TimeCounter = () => {
-  const { auth } = useContext(AuthContext);
-  console.log(auth);
   const [min, setMin] = useState(60);
   const [seg, setSeg] = useState(0);
   const [isGame, setIsGame] = useState(true);
