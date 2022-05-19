@@ -25,6 +25,7 @@ const ViewAdmin = () => {
                 {isTable === 2 && (<TableQuestions/>)}
                 {isTable === 3 && (<TableListarAdmin/>)}
                 {isTable === 3 && (<div/>)}
+           
            </div>
        
        </main>
