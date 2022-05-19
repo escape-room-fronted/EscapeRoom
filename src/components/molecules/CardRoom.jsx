@@ -21,7 +21,7 @@ const CardRoom = ({ text, title, position = 0 }) => {
         <button
           className="text-white my-3 btn-yellow"
           onClick={() => {
-            navigate("/logica");
+            navigate("/codigo");
           }}
         >
           Leer más

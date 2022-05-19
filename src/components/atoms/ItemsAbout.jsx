@@ -20,10 +20,9 @@ const ItemsAbout = () => {
 
               <div>
                 <p className='text-sm text-center text-light'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                Corporis explicabo beatae culpa suscipit ullam maiores tempora 
-                commodi temporibus mollitia quam illo alias eum laborum, 
-                adipisci molestias laboriosam rem aut placeat.
+                Estás en una habitación encerrado, el contador empezará su cuenta atrás, 
+                será el momento para empezar a utilizar tú lógica, resolver los enigmas
+                para escapar lo antes posible con éxito.
                 </p>
               </div>
         </div>
@@ -32,22 +31,19 @@ const ItemsAbout = () => {
 
 
         <div>
-        <div className='text-white hover:text-yellow text-9xl flex justify-center'>
-            <AiOutlineClockCircle/>
-        </div>
-        <div className='text-white text-center text-2xl font-bold py-4'>
-                <h2>El reloj corre...</h2>
-        </div>
+          <div className='text-white hover:text-yellow text-9xl flex justify-center'>
+              <AiOutlineClockCircle/>
+          </div>
+          <div className='text-white text-center text-2xl font-bold py-1'>
+                  <h2>El reloj corre...</h2>
+          </div>
 
-
-              <div>
-                <p className='text-sm text-center text-light'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                Corporis explicabo beatae culpa suscipit ullam maiores tempora 
-                commodi temporibus mollitia quam illo alias eum laborum, 
-                adipisci molestias laboriosam rem aut placeat.
-                </p>
-              </div>
+                <div>
+                  <p className='text-sm text-center text-light py-3'>
+                  Tienes 60 minutos para escapar, el reloj o contador, nos indicará el tiempo que nos queda 
+                  para intentar resolver los enigmas y escapar con éxito.
+                  </p>
+                </div>
         </div>
 
 
@@ -57,17 +53,16 @@ const ItemsAbout = () => {
         <div className='text-white hover:text-yellow text-9xl flex justify-center'>
             <IoMdPulse/>
         </div>
-        <div className='text-white text-center text-2xl font-bold py-4'>
+        <div className='text-white text-center text-2xl font-bold py-1'>
                 <h2>Siente el ambiente</h2>
         </div>
 
 
               <div>
-                <p className='text-sm text-center text-light'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                Corporis explicabo beatae culpa suscipit ullam maiores tempora 
-                commodi temporibus mollitia quam illo alias eum laborum, 
-                adipisci molestias laboriosam rem aut placeat.
+                <p className='text-sm text-center text-light py-3'>
+                Uno de los elementos más importantes es el controlador de la sala, 
+                el cual nos ayudará mediante pistas, nos dará apoyo cuando estemos bloqueados.
+                
                 </p>
               </div>
         </div>
