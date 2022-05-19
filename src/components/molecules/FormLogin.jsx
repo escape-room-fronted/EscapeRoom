@@ -4,13 +4,15 @@ import axios from "../../services/axios";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { isRol, isEmail } from "../../Helpers/helpers";
+import Loader from "../templates/loader/Loader";
 
 const LOGIN_URL = "auth/signin";
 const GET_USER = "users/getuser";
 
 const FormLogin = () => {
-  const { setAuth } = useAuth();
+  const { setAuth, auth } = useAuth();
   const [isLogin, setIsLogin] = useState(false);
+  const [isLoad, setIsLoad] = useState(false);
   const navigate = useNavigate();
 
   const getUser = async (tk) => {
@@ -26,6 +28,7 @@ const FormLogin = () => {
   };
 
   const verifyUser = async (formValues) => {
+    setIsLoad(true);
     try {
       const response = await axios.post(
         LOGIN_URL,
@@ -40,21 +43,24 @@ const FormLogin = () => {
 
       const accesToken = response.data.token;
       const dataUser = await getUser(accesToken);
-      setAuth({
+      let data = {
         id: dataUser._id,
         email: dataUser.email,
         name: dataUser.name,
         userName: dataUser.username,
         rol: isRol(dataUser.roles),
         accesToken,
-      });
-      document.cookie = `token=${accesToken}; path=/; samesite=strict`;
+      };
+      setAuth(data);
+      // document.cookie = `token=${accesToken}; path=/; samesite=strict`;
+      window.localStorage.setItem("user", JSON.stringify(data));
       // console.log(document.cookie);
-
+      setIsLoad(false);
       isRol(dataUser.roles[0]) === "user"
         ? navigate("/logic-room")
         : navigate("/view-admin");
     } catch (err) {
+      setIsLoad(false);
       console.log(err);
       setIsLogin(true);
       setTimeout(() => {
@@ -62,7 +68,9 @@ const FormLogin = () => {
       }, 3000);
     }
   };
-  return (
+  return isLoad ? (
+    <Loader />
+  ) : (
     <div className="">
       <div className=" flex justify-center items-center">
         <div className="lg:w-2/5 md:w-1/2 w-2/3">
