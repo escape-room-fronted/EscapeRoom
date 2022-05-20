@@ -4,6 +4,9 @@ import logo from "../../assets/logo.svg";
 import LinkLogo from "../atoms/LinkLogo";
 import NavItems from "../molecules/NavItems";
 import { Link } from "react-router-dom";
+import { logout } from "../../context/auth/authServices";
+import { useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
   let Links = [
@@ -15,6 +18,8 @@ const Navbar = () => {
   ];
   const [open, setOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
+  const navigate = useNavigate();
+  const { setAuth } = useAuth();
 
   useEffect(() => {
     window.onscroll = () => {
@@ -76,6 +81,19 @@ const Navbar = () => {
                   >
                     Usuario
                   </Link>
+                  <div className="py-2">
+                    <hr></hr>
+                  </div>
+                  <button
+                    className="transition-colors duration-200 block px-4 py-2 text-normal text-white rounded hover:bg-yellow hover:text-white"
+                    onClick={() => {
+                      logout();
+                      setAuth({});
+                      navigate("/");
+                    }}
+                  >
+                    Cerrar Sesión
+                  </button>
                 </div>
               )}
             </div>
