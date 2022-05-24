@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ModalWindowOk from '../atoms/molecules/ModalWindowOk'
 
 
 const FormCreateRoom = () => {
+
+  const[ showModal, setShowModal] = useState(false)
+
   const handleSaveButton = () => { 
-    setShowModal(false)
+    setShowModal(true)
     ModalWindowOk("guardado exitoso")
   }
   return (

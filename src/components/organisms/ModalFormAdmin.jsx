@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import ModalWindowOk from "../atoms/molecules/ModalWindowOk";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import {isEmail} from "../../Helpers/helpers.js"
 
 export default function ModalFormAdmin() {
   const [showModal, setShowModal] = React.useState(false);
@@ -18,6 +20,32 @@ export default function ModalFormAdmin() {
       </button>
       {showModal ? (
         <>
+        <Formik 
+          initialValues={{
+            admin_email:"",
+            admin_name:"",
+            admin_last_name:""
+          }}
+          validate={(values)=> {
+            let errors = {};
+            if (!values.admin_email){
+              errors.admin_email="Ingrese un correo electronico."
+            }else if (!isEmail(values.admin_email)){
+               errors.admin_email="El correo solo puede contener letras, puntos y _."
+            }
+            if (!values.admin_name){
+              errors.admin_name="Ingrese un nombre de administrador."
+            }
+            if (!values.admin_last_name){
+              errors.admin_last_name="Ingrese un nombre completo."
+            }
+            return errors;
+          }}
+            onSubmit={() => {
+           }}
+        >
+        { ({errors}) => (
+        <Form>
           <div 
             className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none ">
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
@@ -38,53 +66,42 @@ export default function ModalFormAdmin() {
                       <label className="block mb-2 font-title text-sm text-white font-semibold">
                         Usuario Administrador
                       </label>
-                      <input
+                      <Field
                         type="text"
                         name="admin_name"
                         placeholder="Usuario"
                         required
                         className="font-title w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-red dark:bg-bglight dark:text-colorparagraph dark:placeholder-gray-500 dark:border-red dark:focus:ring-red dark:focus:border-red"
                       />
+                      <ErrorMessage name="admin_name" component={()=> (<div className="text-yellow text-sm" >{errors.admin_name}</div>)} />
                     </div>
                     <div className="mb-6">
                       <label className="block mb-2 font-title text-sm text-white font-semibold">
                         Nombre Completo
                       </label>
-                      <input
+                      <Field
                         type="text"
-                        name="admin_name"
+                        name="admin_last_name"
                         placeholder="Nombre"
                         required
                         className="font-title w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-red dark:bg-bglight dark:text-colorparagraph dark:placeholder-gray-500 dark:border-red dark:focus:ring-red dark:focus:border-red"
                       />
+                       <ErrorMessage name="admin_last_name" component={()=> (<div className="text-yellow text-sm">{errors.admin_last_name}</div>)} />
                     </div>
 
                     <div className="mb-6">
                       <label className="block mb-2 font-title text-sm text-white font-semibold">
                         Email Address
                       </label>
-                      <input
+                      <Field
                         type="email"
                         name="admin_email"
                         placeholder="you@company.com"
                         required
                         className="font-title w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-bglight dark:text-colorparagraph dark:placeholder-gray-500 dark:border-red dark:focus:ring-red dark:focus:border-red"
                       />
+                       <ErrorMessage name="admin_email" component={()=> (<div className="text-yellow text-sm">{errors.admin_email}</div>)} />
                     </div>
-
-                    <div className="mb-6">
-                      <label className="block mb-2 font-title text-sm text-white font-semibold">
-                        Telefono
-                      </label>
-                      <input
-                        type="Tel"
-                        name="admin_tel"
-                        placeholder="3134182279"
-                        required
-                        className="font-title w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-bglight dark:text-colorparagraph dark:placeholder-gray-500 dark:border-red dark:focus:ring-red dark:focus:border-red"
-                      />
-                    </div>
-
 
                 </div>
                 <div className="text-colortitle font-paragraph flex items-start justify-between p-5">
@@ -107,6 +124,9 @@ export default function ModalFormAdmin() {
               </div>
             </div>
           </div>
+          </Form>
+          )}
+          </Formik>
           <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
         </>
       ) : null}

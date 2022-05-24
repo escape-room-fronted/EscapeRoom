@@ -12,9 +12,6 @@ const TableListarAdmin = () => {
        <h1 className="font-bold pt-2 text-2xl text-yellow">Administradores</h1> 
        <div className='flex gap-4 justify-end pr-10'>  
             <ModalFormAdmin />
-            <button className="btn-yellow gap-20"
-             type="button" > Cargar Administradores </button>
-
         </div>
 
         <div className="pt-4 z-0">
