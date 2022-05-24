@@ -3,6 +3,7 @@ import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LogicRoom from "./pages/LogicRoom";
 import LogicDescription from "./pages/LogicDescription";
+import CodeDescription from "./pages/CodeDescription";
 import LandingPage from "./pages/LandingPage";
 import Login from "./pages/Login";
 import Footer from "./components/organisms/Footer";
@@ -38,6 +39,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logica" element={<LogicDescription />} />
+        <Route path="/codigo" element={<CodeDescription />} />
         <Route path="/unauthorized" element={<Unauthorized />} />
 
         {/* Private Routes */}
@@ -58,6 +60,5 @@ function App() {
     </BrowserRouter>
   );
 }
-
 
 export default App;
