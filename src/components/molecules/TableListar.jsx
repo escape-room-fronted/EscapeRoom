@@ -3,12 +3,14 @@ import MUIDataTable from "mui-datatables";
 import axios from "../../services/axios";
 import ModalFormUser from "../organisms/ModalFormUser";
 import useAuth from "../../hooks/useAuth";
+import ModalLoadDataExcel from "../molecules/ModalLoadDataExcel";
 
 const TableListar = () => {
   const { auth } = useAuth();
   console.log(auth.accesToken);
 
   const [users, setUsers] = useState();
+  const [isExcel, setIsExcel] = useState(false);
 
   const endpoint = "users/allusers";
 
@@ -29,7 +31,7 @@ const TableListar = () => {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [isExcel]);
 
   const colums = [
     {
@@ -57,12 +59,16 @@ const TableListar = () => {
 
   return (
     <div>
-      <div className="flex gap-4 justify-end pr-10 pt-4">
+      <h1 className="font-bold pt-2 text-2xl text-yellow">Usuarios</h1>
+      <div className="flex gap-4 justify-end pr-10">
         <ModalFormUser />
-        <button className="btn-yellow gap-20" type="button">
+        {/* <button className="btn-yellow gap-20" type="button">
           {" "}
           Cargar usuarios{" "}
-        </button>
+        </button> */}
+        <ModalLoadDataExcel 
+        handleUpdateTable={setIsExcel} 
+        handleUpdateListar={isExcel}/>
       </div>
 
       <div className="pt-4 z-0">

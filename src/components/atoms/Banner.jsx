@@ -2,7 +2,7 @@ import React from "react";
 
 const Banner = () => {
   return (
-    <div 
+    <div
       className="bg-banner bg-cover bg-no-repeat bg-center bg-blend-overlay relative flex items-center"
       style={{ minHeight: "700px" }}
     >

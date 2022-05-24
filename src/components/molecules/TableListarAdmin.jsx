@@ -12,6 +12,8 @@ console.log(auth.accesToken)
 
 const [admins, setAdmins] = useState()
 
+const [isExcel, setIsExcel] = useState(false);
+
 const endpoint = 'users/alladmins'
 
 const getData = async() => {
@@ -24,6 +26,7 @@ const getData = async() => {
       setAdmins([response.data])
     }
     console.log(response.data)
+    setIsExcel(!isExcel)
     } catch (err){
       console.log(err)
     }
@@ -31,7 +34,7 @@ const getData = async() => {
 
 useEffect( () =>{
   getData()
-}, [] )
+}, [isExcel] )
 
 const colums = [
   {

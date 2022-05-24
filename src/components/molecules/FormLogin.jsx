@@ -10,7 +10,7 @@ const LOGIN_URL = "auth/signin";
 const GET_USER = "users/getuser";
 
 const FormLogin = () => {
-  const { setAuth, auth } = useAuth();
+  const { setAuth } = useAuth();
   const [isLogin, setIsLogin] = useState(false);
   const [isLoad, setIsLoad] = useState(false);
   const navigate = useNavigate();

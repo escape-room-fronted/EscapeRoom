@@ -4,6 +4,9 @@ import logo from "../../assets/logo.svg";
 import LinkLogo from "../atoms/LinkLogo";
 import NavItems from "../molecules/NavItems";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useAuthLogin } from "../../hooks/useAuthLogin";
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
   let Links = [
@@ -15,6 +18,9 @@ const Navbar = () => {
   ];
   const [open, setOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
+  const navigate = useNavigate();
+  const { logout } = useAuthLogin();
+  const { auth } = useAuth();
 
   useEffect(() => {
     window.onscroll = () => {
@@ -52,30 +58,58 @@ const Navbar = () => {
 
               {openMenu && (
                 <div className="absolute right-0 w-40 mt-2 py-2 bg-dark border rounded shadow-xl">
-                  <Link
-                    to="/login"
-                    className="transition-colors duration-200 block px-4 py-2 text-normal text-white rounded hover:bg-yellow hover:text-white"
-                  >
-                    Login
-                  </Link>
-                  <div className="py-2">
-                    <hr></hr>
-                  </div>
-                  <Link
-                    to="/view-admin"
-                    className="transition-colors duration-200 block px-4 py-2 text-normal text-white rounded hover:bg-yellow hover:text-white"
-                  >
-                    Administrador
-                  </Link>
-                  <div className="py-2">
-                    <hr></hr>
-                  </div>
-                  <Link
-                    to="/logic-room"
-                    className="transition-colors duration-200 block px-4 py-2 text-normal text-white rounded hover:bg-yellow hover:text-white"
-                  >
-                    Usuario
-                  </Link>
+                  {auth.rol ? (
+                    ""
+                  ) : (
+                    <>
+                      <Link
+                        to="/login"
+                        className="transition-colors duration-200 block px-4 py-2 text-normal text-white rounded hover:bg-yellow hover:text-white"
+                      >
+                        Login
+                      </Link>
+                    </>
+                  )}
+
+                  {auth.rol && auth.rol === "admin" && (
+                    <>
+                      <Link
+                        to="/view-admin"
+                        className="transition-colors duration-200 block px-4 py-2 text-normal text-white rounded hover:bg-yellow hover:text-white"
+                      >
+                        Administrador
+                      </Link>
+                      <div className="py-2">
+                        <hr></hr>
+                      </div>
+                    </>
+                  )}
+
+                  {auth.rol && auth.rol === "user" && (
+                    <>
+                      <Link
+                        to="/logic-room"
+                        className="transition-colors duration-200 block px-4 py-2 text-normal text-white rounded hover:bg-yellow hover:text-white"
+                      >
+                        Usuario
+                      </Link>
+                      <div className="py-2">
+                        <hr></hr>
+                      </div>
+                    </>
+                  )}
+
+                  {auth.rol && (
+                    <button
+                      className="transition-colors duration-200 block px-4 py-2 text-normal text-white rounded hover:bg-yellow hover:text-white"
+                      onClick={() => {
+                        logout();
+                        navigate("/");
+                      }}
+                    >
+                      Cerrar Sesión
+                    </button>
+                  )}
                 </div>
               )}
             </div>
