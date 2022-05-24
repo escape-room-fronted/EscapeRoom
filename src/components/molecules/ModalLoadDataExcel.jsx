@@ -1,7 +1,65 @@
 import React, { useState } from "react";
+import { utils, read, writeFile } from "xlsx";
+import axios from "../../services/axios";
+import useAuth from "../../hooks/useAuth";
+
+const SET_EXCEL = "excel";
 
 const ModalLoadDataExcel = () => {
   const [viewModal, setViewModal] = useState(false);
+  const { auth } = useAuth();
+
+  const sendDataUsers = async (data) => {
+    try {
+      const response = await axios.post(SET_EXCEL, JSON.stringify(data), {
+        headers: {
+          "x-access-token": auth.accesToken,
+          "Content-Type": "application/json",
+        },
+      });
+
+      console.log(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  function make_cols(datas) {
+    let o = [],
+      C = utils.decode_range(datas).e.c + 1;
+    for (var i = 0; i < C; ++i) o[i] = { name: utils.encode_col(i), key: i };
+    return o;
+  }
+  function handleFileExcel(event) {
+    setViewModal(!viewModal);
+
+    const target = event.target;
+
+    if (event.target.name === "file") {
+      const reader = new FileReader();
+      reader.readAsArrayBuffer(target.files[0]);
+
+      reader.onloadend = function (e) {
+        //Convertimos a binarios los datos del excel
+        const dataBinary = new Uint8Array(e.target.result);
+        //Leemos los datos y los alcenamos en un array
+        const workbook = read(dataBinary, { type: "array" });
+        //Guardamos el nombre de la hoja en la que estamos, en este caso solo funciona con la primera Hoja
+        const wsname = workbook.SheetNames[0];
+        const ws = workbook.Sheets[wsname];
+        // Le pasamos los datos al metodo utils de la libreria que nos crea un json y lo imprimimos por consola
+        const allData = utils.sheet_to_json(ws);
+        // Por el momento estas propiedades no estan en uso
+        // const colums = allData.slice(0, 1);
+        // const data = allData.slice(1);
+        // const codeColums = make_cols(ws["!ref"]);
+        console.log(allData);
+
+        sendDataUsers(allData);
+      };
+    }
+  }
+
   return (
     <>
       <button
@@ -53,6 +111,9 @@ const ModalLoadDataExcel = () => {
                       id="dropzone-file"
                       type="file"
                       className="text-dark bg-yellow rounded-sm cursor-pointer"
+                      name="file"
+                      required
+                      onChange={handleFileExcel}
                     />
                   </label>
                 </div>
@@ -64,13 +125,6 @@ const ModalLoadDataExcel = () => {
                   onClick={() => setViewModal(false)}
                 >
                   Cerrar
-                </button>
-                <button
-                  className="btn-yellow"
-                  type="button"
-                  onClick={() => handleSaveButton()}
-                >
-                  Enviar
                 </button>
               </div>
             </div>
