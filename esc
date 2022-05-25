@@ -1,0 +1,443 @@
+[33mcommit 54a626c0c69e0e13bb5327252b884d656100403a[m[33m ([m[1;36mHEAD -> [m[1;32mdev[m[33m, [m[1;31morigin/dev[m[33m)[m
+Author: christian lazo <kenishi.cristianxd@gmail.com>
+Date:   Tue May 24 15:51:11 2022 -0500
+
+    Add excel and tables
+
+[33mcommit 82b92b826c9e9323695dfba763c472988be4a080[m[33m ([m[1;31morigin/daniela[m[33m)[m
+Merge: 3b99917 d277e1a
+Author: daniela <moreno.tobar.daniela@gmail.com>
+Date:   Tue May 24 15:34:17 2022 -0500
+
+    tables
+
+[33mcommit 3b99917448348115ef7de4a07d7cebc6fedd0651[m
+Merge: 48aed1e 1e907c9
+Author: daniela <moreno.tobar.daniela@gmail.com>
+Date:   Tue May 24 14:49:11 2022 -0500
+
+    Merge branch 'daniela' of https://github.com/escape-room-fronted/EscapeRoom into daniela
+
+[33mcommit 48aed1ef2b69eeb84823e0fa88fdd139f044fc01[m
+Author: daniela <moreno.tobar.daniela@gmail.com>
+Date:   Tue May 24 14:42:39 2022 -0500
+
+    datatable and data
+
+[33mcommit d277e1a38eb925b06a9e5cad2227ce9adee8dca8[m[33m ([m[1;31morigin/christian[m[33m, [m[1;32mchristian[m[33m)[m
+Author: christian lazo <kenishi.cristianxd@gmail.com>
+Date:   Tue May 24 13:06:32 2022 -0500
+
+    Adding create Users with Excel
+
+[33mcommit 470bc8f8885c794ee96b30cb75cf24a258936230[m
+Author: christian lazo <kenishi.cristianxd@gmail.com>
+Date:   Mon May 23 15:11:41 2022 -0500
+
+    Fixed Bugs Login
+
+[33mcommit f5ca45a66c6c69094395a27bd450907a4864e2c9[m
+Author: christian lazo <kenishi.cristianxd@gmail.com>
+Date:   Fri May 20 11:48:25 2022 -0500
+
+    Adding Logout
+
+[33mcommit 1e907c9f44c3262461dbc19dc6b5641fc2f236bd[m[33m ([m[1;32mdaniela[m[33m)[m
+Merge: df43674 9e1e344
+Author: christian lazo <kenishi.cristianxd@gmail.com>
+Date:   Thu May 19 17:52:16 2022 -0500
+
+    Merge branch 'dev' of https://github.com/escape-room-fronted/EscapeRoom into daniela
+
+[33mcommit 9e1e344fa84f638163575e3c6b4a61783fbf1cef[m[33m ([m[1;31morigin/Yuri[m[33m, [m[1;32mYuri[m[33m)[m
+Merge: ced9524 3540b1b
+Author: christian lazo <kenishi.cristianxd@gmail.com>
+Date:   Thu May 19 17:49:04 2022 -0500
+
+    Adding Yuri Text
+
+[33mcommit 3540b1bbf8d6ebc00d0b1e7e24f5e08e9b6757fe[m
+Merge: b1a0665 f3c4021
+Author: Andrea Reyes <yuriramirez5800@gmail.com>
+Date:   Thu May 19 17:44:26 2022 -0500
+
+    add text
+
+[33mcommit ced9524b735c71fab0c95d14df5e9805095df676[m
+Merge: c065b15 b1a0665
+Author: christian lazo <kenishi.cristianxd@gmail.com>
+Date:   Thu May 19 17:42:26 2022 -0500
+
+    fixed bug
+
+[33mcommit ac012433d64d61b5a9f1bda7e8e463075afd0bd2[m
+Merge: df43674 c065b15
+Author: daniela <moreno.tobar.daniela@gmail.com>
+Date:   Thu May 19 16:09:41 2022 -0500
+
+    Merge branch 'dev' of https://github.com/escape-room-fronted/EscapeRoom into daniela
+
+[33mcommit df43674f6c8bd458ae2ef9bb12bfccad61e8c693[m
+Author: daniela <moreno.tobar.daniela@gmail.com>
+Date:   Thu May 19 16:08:31 2022 -0500
+
+    change form create room
+
+[33mcommit c065b15d86aa04e42f908bc0b5b0fdecf0c9b0db[m
+Merge: 31d7da4 f071fc4
+Author: christian lazo <kenishi.cristianxd@gmail.com>
+Date:   Thu May 19 15:45:08 2022 -0500
+
+    Merge branch 'daniela' into dev
+
+[33mcommit f071fc4c07e9ae803c5e592912a3a0447e7f2b61[m
+Author: daniela <moreno.tobar.daniela@gmail.com>
+Date:   Thu May 19 15:42:33 2022 -0500
+
+    changes
+
+[33mcommit 31d7da4ab88122037319d40c61468f171148f2a5[m
+Author: christian lazo <kenishi.cristianxd@gmail.com>
+Date:   Thu May 19 15:41:04 2022 -0500
+
+    Adding data Persistent
+
+[33mcommit 220d17cd4f386be3149a021093d914e3933bb213[m
+Author: daniela <moreno.tobar.daniela@gmail.com>
+Date:   Thu May 19 14:57:14 2022 -0500
+
+    admin done
+
+[33mcommit 8a351e83fd6ca7147f3e3e4a06c4a12f52f05cea[m
+Merge: fc16864 ed1a445
+Author: daniela <moreno.tobar.daniela@gmail.com>
+Date:   Thu May 19 14:33:57 2022 -0500
+
+    Merge branch 'dargy' of https://github.com/escape-room-fronted/EscapeRoom into daniela
+
+[33mcommit ed1a4458a4fcf78da25d072489ee583dc2494d74[m[33m ([m[1;31morigin/dargy[m[33m)[m
+Author: DargyLobo <dargijuli@gmail.com>
+Date:   Thu May 19 13:26:23 2022 -0500
+
+    botones en la vista admin
+
+[33mcommit fc168645e0bcef6dc5e7685b6fe8a26dc1a5ca47[m
+Author: daniela <moreno.tobar.daniela@gmail.com>
+Date:   Thu May 19 13:01:15 2022 -0500
+
+    sidebar admin responsive
+
+[33mcommit 2a0542573a0a295afde25cb4f709aeec48a05613[m
+Merge: 763a50a be7fe8b
+Author: DargyLobo <dargijuli@gmail.com>
+Date:   Thu May 19 12:41:45 2022 -0500
+
+    botones en la vista de crear usuario
+
+[33mcommit 0f8b67d383341523a3d708e4e91617506f7479c5[m
+Author: daniela <moreno.tobar.daniela@gmail.com>
+Date:   Thu May 19 12:30:03 2022 -0500
+
+    render card avatar
+
+[33mcommit b1a0665ec908a84fe5a9a6d1dd140ff2a61f73b9[m
+Author: Andrea Reyes <yuriramirez5800@gmail.com>
+Date:   Thu May 19 09:35:59 2022 -0500
+
+    add text
+
+[33mcommit be7fe8bb92a7f653ad4b4377b0a56ad7d4267f2f[m
+Author: daniela <moreno.tobar.daniela@gmail.com>
+Date:   Thu May 19 09:29:55 2022 -0500
+
+    route
+
+[33mcommit 10590bff554b66857ed0f7ee99a49659cb640933[m
+Merge: 5603705 f3c4021
+Author: daniela <moreno.tobar.daniela@gmail.com>
+Date:   Thu May 19 09:26:54 2022 -0500
+
+    Merge branch 'dev' of https://github.com/escape-room-fronted/EscapeRoom into daniela
+
+[33mcommit 56037050f10568425af819be16e57cacd4b8e1cc[m
+Merge: cf50df9 41bed74
+Author: daniela <moreno.tobar.daniela@gmail.com>
+Date:   Thu May 19 09:26:37 2022 -0500
+
+    view admin
+
+[33mcommit f3c4021c50a0a07af4efbfb687a924a1dec2fd11[m
+Merge: 41bed74 cf50df9
+Author: christian lazo <kenishi.cristianxd@gmail.com>
+Date:   Wed May 18 21:24:34 2022 -0500
+
+    Added View Admin Dani, protected routes Christian
+
+[33mcommit 41bed74dc101d8e817c5e885cd2b2055040de835[m
+Author: christian lazo <kenishi.cristianxd@gmail.com>
+Date:   Wed May 18 17:24:16 2022 -0500
+
+    Adding sidebar02
+
+[33mcommit 4f5d4c6041b2b1feabe25d07e5c080ec0ef01f75[m[33m ([m[1;32mmain[m[33m)[m
+Author: christian lazo <kenishi.cristianxd@gmail.com>
+Date:   Wed May 18 17:20:38 2022 -0500
+
+    Add sidebar
+
+[33mcommit cf50df93d2820aaed0008476a8237e96c4ad08a0[m
+Author: daniela <moreno.tobar.daniela@gmail.com>
+Date:   Wed May 18 17:15:29 2022 -0500
+
+    sider panel admin
+
+[33mcommit 77c0eaca3318cdb849494ee62425d16e21f85853[m
+Author: christian lazo <kenishi.cristianxd@gmail.com>
+Date:   Wed May 18 14:07:04 2022 -0500
+
+    Added GetUser
+
+[33mcommit 763a50a2275900b9a0db327af57054916564c642[m
+Author: DargyLobo <dargijuli@gmail.com>
+Date:   Wed May 18 12:19:46 2022 -0500
+
+    Botones en la tabla de crear usuario
+
+[33mcommit accb1b133737958f1958c66dff0d578d4ea1bf5d[m
+Merge: e6cea82 fb4b372
+Author: christian lazo <kenishi.cristianxd@gmail.com>
+Date:   Wed May 18 10:11:55 2022 -0500
+
+    Merge branch 'dev' of https://github.com/escape-room-fronted/EscapeRoom into christian
+
+[33mcommit e6cea828d351ed911b4cf433412fad67bd4dc4ef[m
+Author: christian lazo <kenishi.cristianxd@gmail.com>
+Date:   Wed May 18 10:11:49 2022 -0500
+
+    add changes
+
+[33mcommit 1120ce02a187a5b030815f8a905474f41c4c1b74[m
+Author: DargyLobo <dargijuli@gmail.com>
+Date:   Tue May 17 18:10:18 2022 -0500
+
+    similitud
+
+[33mcommit 18ee212dfe7795c246c48842ce54a00952861577[m
+Merge: 6a9146a 7eacb26
+Author: DargyLobo <dargijuli@gmail.com>
+Date:   Tue May 17 17:30:57 2022 -0500
+
+    usertable
+
+[33mcommit 6a9146a65d10838b50d60cd611b2812a98d2173b[m
+Author: DargyLobo <dargijuli@gmail.com>
+Date:   Tue May 17 17:27:30 2022 -0500
+
+    ventana modal y formulario usuario
+
+[33mcommit 7eacb266099ca5fbabffbb645110923a3925872c[m
+Merge: 3d0ed9c fb4b372
+Author: daniela <moreno.tobar.daniela@gmail.com>
+Date:   Tue May 17 17:05:17 2022 -0500
+
+    admin view
+
+[33mcommit 3d0ed9c2c093823f01740a5162d9bc6d052a9f94[m
+Author: daniela <moreno.tobar.daniela@gmail.com>
+Date:   Tue May 17 16:59:57 2022 -0500
+
+    view admin
+
+[33mcommit c22f237721eac59a601c38163883c1c104f941e7[m
+Merge: 72ae7fe eb57680
+Author: christian lazo <kenishi.cristianxd@gmail.com>
+Date:   Tue May 17 15:53:11 2022 -0500
+
+    Merge branch 'main' of https://github.com/escape-room-fronted/EscapeRoom into christian
+
+[33mcommit fb4b37240c49b48842c2ee043465d9f7ac7f9e3d[m
+Author: christian lazo <kenishi.cristianxd@gmail.com>
+Date:   Tue May 17 15:36:23 2022 -0500
+
+    Fixed Bugs
+
+[33mcommit aa1a52b02fb1892bd40c6e3e64c4905f9ca678db[m
+Merge: 363712a f26ebe2
+Author: christian lazo <kenishi.cristianxd@gmail.com>
+Date:   Tue May 17 15:33:01 2022 -0500
+
+    Pull dev
+
+[33mcommit 363712a9a808883b16ad6afed2efc8f2a1a4c2b7[m
+Author: christian lazo <kenishi.cristianxd@gmail.com>
+Date:   Tue May 17 15:26:03 2022 -0500
+
+    mege christian02
+
+[33mcommit 72ae7fe74d0c15bb8ce0924467211e8697974ec9[m
+Author: christian lazo <kenishi.cristianxd@gmail.com>
+Date:   Tue May 17 15:20:37 2022 -0500
+
+    adding backend connection
+
+[33mcommit f26ebe2f81e8fbca69029ab39003e1d2fb4c3b4a[m
+Author: daniela <moreno.tobar.daniela@gmail.com>
+Date:   Tue May 17 12:36:02 2022 -0500
+
+    card logic and modals
+
+[33mcommit 82475ab0f0c1dc06d17b1e71edcffbcebd6c7e9e[m
+Author: christian lazo <kenishi.cristianxd@gmail.com>
+Date:   Mon May 16 21:43:33 2022 -0500
+
+    Login 1/3 finish
+
+[33mcommit 40a372c8778c4a0e35042dd7af48dc3518afa887[m
+Author: daniela <moreno.tobar.daniela@gmail.com>
+Date:   Mon May 16 18:18:09 2022 -0500
+
+    sidebar and modal help
+
+[33mcommit eb57680065fbe2196e69ccfbf52bcfcde6ccbef5[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: daniela <moreno.tobar.daniela@gmail.com>
+Date:   Sun May 15 09:51:41 2022 -0500
+
+    des and counter
+
+[33mcommit ca92c4c280520b3100fc75a548e0dfdc30e339d6[m
+Author: christian lazo <kenishi.cristianxd@gmail.com>
+Date:   Sat May 14 10:20:22 2022 -0500
+
+    Add change with LogicDescription
+
+[33mcommit d8b8cfc3810a52f8b1ce326db6356ceabbd0efd9[m
+Merge: 9104354 4e131d2
+Author: christian lazo <kenishi.cristianxd@gmail.com>
+Date:   Sat May 14 10:12:07 2022 -0500
+
+    add Section LogicDescription
+
+[33mcommit 91043546839f45bcb399cb089d5ce7f734c58ec9[m
+Author: christian lazo <kenishi.cristianxd@gmail.com>
+Date:   Sat May 14 10:02:48 2022 -0500
+
+    Add component counterTime
+
+[33mcommit f411e0fa84061847c4e92eab980bf422735a6d21[m
+Merge: 2f8817b 0670068
+Author: christian lazo <kenishi.cristianxd@gmail.com>
+Date:   Sat May 14 09:52:16 2022 -0500
+
+    add change counter
+
+[33mcommit 2f8817b65fe43a8a05944674c9571621d21fb9e4[m
+Author: christian lazo <kenishi.cristianxd@gmail.com>
+Date:   Sat May 14 09:49:46 2022 -0500
+
+    Add CounterTime
+
+[33mcommit 4e131d2e2b54fa829647428dc862e6a902ca0072[m
+Merge: 9e83963 0670068
+Author: Andrea Reyes <yuriramirez5800@gmail.com>
+Date:   Fri May 13 17:36:42 2022 -0500
+
+    add section logic
+
+[33mcommit 9e83963758d357d66edd46336fea9460f52261f6[m
+Author: Andrea Reyes <yuriramirez5800@gmail.com>
+Date:   Fri May 13 17:12:58 2022 -0500
+
+    add section rum
+
+[33mcommit 0670068baf1d5ea4b1496478478ca451c246b755[m
+Author: daniela <moreno.tobar.daniela@gmail.com>
+Date:   Fri May 13 12:35:27 2022 -0500
+
+    login
+
+[33mcommit c05d5172d5921fecdcbeec928599592f6e198853[m
+Author: daniela <moreno.tobar.daniela@gmail.com>
+Date:   Fri May 13 10:20:53 2022 -0500
+
+    landing version two
+
+[33mcommit 1d2e686dcc196f71cfd19e8ec17306090dbca427[m
+Author: daniela <moreno.tobar.daniela@gmail.com>
+Date:   Thu May 12 21:21:19 2022 -0500
+
+    estructura
+
+[33mcommit 5b28abe345e6684fe2260d0ce642975e5b2c6fc7[m
+Merge: c78a94e 81b0afa
+Author: christian lazo <kenishi.cristianxd@gmail.com>
+Date:   Thu May 12 20:37:52 2022 -0500
+
+    pull dev
+
+[33mcommit c78a94ec58c74dc4b20ae23e13f66b5725160241[m
+Author: christian lazo <kenishi.cristianxd@gmail.com>
+Date:   Thu May 12 20:36:51 2022 -0500
+
+    Pull
+
+[33mcommit 81b0afadb7e28b8216ee770f2f7f805b4f2331f0[m
+Merge: c45b2be 2095ba9
+Author: daniela <moreno.tobar.daniela@gmail.com>
+Date:   Thu May 12 18:12:38 2022 -0500
+
+    landing version one
+
+[33mcommit c45b2beaf118852a1b6e346bc945eb99b914cfda[m
+Author: daniela <moreno.tobar.daniela@gmail.com>
+Date:   Thu May 12 17:32:26 2022 -0500
+
+    sections
+
+[33mcommit 2095ba982021c04a59525243708a80f895d00f97[m
+Author: christian lazo <kenishi.cristianxd@gmail.com>
+Date:   Thu May 12 15:08:47 2022 -0500
+
+    Fixed bug cards Rooms
+
+[33mcommit 3759564feb06a9d861e9a60203f8e6c51db90fd4[m
+Merge: f38bd54 c73baa7
+Author: christian lazo <kenishi.cristianxd@gmail.com>
+Date:   Thu May 12 14:44:46 2022 -0500
+
+    Add Sections, banner, rooms, with atomic design xD
+
+[33mcommit c73baa7112efa5cc90855659cccab88440e619c9[m
+Author: daniela <moreno.tobar.daniela@gmail.com>
+Date:   Thu May 12 10:23:22 2022 -0500
+
+    buttons
+
+[33mcommit f38bd54f1ecaa8250faabaa8e092f4a592e4d247[m
+Author: christian lazo <kenishi.cristianxd@gmail.com>
+Date:   Thu May 12 08:00:54 2022 -0500
+
+    Add desing cardRooms without Atomic Design
+
+[33mcommit d80633a5f59baaebdbdbfaaeb885999dbae957bb[m
+Author: christian lazo <kenishi.cristianxd@gmail.com>
+Date:   Wed May 11 23:49:53 2022 -0500
+
+    ADD navbar, rooms without Atomic Desing
+
+[33mcommit c19068044e94835282e0cdf64eb5a71d32141abe[m
+Author: daniela <moreno.tobar.daniela@gmail.com>
+Date:   Wed May 11 15:15:00 2022 -0500
+
+    files
+
+[33mcommit 5af3951a6104d2405cb95c9855c5c66578a662a4[m
+Author: daniela <moreno.tobar.daniela@gmail.com>
+Date:   Wed May 11 15:09:26 2022 -0500
+
+    files
+
+[33mcommit 9f286fdcc6a5e8a5068149ae08be81c8910c021d[m
+Author: daniela <moreno.tobar.daniela@gmail.com>
+Date:   Wed May 11 15:05:07 2022 -0500
+
+    first commit :tada:
