@@ -26,27 +26,27 @@ const FormCreateRoom = () => {
       let errores = {};
 
       if(!valores.pregunta){
-        errores.pregunta = 'Llene este campo'
+        errores.pregunta = 'Escribe una pregunta'
       }
 
       if(!valores.opcion1){
-        errores.opcion1 = 'Llene este campo'
+        errores.opcion1 = 'Escribe una opción'
       }
 
       if(!valores.opcion2){
-        errores.opcion2 = 'Llene este campo'
+        errores.opcion2 = 'Escribe una opción'
       }
 
       if(!valores.opcion3){
-        errores.opcion3 = 'Llene este campo'
+        errores.opcion3 = 'Escribe una opción'
       }
 
       if(!valores.respuesta){
-        errores.respuesta = 'Llene este campo'
+        errores.respuesta = 'Escribe una respuesta'
       }
 
       if(!valores.pista){
-        errores.pista = 'Llene este campo'
+        errores.pista = 'Escribe una pista'
       }
 
       return errores;
@@ -75,6 +75,7 @@ const FormCreateRoom = () => {
                     id='pregunta'
                     name='pregunta'
                     as="textarea"
+                    required
                     />
               </div>
               <ErrorMessage name='pregunta' component={()=>(
@@ -95,6 +96,7 @@ const FormCreateRoom = () => {
                     id='opcion1'
                     name='opcion1'
                     placeholder=""
+                    required
                     />
                 </div>
                 <ErrorMessage name='opcion1' component={()=>(
@@ -110,6 +112,7 @@ const FormCreateRoom = () => {
                     id='opcion2'
                     name='opcion2'
                     placeholder=""
+                    required
                     />
                 </div>
                 <ErrorMessage name='opcion2' component={()=>(
@@ -124,6 +127,7 @@ const FormCreateRoom = () => {
                     id='opcion3'
                     name='opcion3'
                     placeholder=""
+                    required
                     />
                 </div>
                 <ErrorMessage name='opcion3' component={()=>(
@@ -145,6 +149,7 @@ const FormCreateRoom = () => {
                     id='respuesta'
                     name='respuesta'
                     placeholder=""
+                    required
                     />
                 </div>
                 <ErrorMessage name='respuesta' component={()=>(
@@ -167,6 +172,7 @@ const FormCreateRoom = () => {
                     name='pista'
                     placeholder=""
                     as="textarea"
+                    required
                     />
                 </div>
                 <ErrorMessage name='pista' component={()=>(
