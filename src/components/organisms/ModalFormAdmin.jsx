@@ -103,6 +103,7 @@ export default function ModalFormAdmin() {
                        <ErrorMessage name="admin_email" component={()=> (<div className="text-yellow text-sm">{errors.admin_email}</div>)} />
                     </div>
 
+
                 </div>
                 <div className="text-colortitle font-paragraph flex items-start justify-between p-5">
                   <button
