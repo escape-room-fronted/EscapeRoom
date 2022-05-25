@@ -1,10 +1,10 @@
 import React from "react";
 import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
-import { logout } from "../../context/auth/authServices";
+import { useAuthLogin } from "../../hooks/useAuthLogin";
 
 const SideBarAdmin = ({ handleShow }) => {
-  const { setAuth } = useAuth();
+  const { logout } = useAuthLogin();
   const navigate = useNavigate();
   return (
     <div>
@@ -47,7 +47,6 @@ const SideBarAdmin = ({ handleShow }) => {
             <button
               onClick={() => {
                 logout();
-                setAuth({});
                 navigate("/");
               }}
               className="card__animate my-px py-6 bg-gray hover:bg-yellow flex flex-row items-center h-10 px-3 rounded-lg text-gray-300 hover:bg-gray-100 hover:text-gray-700"

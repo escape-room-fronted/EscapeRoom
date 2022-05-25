@@ -1,9 +1,56 @@
-import React from 'react'
-import { FaTrash } from 'react-icons/fa';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react'
+//import MUIDataTable from "mui-datatables";
 import { Link } from 'react-router-dom';
 
 
 const TableQuestions = () => {
+
+
+const [questions, setQuestions] = useState([])
+
+const endpoint = 'https://fakestoreapi.com/products'
+
+const getData = async() => {
+  await axios.get(endpoint).then((response) =>{
+    const data = response.data
+    console.log(data)
+    setQuestions(data)
+  })
+}
+
+useEffect( () =>{
+  getData()
+}, [] )
+
+const colums = [
+  {
+    name: "id",
+    label: "ID",
+  }, 
+  {
+    name: "title",
+    label: "TITLE",
+  }, 
+  {
+    name: "price",
+    label: "PRICE",
+  }, 
+  {
+    name: "description",
+    label: "DESCRIPTION",
+  }, 
+  {
+    name: "category",
+    label: "CATEGORY",
+  }, 
+
+]
+
+const options = {
+  fixedHeader: false,
+  responsive: 'scrollMaxHeight',
+}
 
   return (
     <div>
@@ -19,6 +66,7 @@ const TableQuestions = () => {
 
 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 ">
 <div className="bg-dark text-white overflow-hidden shadow-xl sm:rounded-lg">
+
 
   <table className="table-fixed w-full flex grow-1 flex-row sm:flex-col md:flex-col px-4 md:hidden sm:hidden">
     <thead className="flex flex-col gap-y-4 sm:hidden md:hidden w-[50%] items-stretch">
@@ -116,6 +164,16 @@ const TableQuestions = () => {
       
     </tbody>
   </table>
+
+  <div>
+    <MUIDataTable 
+      title={"Rooms"}
+      data={questions}
+      columns={colums}
+      options={options}
+    />
+  </div>
+
 </div>
 </div>
 </div>
