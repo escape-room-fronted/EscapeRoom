@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 
 const TableQuestions = () => {
+
   return (
     <div>
     <div className='flex justify-between'>
@@ -56,7 +57,7 @@ const TableQuestions = () => {
         </td>
         <td className="py-[0.31rem] pl-4 flex">
           
-          <form  method="POST">
+          <form method="POST">
             <input type="hidden"Name value=""/>
             <button type="submit" className=" text-yellow px-3 py-2 rounded-sm">
             <FaTrash/></button>

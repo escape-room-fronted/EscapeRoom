@@ -1,23 +1,67 @@
 import React, { useState } from 'react'
 import ModalWindowOk from '../atoms/molecules/ModalWindowOk'
-
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 const FormCreateRoom = () => {
 
-  const[ showModal, setShowModal] = useState(false)
+  //const[ showModal, setShowModal] = useState(false)
+  const[formularioEnviado, cambiarFormularioEnviado] = useState(false);
 
-  const handleSaveButton = () => { 
-    setShowModal(true)
-    ModalWindowOk("guardado exitoso")
-  }
   return (
 
 <div className='bg-dark min-h-screen'>
+  <Formik
+    initialValues={{
+      pregunta: '',
+      opcion1: '',
+      opcion2: '',
+      opcion3: '',
+      respuesta: '',
+      pista: ''
+
+    }}
+
+    validate={(valores)=>{
+
+      let errores = {};
+
+      if(!valores.pregunta){
+        errores.pregunta = 'Llene este campo'
+      }
+
+      if(!valores.opcion1){
+        errores.opcion1 = 'Llene este campo'
+      }
+
+      if(!valores.opcion2){
+        errores.opcion2 = 'Llene este campo'
+      }
+
+      if(!valores.opcion3){
+        errores.opcion3 = 'Llene este campo'
+      }
+
+      if(!valores.respuesta){
+        errores.respuesta = 'Llene este campo'
+      }
+
+      if(!valores.pista){
+        errores.pista = 'Llene este campo'
+      }
+
+      return errores;
+    }}
+
+    onSubmit={(valores, {resetForm}) => {
+      resetForm();
+      ModalWindowOk("Formulario Guardado con éxito");
+      setTimeout(() => cambiarFormularioEnviado(false), 5000);
+    }}
+  >
+  {({errors}) => (
+
     <div className='pt-32 flex justify-center'>
-
-
-
-    <section className="pb-10">
+    <Form className="pb-10">
       <div className="mx-auto container max-w-2xl md:w-3/4 shadow-md">
         <div className="bg-gray card__animate space-y-2 rounded-lg">
           <div className="md:inline-flex space-y-2 md:space-y-0 w-full p-4 items-center">
@@ -25,11 +69,17 @@ const FormCreateRoom = () => {
             <div className="md:w-2/3 max-w-sm mx-auto">
               <label className="text-sm text-white">Pregunta</label>
               <div className="w-full inline-flex">
-              <textarea
+              <Field
                     type="text"
                     className="rounded-md w-11/12 focus:outline-none bg-dark focus:text-white p-2"
-                  />
+                    id='pregunta'
+                    name='pregunta'
+                    as="textarea"
+                    />
               </div>
+              <ErrorMessage name='pregunta' component={()=>(
+                <div className="error">{errors.pregunta}</div>
+              )} />
             </div>
           </div>
 
@@ -39,29 +89,45 @@ const FormCreateRoom = () => {
               <div>
                 <label className="text-sm text-white font-hind">Opcion 1</label>
                 <div className="w-full inline-flex">
-                  <input
+                  <Field
                     type="text"
                     className="rounded-md w-11/12 focus:outline-none bg-dark focus:text-white p-2"
-                    placeholder=""/>
+                    id='opcion1'
+                    name='opcion1'
+                    placeholder=""
+                    />
                 </div>
+                <ErrorMessage name='opcion1' component={()=>(
+                  <div className="error">{errors.opcion1}</div>
+                )} />
               </div>
               <div>
                 <label className="text-sm text-white font-hind">Opcion 2</label>
                 <div className="w-full inline-flex">
-                  <input
+                  <Field
                     type="text"
                     className="rounded-md w-11/12 focus:outline-none bg-dark focus:text-white p-2"
-                    placeholder=""/>
+                    id='opcion2'
+                    name='opcion2'
+                    placeholder=""
+                    />
                 </div>
+                <ErrorMessage name='opcion2' component={()=>(
+                  <div className="error">{errors.opcion2}</div>)} />
               </div>
               <div>
                 <label className="text-sm text-white font-hind ">Opcion 3</label>
                 <div className="w-full inline-flex">
-                  <input
+                  <Field
                     type="text"
                     className="rounded-md w-11/12 focus:outline-none bg-dark focus:text-white p-2"
-                    placeholder=""/>
+                    id='opcion3'
+                    name='opcion3'
+                    placeholder=""
+                    />
                 </div>
+                <ErrorMessage name='opcion3' component={()=>(
+                  <div className="error">{errors.opcion3}</div>)} />
               </div>
             </div>
           </div>
@@ -73,11 +139,16 @@ const FormCreateRoom = () => {
               <div>
                 <label className="text-sm text-white font-hind ">Respuesta</label>
                 <div className="w-full inline-flex">
-                  <input
+                  <Field
                     type="text"
                     className="rounded-md w-11/12 focus:outline-none bg-dark focus:text-white p-2"
-                    placeholder=""/>
+                    id='respuesta'
+                    name='respuesta'
+                    placeholder=""
+                    />
                 </div>
+                <ErrorMessage name='respuesta' component={()=>(
+                  <div className="error">{errors.respuesta}</div>)} />
               </div>
             </div>
           </div>
@@ -89,26 +160,33 @@ const FormCreateRoom = () => {
               <div>
                 <label className="text-sm text-white font-hind">Pista</label>
                 <div className="w-full inline-flex">
-                  <textarea
+                  <Field
                     type="text"
                     className="rounded-md w-11/12 focus:outline-none bg-dark focus:text-white p-2"
-                    placeholder=""/>
+                    id='pista'
+                    name='pista'
+                    placeholder=""
+                    as="textarea"
+                    />
                 </div>
+                <ErrorMessage name='pista' component={()=>(
+                  <div className="error">{errors.pista}</div>)} />
               </div>
             </div>
           </div>
           <div className='flex justify-end pr-8 pb-6'>
           <button className="btn-yellow"
-          type="button"
-          onClick={() => handleSaveButton() }>Guardar</button>
+          type="submit">Guardar</button>
           </div>
           <hr />
         </div>
       </div>
-    </section>
+    </Form>
 
     </div>
-
+  )}
+    
+    </Formik>
     </div>
   )
 }
