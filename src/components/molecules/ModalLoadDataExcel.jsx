@@ -5,7 +5,7 @@ import useAuth from "../../hooks/useAuth";
 
 const SET_EXCEL = "excel";
 
-const ModalLoadDataExcel = ({handleUpdateTable, handleUpdateListar}) => {
+const ModalLoadDataExcel = ({ handleUpdateTable, handleUpdateListar }) => {
   const [viewModal, setViewModal] = useState(false);
   const { auth } = useAuth();
 
@@ -19,7 +19,7 @@ const ModalLoadDataExcel = ({handleUpdateTable, handleUpdateListar}) => {
       });
 
       console.log(response.data);
-      handleUpdateTable(!handleUpdateListar)
+      handleUpdateTable(!handleUpdateListar);
     } catch (err) {
       console.log(err);
     }
