@@ -5,6 +5,7 @@ import ModalFormUser from "../organisms/ModalFormUser";
 import useAuth from "../../hooks/useAuth";
 import ModalLoadDataExcel from "../molecules/ModalLoadDataExcel";
 
+
 const TableListar = () => {
   const { auth } = useAuth();
   console.log(auth.accesToken);
@@ -50,16 +51,17 @@ const TableListar = () => {
       name: "email",
       label: "EMAIL",
     },
+
   ];
 
   const options = {
     fixedHeader: false,
     responsive: "scrollMaxHeight",
-  };
+    };
+    
 
   return (
     <div>
-      <h1 className="font-bold pt-2 text-2xl text-yellow">Usuarios</h1>
       <div className="flex gap-4 justify-end pr-10">
         <ModalFormUser />
         {/* <button className="btn-yellow gap-20" type="button">
