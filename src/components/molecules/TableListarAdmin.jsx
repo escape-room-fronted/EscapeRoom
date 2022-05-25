@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import MUIDataTable from "mui-datatables";
+import MUIDataTable from "mui-datatables";
 import axios from "../../services/axios";
 import ModalFormAdmin from "../organisms/ModalFormAdmin";
 import useAuth from "../../hooks/useAuth";
@@ -39,7 +39,7 @@ const TableListarAdmin = () => {
 
   const colums = [
     {
-      title: "_id",
+      name: "_id",
       label: "ID",
     },
     {
