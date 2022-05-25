@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import MUIDataTable from "mui-datatables";
+// import MUIDataTable from "mui-datatables";
 import axios from "../../services/axios";
 import ModalFormAdmin from "../organisms/ModalFormAdmin";
 import useAuth from "../../hooks/useAuth";
-// import Edit from "@material-ui/icons/Edit";
-// import MaterialTable from "material-table";
+import DataTable, { createTheme } from "react-data-table-component";
+import "styled-components";
 
 const TableListarAdmin = () => {
   const { auth } = useAuth();
@@ -27,7 +27,7 @@ const TableListarAdmin = () => {
         setAdmins([response.data]);
       }
       console.log(response.data);
-      setIsExcel(!isExcel);
+      // setIsExcel(!isExcel);
     } catch (err) {
       console.log(err);
     }
@@ -39,27 +39,56 @@ const TableListarAdmin = () => {
 
   const colums = [
     {
-      name: "_id",
-      label: "ID",
+      name: "ID",
+      selector: (row) => row._id,
     },
     {
-      name: "name",
-      label: "Name",
+      name: "Name",
+      selector: (row) => row.name,
     },
     {
-      name: "username",
-      label: "USER NAME",
+      name: "User Name",
+      selector: (row) => row.username,
     },
     {
-      name: "email",
-      label: "EMAIL",
+      name: "Email",
+      selector: (row) => row.email,
+    },
+    {
+      name: "Editar",
+      selector: (row) => row.email,
+    },
+    {
+      name: "Eliminar",
+      selector: (row) => row.email,
     },
   ];
 
-  const options = {
-    fixedHeader: false,
-    responsive: "scrollMaxHeight",
-  };
+  createTheme(
+    "educamas",
+    {
+      text: {
+        primary: "#fff",
+        secondary: "#fff",
+      },
+      background: {
+        default: "#242424",
+      },
+      context: {
+        background: "#cb4b16",
+        text: "#FFFFFF",
+      },
+      divider: {
+        default: "#717171",
+      },
+      action: {
+        button: "rgba(0,0,0,.54)",
+        hover: "rgba(0,0,0,.08)",
+        disabled: "rgba(0,0,0,.12)",
+      },
+    },
+    "dark"
+  );
 
   return (
     <div>
@@ -72,11 +101,13 @@ const TableListarAdmin = () => {
           <div className="bg-dark text-white overflow-hidden shadow-xl sm:rounded-lg">
             {admins && (
               <div>
-                <MUIDataTable
-                  title={"Administradores"}
+                <DataTable
                   data={admins}
                   columns={colums}
-                  options={options}
+                  pagination
+                  theme="educamas"
+                  highlightOnHover
+                  defaultSortField="_id"
                 />
               </div>
             )}
