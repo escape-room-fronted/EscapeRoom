@@ -44,6 +44,7 @@ const TableListar = () => {
     console.log(data);
   };
 
+  //delete 
   const handleButtonDelete = async(_id) => {
     try{
       const response = await axios.delete (`${DELETE_USER}${_id}`, {headers: { "x-access-token": auth.accesToken },} ) 
