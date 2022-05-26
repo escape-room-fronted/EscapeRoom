@@ -107,7 +107,7 @@ const TableListarAdmin = () => {
                   pagination
                   theme="educamas"
                   highlightOnHover
-                  defaultSortField="_id"
+                  responsive="true"
                 />
               </div>
             )}

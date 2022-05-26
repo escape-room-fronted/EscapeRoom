@@ -1,12 +1,86 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import axios from "../../services/axios";
+import useAuth from "../../hooks/useAuth";
 import ModalWindowOk from "../atoms/molecules/ModalWindowOk";
 
-export default function ModalFormUser() {
+
+const CREATE_USER = "users/"
+
+export default function ModalFormUser({isUpDate, setIsUpDate}) {
+
+
+  const { auth } = useAuth();
+  console.log(auth.accesToken);
+
+
   const [showModal, setShowModal] = React.useState(false);
   const handleSaveButton = () => { 
     setShowModal(false)
     ModalWindowOk("guardado exitoso")
   }
+  const [dato, setDato] =useState([]);
+  const name = useRef("");
+  const username = useRef("");
+  const email = useRef("");
+  const [_id, set_Id] = useState("");
+
+  useEffect(() => {
+    api();
+}, [])
+
+  const endpoint = "users/allusers";
+
+  async function api(){
+    axios.get(endpoint, {headers: { "x-access-token": auth.accesToken },})
+    .then(res=>{
+      const result=res.dato;
+      setDato(result);
+    })
+  }
+
+  const data = {
+    name: "",
+    username: "",
+    email: ""
+  }
+
+  function createUser(e){
+    e.preventDefault();
+    data.name = name.current.value
+    data.username = username.current.value 
+    data.email = email.current.value
+    data.roles = ["user"]
+
+    if(_id){
+      console.log("entro a editar");
+      axios.put(`${CREATE_USER}${_id}`, data,  {headers: { "x-access-token": auth.accesToken },})
+      .then(res =>{
+        console.log(res)
+      })
+    }else{
+      console.log("entro a agregar")
+      axios.post('auth/signup', JSON.stringify(data),{headers: { "x-access-token": auth.accesToken, "Content-Type": "application/json", },} )
+      .then(res =>{
+        console.log(res)
+        setShowModal(false)
+        setIsUpDate(!isUpDate)
+        ModalWindowOk("guardado exitoso")
+      })
+      .catch((err) => console.log(err))
+      console.log(data)
+    }
+    set_Id("");
+  }
+
+  const update = (item) =>{
+    const resultado= item._id
+    set_Id(resultado);
+
+    name.current.value = item.name
+    username.current.value = item.username
+    email.current.value = item.email
+    }
+
   return (
     <>
       <button
@@ -40,7 +114,7 @@ export default function ModalFormUser() {
                       </label>
                       <input
                         type="text"
-                        name="user_name"
+                        ref={name}
                         placeholder="Usuario"
                         required
                         className="font-title w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-red dark:bg-bglight dark:text-colorparagraph dark:placeholder-gray-500 dark:border-red dark:focus:ring-red dark:focus:border-red"
@@ -51,8 +125,10 @@ export default function ModalFormUser() {
                         Nombre Completo
                       </label>
                       <input
+                        ref={username}
                         type="text"
-                        name="user_name"
+                        id="username"
+                        name="username"
                         placeholder="Nombre"
                         required
                         className="font-title w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-red dark:bg-bglight dark:text-colorparagraph dark:placeholder-gray-500 dark:border-red dark:focus:ring-red dark:focus:border-red"
@@ -64,8 +140,10 @@ export default function ModalFormUser() {
                         Email Address
                       </label>
                       <input
+                        ref={email}
                         type="email"
-                        name="user_email"
+                        id="email"
+                        name="email"
                         placeholder="you@company.com"
                         required
                         className="font-title w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-bglight dark:text-colorparagraph dark:placeholder-gray-500 dark:border-red dark:focus:ring-red dark:focus:border-red"
@@ -84,7 +162,7 @@ export default function ModalFormUser() {
                   <button
                     className="btn-yellow"
                     type="button"
-                    onClick={() => handleSaveButton() }
+                    onClick={(e)=>createUser(e)}
                   > 
                     
                     Guardar
