@@ -1,20 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 // import MUIDataTable from "mui-datatables";
 import axios from "../../services/axios";
 import ModalFormAdmin from "../organisms/ModalFormAdmin";
 import useAuth from "../../hooks/useAuth";
 import DataTable, { createTheme } from "react-data-table-component";
 import "styled-components";
+import { FaTrash, FaPencilAlt } from "react-icons/fa";
+
+const DELETE_ADMIN = "users/";
 
 const TableListarAdmin = () => {
   const { auth } = useAuth();
   console.log(auth.accesToken);
 
   const [admins, setAdmins] = useState();
-
   const [isExcel, setIsExcel] = useState(false);
+  const [text, setText] = useState("");
 
   const endpoint = "users/alladmins";
+
+  const filteredUsers = () => {
+    let dataFilter = admins.filter((admin) =>
+      admin.name.toLowerCase().includes(text.toLowerCase())
+    );
+
+    return dataFilter;
+  };
 
   const getData = async () => {
     try {
@@ -27,7 +38,18 @@ const TableListarAdmin = () => {
         setAdmins([response.data]);
       }
       console.log(response.data);
-      // setIsExcel(!isExcel);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleButtonDelete = async (id) => {
+    console.log(id);
+    try {
+      const response = await axios.delete(`${DELETE_ADMIN}${id}`, {
+        headers: { "x-access-token": auth.accesToken },
+      });
+      console.log(response);
     } catch (err) {
       console.log(err);
     }
@@ -37,30 +59,46 @@ const TableListarAdmin = () => {
     getData();
   }, [isExcel]);
 
+  useEffect(() => {
+    if (admins) {
+      filteredUsers();
+    }
+  }, [text]);
+
   const colums = [
     {
-      name: "ID",
-      selector: (row) => row._id,
-    },
-    {
-      name: "Name",
+      name: "Nombre",
       selector: (row) => row.name,
+      sortable: true,
     },
     {
-      name: "User Name",
+      name: "Usuario",
       selector: (row) => row.username,
+      sortable: true,
     },
     {
-      name: "Email",
+      name: "Correo",
       selector: (row) => row.email,
+      sortable: true,
     },
     {
       name: "Editar",
-      selector: (row) => row.email,
+      cell: (data) => (
+        <button onClick={() => handleButtonEdit(data)}>
+          <FaPencilAlt />{" "}
+        </button>
+      ),
+      button: true,
     },
     {
       name: "Eliminar",
-      selector: (row) => row.email,
+      cell: (data) => (
+        <button onClick={() => handleButtonDelete(data._id)}>
+          {" "}
+          <FaTrash />{" "}
+        </button>
+      ),
+      button: true,
     },
   ];
 
@@ -90,6 +128,20 @@ const TableListarAdmin = () => {
     "dark"
   );
 
+  const ButtonSearch = useMemo(() => {
+    return (
+      <input
+        type="text"
+        className="text-white bg-gray outline-none border-b-2 text-center"
+        placeholder="Buscar por nombre"
+        onChange={(e) => {
+          setText(e.target.value);
+        }}
+        value={text}
+      />
+    );
+  });
+
   return (
     <div>
       <div className="flex pt-4 gap-4 justify-end pr-10">
@@ -102,12 +154,17 @@ const TableListarAdmin = () => {
             {admins && (
               <div>
                 <DataTable
-                  data={admins}
+                  title="Administrador"
+                  data={filteredUsers()}
                   columns={colums}
                   pagination
                   theme="educamas"
                   highlightOnHover
-                  defaultSortField="_id"
+                  responsive={true}
+                  subHeader={true}
+                  subHeaderComponent={ButtonSearch}
+                  persistTableHead
+                  progressPending={false}
                 />
               </div>
             )}
