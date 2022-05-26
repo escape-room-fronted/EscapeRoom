@@ -14,10 +14,9 @@ export default function ModalFormUser({isUpDate, setIsUpDate}) {
 
 
   const [showModal, setShowModal] = React.useState(false);
-  const handleSaveButton = () => { 
-    setShowModal(false)
-    ModalWindowOk("guardado exitoso")
-  }
+ 
+
+
   const [dato, setDato] =useState([]);
   const name = useRef("");
   const username = useRef("");
@@ -72,14 +71,7 @@ export default function ModalFormUser({isUpDate, setIsUpDate}) {
     set_Id("");
   }
 
-  const update = (item) =>{
-    const resultado= item._id
-    set_Id(resultado);
-
-    name.current.value = item.name
-    username.current.value = item.username
-    email.current.value = item.email
-    }
+  
 
   return (
     <>

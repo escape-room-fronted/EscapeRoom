@@ -18,6 +18,7 @@ const TableListar = () => {
   const [users, setUsers] = useState();
   const [isUpDate, setIsUpDate] = useState(false);
 
+  
 
   const endpoint = "users/allusers";
 
@@ -39,6 +40,7 @@ const TableListar = () => {
 
 
   const handleButtonEdit = (data) => {
+    setShowModalEdit(true)
     console.log(data);
   };
 
@@ -125,7 +127,8 @@ const TableListar = () => {
   return (
     <div>
       <div className="flex gap-4 justify-end pr-10">
-        <ModalFormUser setIsUpDate={setIsUpDate} isUpDate={isUpDate}/>
+        <ModalFormUser 
+        setIsUpDate={setIsUpDate} isUpDate={isUpDate}/>
         {/* <button className="btn-yellow gap-20" type="button">
           {" "}
           Cargar usuarios{" "}
