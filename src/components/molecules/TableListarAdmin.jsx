@@ -17,7 +17,6 @@ const TableListarAdmin = () => {
   const [isUpdate, setIsUpdate] = useState(false);
   const [text, setText] = useState("");
 
-  // const endpoint = "users/allusers";
   const endpoint = "users/alladmins";
 
   const filteredUsers = () => {
