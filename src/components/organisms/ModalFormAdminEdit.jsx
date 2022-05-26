@@ -1,21 +1,9 @@
 import React, { useState } from "react";
-import ModalWindowOk from "../atoms/molecules/ModalWindowOk";
 
-export default function ModalFormAdmin({ id }) {
-  const [showModal, setShowModal] = React.useState(false);
-  const handleSaveButton = () => {
-    setShowModal(false);
-    ModalWindowOk("guardado exitoso");
-  };
+const ModalFormAdminEdit = () => {
+  const [showModal, setShowModal] = useState(true);
   return (
     <>
-      <button
-        className="btn-yellow"
-        type="button"
-        onClick={() => setShowModal(true)}
-      >
-        Crear Administrador
-      </button>
       {showModal ? (
         <>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none ">
@@ -23,7 +11,7 @@ export default function ModalFormAdmin({ id }) {
               <div className=" border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-gray outline-none focus:outline-none">
                 <div className="text-colortitle font-paragraph flex items-start justify-between p-5 ">
                   <h3 className="text-3xl font-semibold text-yellow">
-                    Crear Administrador
+                    Editar Administrador
                   </h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
@@ -34,7 +22,7 @@ export default function ModalFormAdmin({ id }) {
                   {/* aqui iria el form  */}
                   <div className="mb-6">
                     <label className="block mb-2 font-title text-sm text-white font-semibold">
-                      Usuario Administrador
+                      Usuario
                     </label>
                     <input
                       type="text"
@@ -46,7 +34,7 @@ export default function ModalFormAdmin({ id }) {
                   </div>
                   <div className="mb-6">
                     <label className="block mb-2 font-title text-sm text-white font-semibold">
-                      Nombre Completo
+                      Nombre
                     </label>
                     <input
                       type="text"
@@ -59,7 +47,7 @@ export default function ModalFormAdmin({ id }) {
 
                   <div className="mb-6">
                     <label className="block mb-2 font-title text-sm text-white font-semibold">
-                      Email Address
+                      Email
                     </label>
                     <input
                       type="email"
@@ -94,4 +82,5 @@ export default function ModalFormAdmin({ id }) {
       ) : null}
     </>
   );
-}
+};
+export default ModalFormAdminEdit;

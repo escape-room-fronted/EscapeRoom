@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useMemo } from "react";
-// import MUIDataTable from "mui-datatables";
 import axios from "../../services/axios";
 import ModalFormAdmin from "../organisms/ModalFormAdmin";
 import useAuth from "../../hooks/useAuth";
 import DataTable, { createTheme } from "react-data-table-component";
 import "styled-components";
 import { FaTrash, FaPencilAlt } from "react-icons/fa";
+import ModalWindowOk from "../atoms/molecules/ModalWindowOk";
 
 const DELETE_ADMIN = "users/";
 
@@ -14,9 +14,10 @@ const TableListarAdmin = () => {
   console.log(auth.accesToken);
 
   const [admins, setAdmins] = useState();
-  const [isExcel, setIsExcel] = useState(false);
+  const [isUpdate, setIsUpdate] = useState(false);
   const [text, setText] = useState("");
 
+  // const endpoint = "users/allusers";
   const endpoint = "users/alladmins";
 
   const filteredUsers = () => {
@@ -49,7 +50,10 @@ const TableListarAdmin = () => {
       const response = await axios.delete(`${DELETE_ADMIN}${id}`, {
         headers: { "x-access-token": auth.accesToken },
       });
+
       console.log(response);
+      setIsUpdate(!isUpdate);
+      ModalWindowOk("Administrador Borrado Correctamente");
     } catch (err) {
       console.log(err);
     }
@@ -57,7 +61,7 @@ const TableListarAdmin = () => {
 
   useEffect(() => {
     getData();
-  }, [isExcel]);
+  }, [isUpdate]);
 
   useEffect(() => {
     if (admins) {
@@ -145,7 +149,7 @@ const TableListarAdmin = () => {
   return (
     <div>
       <div className="flex pt-4 gap-4 justify-end pr-10">
-        <ModalFormAdmin />
+        <ModalFormAdmin opctions="create" />
       </div>
 
       <div className="pt-4 z-0">
