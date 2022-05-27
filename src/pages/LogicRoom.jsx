@@ -7,6 +7,7 @@ import SideBarUser from '../components/molecules/SidebarUser'
 import CardAvatarWelcome from "../components/molecules/CardAvatarWelcome";
 import CardWelcome from "../components/molecules/CardWelcome"; 
 import LogicPanel from '../components/templates/LogicPanel' 
+import CodeEditor from "../components/molecules/CodeEditor";
 
 
 
@@ -53,6 +54,10 @@ const LogicRoom = () => {
             <CardAvatarWelcome handleViewRoom={handleViewRoom}
             isAvatarJuliyLau={true} isTextThree={true}/>  
           )}
+
+        {isViewLogicRoom === 6 &&(
+          <CodeEditor handleViewRoom={handleViewRoom} />
+        )}
 
         <div className="drop-shadow-2xl py-4 2xl:hidden xl:hidde lg:hidden md:hidden bg-dark">
           <div className="grid gris-cols-2 gap-10 justify-center">

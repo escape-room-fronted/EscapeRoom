@@ -13,6 +13,7 @@
     "@material-ui/icons": "^4.11.3",
     "animate.css": "^4.1.1",
     "axios": "^0.27.2",
+    "codemirror": "^5.65.4",
     "formik": "^2.2.9",
     "react": "^18.0.0",
     "react-data-table-component": "^7.5.2",
