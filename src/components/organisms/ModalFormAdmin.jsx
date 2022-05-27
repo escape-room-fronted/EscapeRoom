@@ -2,13 +2,37 @@ import React, { useState } from "react";
 import ModalWindowOk from "../atoms/molecules/ModalWindowOk";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { isEmail } from "../../Helpers/helpers.js";
+import axios from "../../services/axios";
+import useAuth from "../../hooks/useAuth";
 
-export default function ModalFormAdmin({ id }) {
+export default function ModalFormAdmin({ isUpdate, setIsUpdate }) {
   const [showModal, setShowModal] = React.useState(false);
-  const handleSaveButton = () => {
-    setShowModal(false);
-    ModalWindowOk("guardado exitoso");
-  };
+  const { auth } = useAuth();
+
+  function createAdmin(values) {
+    const data = {};
+    data.name = values.admin_name;
+    data.username = values.admin_last_name;
+    data.email = values.admin_email;
+    data.roles = ["admin"];
+
+    console.log(data);
+
+    axios
+      .post("auth/signup", JSON.stringify(data), {
+        headers: {
+          "x-access-token": auth.accesToken,
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        setShowModal(false);
+        setIsUpdate(!isUpdate);
+        ModalWindowOk("guardado exitoso");
+      })
+      .catch((err) => console.log(err));
+  }
   return (
     <>
       <button
@@ -42,7 +66,9 @@ export default function ModalFormAdmin({ id }) {
               }
               return errors;
             }}
-            onSubmit={() => {}}
+            onSubmit={(values) => {
+              createAdmin(values);
+            }}
           >
             {({ errors }) => (
               <Form>
@@ -62,13 +88,12 @@ export default function ModalFormAdmin({ id }) {
                         {/* aqui iria el form  */}
                         <div className="mb-6">
                           <label className="block mb-2 font-title text-sm text-white font-semibold">
-                            Usuario Administrador
+                            Nombre
                           </label>
                           <Field
                             type="text"
                             name="admin_name"
                             placeholder="Usuario"
-                            required
                             className="font-title w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-red dark:bg-bglight dark:text-colorparagraph dark:placeholder-gray-500 dark:border-red dark:focus:ring-red dark:focus:border-red"
                           />
                           <ErrorMessage
@@ -82,13 +107,12 @@ export default function ModalFormAdmin({ id }) {
                         </div>
                         <div className="mb-6">
                           <label className="block mb-2 font-title text-sm text-white font-semibold">
-                            Nombre Completo
+                            Usuario
                           </label>
                           <Field
                             type="text"
                             name="admin_last_name"
                             placeholder="Nombre"
-                            required
                             className="font-title w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-red dark:bg-bglight dark:text-colorparagraph dark:placeholder-gray-500 dark:border-red dark:focus:ring-red dark:focus:border-red"
                           />
                           <ErrorMessage
@@ -103,13 +127,12 @@ export default function ModalFormAdmin({ id }) {
 
                         <div className="mb-6">
                           <label className="block mb-2 font-title text-sm text-white font-semibold">
-                            Email Address
+                            Email
                           </label>
                           <Field
                             type="email"
                             name="admin_email"
                             placeholder="you@company.com"
-                            required
                             className="font-title w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-bglight dark:text-colorparagraph dark:placeholder-gray-500 dark:border-red dark:focus:ring-red dark:focus:border-red"
                           />
                           <ErrorMessage
@@ -121,19 +144,6 @@ export default function ModalFormAdmin({ id }) {
                             )}
                           />
                         </div>
-
-                        <div className="mb-6">
-                          <label className="block mb-2 font-title text-sm text-white font-semibold">
-                            Email Address
-                          </label>
-                          <input
-                            type="email"
-                            name="admin_email"
-                            placeholder="you@company.com"
-                            required
-                            className="font-title w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-bglight dark:text-colorparagraph dark:placeholder-gray-500 dark:border-red dark:focus:ring-red dark:focus:border-red"
-                          />
-                        </div>
                       </div>
                       <div className="text-colortitle font-paragraph flex items-start justify-between p-5">
                         <button
@@ -143,11 +153,7 @@ export default function ModalFormAdmin({ id }) {
                         >
                           Cerrar
                         </button>
-                        <button
-                          className="btn-yellow"
-                          type="button"
-                          onClick={() => handleSaveButton()}
-                        >
+                        <button className="btn-yellow" type="submit">
                           Guardar
                         </button>
                       </div>

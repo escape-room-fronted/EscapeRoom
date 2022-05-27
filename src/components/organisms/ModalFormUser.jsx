@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "../../services/axios";
 import useAuth from "../../hooks/useAuth";
 import ModalWindowOk from "../atoms/molecules/ModalWindowOk";
@@ -9,11 +9,13 @@ const CREATE_USER = "users/";
 
 export default function ModalFormUser({ isUpDate, setIsUpDate }) {
   const { auth } = useAuth();
-  console.log(auth.accesToken);
 
   const [showModal, setShowModal] = React.useState(false);
 
-
+  const [dato, setDato] = useState([]);
+  const name = useRef("");
+  const username = useRef("");
+  const email = useRef("");
   const [_id, set_Id] = useState("");
 
   useEffect(() => {
@@ -31,14 +33,17 @@ export default function ModalFormUser({ isUpDate, setIsUpDate }) {
       });
   }
 
-  const data= {
+  const data = {
+    name: "",
+    username: "",
+    email: "",
+  };
 
- }
-
-  function createUser(values) {
-    data.name = values.user_name
-    data.username = values.user_last_name
-    data.email = values.user_email
+  function createUser(e) {
+    e.preventDefault();
+    data.name = name.current.value;
+    data.username = username.current.value;
+    data.email = email.current.value;
     data.roles = ["user"];
 
     if (_id) {
@@ -104,7 +109,7 @@ export default function ModalFormUser({ isUpDate, setIsUpDate }) {
               }
               return errors;
             }}
-            onSubmit={(values) => {createUser(values)}}
+            onSubmit={() => {}}
           >
             {({ errors }) => (
               <Form>
@@ -128,8 +133,9 @@ export default function ModalFormUser({ isUpDate, setIsUpDate }) {
                           </label>
                           <Field
                             type="text"
-                            name="user_name"
+                            ref={name}
                             placeholder="Usuario"
+                            required
                             className="font-title w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-red dark:bg-bglight dark:text-colorparagraph dark:placeholder-gray-500 dark:border-red dark:focus:ring-red dark:focus:border-red"
                           />
                           <ErrorMessage
@@ -149,6 +155,7 @@ export default function ModalFormUser({ isUpDate, setIsUpDate }) {
                             type="text"
                             name="user_last_name"
                             placeholder="Nombre"
+                            required
                             className="font-title w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-red dark:bg-bglight dark:text-colorparagraph dark:placeholder-gray-500 dark:border-red dark:focus:ring-red dark:focus:border-red"
                           />
                           <ErrorMessage
@@ -168,8 +175,9 @@ export default function ModalFormUser({ isUpDate, setIsUpDate }) {
                           <Field
                             type="email"
                             id="email"
-                            name="user_email"
+                            name="email"
                             placeholder="you@company.com"
+                            required
                             className="font-title w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-bglight dark:text-colorparagraph dark:placeholder-gray-500 dark:border-red dark:focus:ring-red dark:focus:border-red"
                           />
                           <ErrorMessage
@@ -192,7 +200,8 @@ export default function ModalFormUser({ isUpDate, setIsUpDate }) {
                         </button>
                         <button
                           className="btn-yellow"
-                          type="submit"
+                          type="button"
+                          onClick={(e) => createUser(e)}
                         >
                           Guardar
                         </button>

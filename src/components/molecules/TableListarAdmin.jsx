@@ -148,7 +148,7 @@ const TableListarAdmin = () => {
   return (
     <div>
       <div className="flex pt-4 gap-4 justify-end pr-10">
-        <ModalFormAdmin opctions="create" />
+        <ModalFormAdmin setIsUpdate={setIsUpdate} isUpdate={isUpdate} />
       </div>
 
       <div className="pt-4 z-0">

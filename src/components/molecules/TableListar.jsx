@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 // import MUIDataTable from "mui-datatables";
 import axios from "../../services/axios";
 import ModalFormUser from "../organisms/ModalFormUser";
@@ -9,7 +9,7 @@ import { FaTrash, FaPencilAlt } from "react-icons/fa";
 import "styled-components";
 import ModalWindowOk from "../atoms/molecules/ModalWindowOk";
 
-const DELETE_USER = "users/"
+const DELETE_USER = "users/";
 
 const TableListar = () => {
   const { auth } = useAuth();
@@ -17,10 +17,17 @@ const TableListar = () => {
 
   const [users, setUsers] = useState();
   const [isUpDate, setIsUpDate] = useState(false);
-
-  
+  const [text, setText] = useState("");
 
   const endpoint = "users/allusers";
+
+  const filteredUsers = () => {
+    let dataFilter = users.filter((user) =>
+      user.name.toLowerCase().includes(text.toLowerCase())
+    );
+
+    return dataFilter;
+  };
 
   const getData = async () => {
     try {
@@ -37,29 +44,35 @@ const TableListar = () => {
     }
   };
 
-
-
   const handleButtonEdit = (data) => {
-    setShowModalEdit(true)
+    setShowModalEdit(true);
     console.log(data);
   };
 
-  //delete 
-  const handleButtonDelete = async(_id) => {
-    try{
-      const response = await axios.delete (`${DELETE_USER}${_id}`, {headers: { "x-access-token": auth.accesToken },} ) 
-      console.log(response)
-      setIsUpDate(!isUpDate)
-      ModalWindowOk("Usuario eliminado")
-    }catch(err){
-      console.log(err)
-      ModalWindowOk("No se pudo eliminar el usuario")
+  //delete
+  const handleButtonDelete = async (_id) => {
+    try {
+      const response = await axios.delete(`${DELETE_USER}${_id}`, {
+        headers: { "x-access-token": auth.accesToken },
+      });
+      console.log(response);
+      setIsUpDate(!isUpDate);
+      ModalWindowOk("Usuario eliminado");
+    } catch (err) {
+      console.log(err);
+      ModalWindowOk("No se pudo eliminar el usuario");
     }
-  }
+  };
 
   useEffect(() => {
     getData();
   }, [isUpDate]);
+
+  useEffect(() => {
+    if (users) {
+      filteredUsers();
+    }
+  }, [text]);
 
   const colums = [
     {
@@ -80,7 +93,7 @@ const TableListar = () => {
     {
       name: "Editar",
       cell: (data) => (
-        <button onClick={() => handleButtonEdit(data) }>
+        <button onClick={() => handleButtonEdit(data)}>
           <FaPencilAlt />{" "}
         </button>
       ),
@@ -96,7 +109,6 @@ const TableListar = () => {
       ),
       button: true,
     },
-
   ];
 
   createTheme(
@@ -125,11 +137,24 @@ const TableListar = () => {
     "dark"
   );
 
+  const ButtonSearch = useMemo(() => {
+    return (
+      <input
+        type="text"
+        className="text-white bg-gray outline-none border-b-2 text-center"
+        placeholder="Buscar por nombre"
+        onChange={(e) => {
+          setText(e.target.value);
+        }}
+        value={text}
+      />
+    );
+  });
+
   return (
     <div>
       <div className="flex gap-4 justify-end pr-10">
-        <ModalFormUser 
-        setIsUpDate={setIsUpDate} isUpDate={isUpDate}/>
+        <ModalFormUser setIsUpDate={setIsUpDate} isUpDate={isUpDate} />
         {/* <button className="btn-yellow gap-20" type="button">
           {" "}
           Cargar usuarios{" "}
@@ -147,12 +172,16 @@ const TableListar = () => {
               <div>
                 <DataTable
                   title={"Usuarios"}
-                  data={users}
+                  data={filteredUsers()}
                   columns={colums}
                   pagination
                   theme="educamas"
                   highlightOnHover
                   responsive="true"
+                  subHeader={true}
+                  subHeaderComponent={ButtonSearch}
+                  persistTableHead
+                  progressPending={false}
                 />
               </div>
             )}
