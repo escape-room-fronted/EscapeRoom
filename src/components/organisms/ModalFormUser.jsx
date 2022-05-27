@@ -167,7 +167,6 @@ export default function ModalFormUser({ isUpDate, setIsUpDate }) {
                             )}
                           />
                         </div>
-
                         <div className="mb-6">
                           <label className="block mb-2 font-title text-sm text-white font-semibold">
                             Email Address
