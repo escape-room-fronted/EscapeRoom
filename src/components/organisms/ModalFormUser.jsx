@@ -1,74 +1,39 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "../../services/axios";
 import useAuth from "../../hooks/useAuth";
 import ModalWindowOk from "../atoms/molecules/ModalWindowOk";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { isEmail } from "../../Helpers/helpers.js";
 
-const CREATE_USER = "users/";
-
 export default function ModalFormUser({ isUpDate, setIsUpDate }) {
+  const [showModal, setShowModal] = useState(false);
   const { auth } = useAuth();
 
-  const [showModal, setShowModal] = React.useState(false);
-
-  const [dato, setDato] = useState([]);
-  
-  const [_id, set_Id] = useState("");
-
-  useEffect(() => {
-    api();
-  }, []);
-
-  const endpoint = "users/allusers";
-
-  async function api() {
-    axios
-      .get(endpoint, { headers: { "x-access-token": auth.accesToken } })
-      .then((res) => {
-        const result = res.dato;
-        setDato(result);
-      });
-  }
-
-  const data = {
-  
-  };
-
   function createUser(values) {
-    data.name = values.user_name
+    const data = {};
+    data.name = values.user_name;
     data.username = values.user_last_name;
     data.email = values.user_email;
     data.roles = ["user"];
 
-    if (_id) {
-      console.log("entro a editar");
-      axios
-        .put(`${CREATE_USER}${_id}`, data, {
-          headers: { "x-access-token": auth.accesToken },
-        })
-        .then((res) => {
-          console.log(res);
-        });
-    } else {
-      console.log("entro a agregar");
-      axios
-        .post("auth/signup", JSON.stringify(data), {
-          headers: {
-            "x-access-token": auth.accesToken,
-            "Content-Type": "application/json",
-          },
-        })
-        .then((res) => {
-          console.log(res);
-          setShowModal(false);
-          setIsUpDate(!isUpDate);
-          ModalWindowOk("guardado exitoso");
-        })
-        .catch((err) => console.log(err));
-      console.log(data);
-    }
-    set_Id("");
+    axios
+      .post("auth/signup", JSON.stringify(data), {
+        headers: {
+          "x-access-token": auth.accesToken,
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        setShowModal(false);
+        setIsUpDate(!isUpDate);
+        ModalWindowOk("guardado exitoso");
+      })
+      .catch((err) => {
+        ModalWindowOk("No se pudo Guardar el Registro");
+        console.log(err);
+      });
+    console.log(data);
   }
 
   return (
@@ -104,7 +69,9 @@ export default function ModalFormUser({ isUpDate, setIsUpDate }) {
               }
               return errors;
             }}
-            onSubmit={(values) => {createUser(values)}}
+            onSubmit={(values) => {
+              createUser(values);
+            }}
           >
             {({ errors }) => (
               <Form>
@@ -189,11 +156,7 @@ export default function ModalFormUser({ isUpDate, setIsUpDate }) {
                         >
                           Cerrar
                         </button>
-                        <button
-                          className="btn-yellow"
-                          type="submit"
-                          
-                        >
+                        <button className="btn-yellow" type="submit">
                           Guardar
                         </button>
                       </div>

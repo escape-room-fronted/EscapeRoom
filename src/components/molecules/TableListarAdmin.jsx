@@ -2,22 +2,21 @@ import React, { useState, useEffect, useMemo } from "react";
 import axios from "../../services/axios";
 import ModalFormAdmin from "../organisms/ModalFormAdmin";
 import useAuth from "../../hooks/useAuth";
-import DataTable, { createTheme } from "react-data-table-component";
-import "styled-components";
+import DataTable from "react-data-table-component";
 import { FaTrash, FaPencilAlt } from "react-icons/fa";
 import ModalWindowOk from "../atoms/molecules/ModalWindowOk";
+import { themeEducamas } from "../../Helpers/configTables";
+import ModalFormAdminEdit from "../organisms/ModalFormAdminEdit";
 
 const DELETE_ADMIN = "users/";
+const GET_ADMINS = "users/alladmins";
 
 const TableListarAdmin = () => {
   const { auth } = useAuth();
-  console.log(auth.accesToken);
-
+  const theme = themeEducamas;
   const [admins, setAdmins] = useState();
   const [isUpdate, setIsUpdate] = useState(false);
   const [text, setText] = useState("");
-
-  const endpoint = "users/alladmins";
 
   const filteredUsers = () => {
     let dataFilter = admins.filter((admin) =>
@@ -29,7 +28,7 @@ const TableListarAdmin = () => {
 
   const getData = async () => {
     try {
-      const response = await axios.get(endpoint, {
+      const response = await axios.get(GET_ADMINS, {
         headers: { "x-access-token": auth.accesToken },
       });
       if (Array.isArray(response.data)) {
@@ -44,7 +43,6 @@ const TableListarAdmin = () => {
   };
 
   const handleButtonDelete = async (id) => {
-    console.log(id);
     try {
       const response = await axios.delete(`${DELETE_ADMIN}${id}`, {
         headers: { "x-access-token": auth.accesToken },
@@ -86,11 +84,7 @@ const TableListarAdmin = () => {
     },
     {
       name: "Editar",
-      cell: (data) => (
-        <button onClick={() => handleButtonEdit(data)}>
-          <FaPencilAlt />{" "}
-        </button>
-      ),
+      cell: (data) => <ModalFormAdminEdit data={data} />,
       button: true,
     },
     {
@@ -104,32 +98,6 @@ const TableListarAdmin = () => {
       button: true,
     },
   ];
-
-  createTheme(
-    "educamas",
-    {
-      text: {
-        primary: "#fff",
-        secondary: "#fff",
-      },
-      background: {
-        default: "#242424",
-      },
-      context: {
-        background: "#cb4b16",
-        text: "#FFFFFF",
-      },
-      divider: {
-        default: "#717171",
-      },
-      action: {
-        button: "rgba(0,0,0,.54)",
-        hover: "rgba(0,0,0,.08)",
-        disabled: "rgba(0,0,0,.12)",
-      },
-    },
-    "dark"
-  );
 
   const ButtonSearch = useMemo(() => {
     return (

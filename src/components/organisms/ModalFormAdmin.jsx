@@ -6,7 +6,7 @@ import axios from "../../services/axios";
 import useAuth from "../../hooks/useAuth";
 
 export default function ModalFormAdmin({ isUpdate, setIsUpdate }) {
-  const [showModal, setShowModal] = React.useState(false);
+  const [showModal, setShowModal] = useState(false);
   const { auth } = useAuth();
 
   function createAdmin(values) {
@@ -31,7 +31,10 @@ export default function ModalFormAdmin({ isUpdate, setIsUpdate }) {
         setIsUpdate(!isUpdate);
         ModalWindowOk("guardado exitoso");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        ModalWindowOk("No se pudo Guardar el Registro");
+      });
   }
   return (
     <>
