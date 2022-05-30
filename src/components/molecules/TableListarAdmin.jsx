@@ -1,20 +1,31 @@
-import React, { useState, useEffect } from "react";
-// import MUIDataTable from "mui-datatables";
+import React, { useState, useEffect, useMemo } from "react";
 import axios from "../../services/axios";
 import ModalFormAdmin from "../organisms/ModalFormAdmin";
 import useAuth from "../../hooks/useAuth";
 import DataTable, { createTheme } from "react-data-table-component";
 import "styled-components";
+import { FaTrash, FaPencilAlt } from "react-icons/fa";
+import ModalWindowOk from "../atoms/molecules/ModalWindowOk";
+
+const DELETE_ADMIN = "users/";
 
 const TableListarAdmin = () => {
   const { auth } = useAuth();
   console.log(auth.accesToken);
 
   const [admins, setAdmins] = useState();
-
-  const [isExcel, setIsExcel] = useState(false);
+  const [isUpdate, setIsUpdate] = useState(false);
+  const [text, setText] = useState("");
 
   const endpoint = "users/alladmins";
+
+  const filteredUsers = () => {
+    let dataFilter = admins.filter((admin) =>
+      admin.name.toLowerCase().includes(text.toLowerCase())
+    );
+
+    return dataFilter;
+  };
 
   const getData = async () => {
     try {
@@ -27,7 +38,21 @@ const TableListarAdmin = () => {
         setAdmins([response.data]);
       }
       console.log(response.data);
-      // setIsExcel(!isExcel);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleButtonDelete = async (id) => {
+    console.log(id);
+    try {
+      const response = await axios.delete(`${DELETE_ADMIN}${id}`, {
+        headers: { "x-access-token": auth.accesToken },
+      });
+
+      console.log(response);
+      setIsUpdate(!isUpdate);
+      ModalWindowOk("Administrador Borrado Correctamente");
     } catch (err) {
       console.log(err);
     }
@@ -35,32 +60,48 @@ const TableListarAdmin = () => {
 
   useEffect(() => {
     getData();
-  }, [isExcel]);
+  }, [isUpdate]);
+
+  useEffect(() => {
+    if (admins) {
+      filteredUsers();
+    }
+  }, [text]);
 
   const colums = [
     {
-      name: "ID",
-      selector: (row) => row._id,
-    },
-    {
-      name: "Name",
+      name: "Nombre",
       selector: (row) => row.name,
+      sortable: true,
     },
     {
-      name: "User Name",
+      name: "Usuario",
       selector: (row) => row.username,
+      sortable: true,
     },
     {
-      name: "Email",
+      name: "Correo",
       selector: (row) => row.email,
+      sortable: true,
     },
     {
       name: "Editar",
-      selector: (row) => row.email,
+      cell: (data) => (
+        <button onClick={() => handleButtonEdit(data)}>
+          <FaPencilAlt />{" "}
+        </button>
+      ),
+      button: true,
     },
     {
       name: "Eliminar",
-      selector: (row) => row.email,
+      cell: (data) => (
+        <button onClick={() => handleButtonDelete(data._id)}>
+          {" "}
+          <FaTrash />{" "}
+        </button>
+      ),
+      button: true,
     },
   ];
 
@@ -90,10 +131,24 @@ const TableListarAdmin = () => {
     "dark"
   );
 
+  const ButtonSearch = useMemo(() => {
+    return (
+      <input
+        type="text"
+        className="text-white bg-gray outline-none border-b-2 text-center"
+        placeholder="Buscar por nombre"
+        onChange={(e) => {
+          setText(e.target.value);
+        }}
+        value={text}
+      />
+    );
+  });
+
   return (
     <div>
       <div className="flex pt-4 gap-4 justify-end pr-10">
-        <ModalFormAdmin />
+        <ModalFormAdmin setIsUpdate={setIsUpdate} isUpdate={isUpdate} />
       </div>
 
       <div className="pt-4 z-0">
@@ -102,12 +157,17 @@ const TableListarAdmin = () => {
             {admins && (
               <div>
                 <DataTable
-                  data={admins}
+                  title="Administrador"
+                  data={filteredUsers()}
                   columns={colums}
                   pagination
                   theme="educamas"
                   highlightOnHover
-                  defaultSortField="_id"
+                  responsive={true}
+                  subHeader={true}
+                  subHeaderComponent={ButtonSearch}
+                  persistTableHead
+                  progressPending={false}
                 />
               </div>
             )}

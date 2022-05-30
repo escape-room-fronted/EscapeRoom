@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 // import MUIDataTable from "mui-datatables";
 import axios from "../../services/axios";
 import ModalFormUser from "../organisms/ModalFormUser";
@@ -7,15 +7,27 @@ import ModalLoadDataExcel from "../molecules/ModalLoadDataExcel";
 import DataTable, { createTheme } from "react-data-table-component";
 import { FaTrash, FaPencilAlt } from "react-icons/fa";
 import "styled-components";
+import ModalWindowOk from "../atoms/molecules/ModalWindowOk";
+
+const DELETE_USER = "users/";
 
 const TableListar = () => {
   const { auth } = useAuth();
   console.log(auth.accesToken);
 
   const [users, setUsers] = useState();
-  const [isExcel, setIsExcel] = useState(false);
+  const [isUpDate, setIsUpDate] = useState(false);
+  const [text, setText] = useState("");
 
   const endpoint = "users/allusers";
+
+  const filteredUsers = () => {
+    let dataFilter = users.filter((user) =>
+      user.name.toLowerCase().includes(text.toLowerCase())
+    );
+
+    return dataFilter;
+  };
 
   const getData = async () => {
     try {
@@ -33,16 +45,34 @@ const TableListar = () => {
   };
 
   const handleButtonEdit = (data) => {
+    setShowModalEdit(true);
     console.log(data);
   };
 
-  const handleButtonDelete = (data) => {
-    alert(data._id + " " + data.username);
+  //delete
+  const handleButtonDelete = async (_id) => {
+    try {
+      const response = await axios.delete(`${DELETE_USER}${_id}`, {
+        headers: { "x-access-token": auth.accesToken },
+      });
+      console.log(response);
+      setIsUpDate(!isUpDate);
+      ModalWindowOk("Usuario eliminado");
+    } catch (err) {
+      console.log(err);
+      ModalWindowOk("No se pudo eliminar el usuario");
+    }
   };
 
   useEffect(() => {
     getData();
-  }, [isExcel]);
+  }, [isUpDate]);
+
+  useEffect(() => {
+    if (users) {
+      filteredUsers();
+    }
+  }, [text]);
 
   const colums = [
     {
@@ -72,7 +102,7 @@ const TableListar = () => {
     {
       name: "Eliminar",
       cell: (data) => (
-        <button onClick={() => handleButtonDelete(data)}>
+        <button onClick={() => handleButtonDelete(data._id)}>
           {" "}
           <FaTrash />{" "}
         </button>
@@ -81,18 +111,57 @@ const TableListar = () => {
     },
   ];
 
+  createTheme(
+    "educamas",
+    {
+      text: {
+        primary: "#fff",
+        secondary: "#fff",
+      },
+      background: {
+        default: "#242424",
+      },
+      context: {
+        background: "#cb4b16",
+        text: "#FFFFFF",
+      },
+      divider: {
+        default: "#717171",
+      },
+      action: {
+        button: "rgba(0,0,0,.54)",
+        hover: "rgba(0,0,0,.08)",
+        disabled: "rgba(0,0,0,.12)",
+      },
+    },
+    "dark"
+  );
+
+  const ButtonSearch = useMemo(() => {
+    return (
+      <input
+        type="text"
+        className="text-white bg-gray outline-none border-b-2 text-center"
+        placeholder="Buscar por nombre"
+        onChange={(e) => {
+          setText(e.target.value);
+        }}
+        value={text}
+      />
+    );
+  });
+
   return (
     <div>
-      <h1 className="font-bold pt-2 text-2xl text-yellow">Usuarios</h1>
       <div className="flex gap-4 justify-end pr-10">
-        <ModalFormUser />
+        <ModalFormUser setIsUpDate={setIsUpDate} isUpDate={isUpDate} />
         {/* <button className="btn-yellow gap-20" type="button">
           {" "}
           Cargar usuarios{" "}
         </button> */}
         <ModalLoadDataExcel
-          handleUpdateTable={setIsExcel}
-          handleUpdateListar={isExcel}
+          handleUpdateTable={setIsUpDate}
+          handleUpdateListar={isUpDate}
         />
       </div>
 
@@ -103,12 +172,16 @@ const TableListar = () => {
               <div>
                 <DataTable
                   title={"Usuarios"}
-                  data={users}
+                  data={filteredUsers()}
                   columns={colums}
                   pagination
                   theme="educamas"
                   highlightOnHover
-                  defaultSortField="_id"
+                  responsive="true"
+                  subHeader={true}
+                  subHeaderComponent={ButtonSearch}
+                  persistTableHead
+                  progressPending={false}
                 />
               </div>
             )}
