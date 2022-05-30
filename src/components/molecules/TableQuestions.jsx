@@ -171,18 +171,13 @@ const options = {
       data={questions}
       columns={colums}
       options={options}
-    />
-  </div>
+    /> */
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-</div>
-</div>
-</div>
-
-
-
-
-</div>
-  )
-}
-
-export default TableQuestions
+export default TableQuestions;

@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import ModalWindowOk from "../atoms/molecules/ModalWindowOk";
 
 export default function ModalFormAdmin() {
+
   const [showModal, setShowModal] = React.useState(false);
+
   const handleSaveButton = () => { 
     setShowModal(false)
     ModalWindowOk("guardado exitoso")
   }
+
   return (
     <>
       <button
@@ -32,18 +35,20 @@ export default function ModalFormAdmin() {
                   >
                   </button>
                 </div>
-                <div className="relative p-6 flex-auto">
-                  {/* aqui iria el form  */}
-                <div className="mb-6">
+                {/* aqui iria el form  */}
+                  <div className="relative p-6 flex-auto">
+
+                    <div className="mb-6">
                       <label className="block mb-2 font-title text-sm text-white font-semibold">
                         Usuario Administrador
                       </label>
-                      <input
+                      <input 
                         type="text"
                         name="admin_name"
                         placeholder="Usuario"
                         required
                         className="font-title w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-red dark:bg-bglight dark:text-colorparagraph dark:placeholder-gray-500 dark:border-red dark:focus:ring-red dark:focus:border-red"
+
                       />
                     </div>
                     <div className="mb-6">
@@ -52,10 +57,10 @@ export default function ModalFormAdmin() {
                       </label>
                       <input
                         type="text"
-                        name="admin_name"
+                        name="name"
                         placeholder="Nombre"
                         required
-                        className="font-title w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-red dark:bg-bglight dark:text-colorparagraph dark:placeholder-gray-500 dark:border-red dark:focus:ring-red dark:focus:border-red"
+                        className="font-title w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-red dark:bg-bglight dark:text-colorparagraph dark:placeholder-gray-500 dark:border-red dark:focus:ring-red dark:focus:border-red"                      
                       />
                     </div>
 
@@ -69,6 +74,7 @@ export default function ModalFormAdmin() {
                         placeholder="you@company.com"
                         required
                         className="font-title w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-bglight dark:text-colorparagraph dark:placeholder-gray-500 dark:border-red dark:focus:ring-red dark:focus:border-red"
+
                       />
                     </div>
 
@@ -77,7 +83,7 @@ export default function ModalFormAdmin() {
                         Telefono
                       </label>
                       <input
-                        type="Tel"
+                        type="number"
                         name="admin_tel"
                         placeholder="3134182279"
                         required
@@ -85,24 +91,25 @@ export default function ModalFormAdmin() {
                       />
                     </div>
 
-                </div>
-                <div className="text-colortitle font-paragraph flex items-start justify-between p-5">
-                  <button
-                    className="ModalWindowOk text-yellow background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="button"
-                    onClick={() => setShowModal(false)}
-                  >
-                    Cerrar
-                  </button>
-                  <button
-                    className="btn-yellow"
-                    type="button"
-                    onClick={() => handleSaveButton() }
-                  > 
-                    
-                    Guardar
-                  </button>
-                </div>
+                  </div>
+                  
+                  <div className="text-colortitle font-paragraph flex items-start justify-between p-5">
+                    <button
+                      className="ModalWindowOk text-yellow background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                      type="button"
+                      onClick={() => setShowModal(false)}
+                    >
+                      Cerrar
+                    </button>
+                    <button
+                      className="btn-yellow"
+                      type="submit"
+                      onClick={() => handleSaveButton() }
+                    > 
+                      
+                      Guardar
+                    </button>
+                  </div>
               </div>
             </div>
           </div>
