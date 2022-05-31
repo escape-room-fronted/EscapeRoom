@@ -1,52 +1,98 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
-// import MUIDataTable from "mui-datatables";
+import useAuth from "../../hooks/useAuth";
+import axios from "../../services/axios";
+
+import DataTable from "react-data-table-component";
+import { themeEducamas } from "../../Helpers/configTables";
+import { FaTrash } from "react-icons/fa";
+
 import { Link } from "react-router-dom";
 
+const GET_DATA = "questions/";
+
 const TableQuestions = () => {
+
+  const theme = themeEducamas
   const [questions, setQuestions] = useState([]);
-
-  const endpoint = "https://fakestoreapi.com/products";
-
-  const getData = async () => {
-    await axios.get(endpoint).then((response) => {
-      const data = response.data;
-      console.log(data);
-      setQuestions(data);
-    });
-  };
+  const {auth, setAuth} = useAuth();
 
   useEffect(() => {
-    getData();
+    const data = [];
+    axios.get(GET_DATA, {headers: { "x-access-token": auth.accesToken }})
+      .then((res) => {
+        console.log(res.data);
+        for (let i = 0; i < res.data.length; i++) {
+          data.push({
+            id: res.data[i]._id,
+            question: res.data[i].question,
+            incorrect_answers1: res.data[i].incorrect_answers[0],
+            incorrect_answers2: res.data[i].incorrect_answers[1],
+            incorrect_answers3: res.data[i].incorrect_answers[2],
+            tips1: res.data[i].tips[0],
+            tips2: res.data[i].tips[1],
+            correct_answer: res.data[i].correct_answer,
+          });
+        }
+        setQuestions(data);
+        console.log(data)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
+
 
   const colums = [
     {
-      name: "id",
-      label: "ID",
+      name: "Pregunta",
+      selector: (row) => row.question,
+      sortable: true,
     },
     {
-      name: "title",
-      label: "TITLE",
+      name: "Respuesta 1",
+      selector: (row) => row.incorrect_answers1,
+      sortable: true,
     },
     {
-      name: "price",
-      label: "PRICE",
+      name: "Respuesta 2",
+      selector: (row) => row.incorrect_answers2,
+      sortable: true,
     },
     {
-      name: "description",
-      label: "DESCRIPTION",
+      name: "Respuesta 3",
+      selector: (row) => row.incorrect_answers3,
+      sortable: true,
     },
     {
-      name: "category",
-      label: "CATEGORY",
+      name: "Respuesta correcta",
+      selector: (row) => row.correct_answer,
+      sortable: true,
     },
-  ];
+    {
+      name: "Pista",
+      selector: (row) => row.tips1,
+      sortable: true,
+    },
+    {
+      name: "Eliminar",
+      cell: () => (
+        <button>
+          {" "}
+          <FaTrash />{" "}
+        </button>
+    ),
+    button: true,},
+    {
+      name: "Editar",
+      cell: () => (
+        <button>
+          {" "}
+          <FaTrash />{" "}
+        </button>
+    ),
+    button: true,},
 
-  const options = {
-    fixedHeader: false,
-    responsive: "scrollMaxHeight",
-  };
+  ];
 
   return (
     <div>
@@ -62,13 +108,23 @@ const TableQuestions = () => {
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 ">
           <div className="bg-dark text-white overflow-hidden shadow-xl sm:rounded-lg">
             <div>
-              {/* <MUIDataTable 
-      title={"Rooms"}
-      data={questions}
-      columns={colums}
-      options={options}
-    /> */}
-            </div>
+
+            { questions && (
+            <DataTable 
+            title={"Rooms"}
+            data={questions}
+            columns={colums}
+            pagination
+            theme="educamas"
+            highlightOnHover
+            responsive="true"
+            subHeader={true}
+            persistTableHead
+            progressPending={false}
+            />
+            )}
+
+           </div>
           </div>
         </div>
       </div>
