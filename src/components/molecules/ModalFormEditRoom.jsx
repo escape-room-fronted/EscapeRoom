@@ -2,16 +2,20 @@ import React, { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import ModalWindowOk from "../atoms/molecules/ModalWindowOk";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { createQuestions } from "../../services/serviceRooms";
+import { upDateQuestions } from "../../services/serviceRooms";
+import { FaPencilAlt } from "react-icons/fa";
 
 
-export default function ModalFormCreateRoom({ isUpDate, setIsUpDate}) {
+export default function ModalFormEditRoom({ isUpDate, setIsUpDate, dataRoom}) {
   
   const [showModal, setShowModal] = useState(false);
   const { auth } = useAuth();
 
-  function createRoom(values) {
+  console.log(dataRoom);
+
+  function saveRoom(values) {
     const data = {};
+    data.id = dataRoom.id;
     data.question = values.question;
     data.incorrect_answers = [values.incorrect_answers1, values.incorrect_answers2, values.incorrect_answers3];
     data.correct_answer = values.correct_answer;
@@ -19,17 +23,17 @@ export default function ModalFormCreateRoom({ isUpDate, setIsUpDate}) {
    
 
     console.log(data);
-    createQuestions(auth.accesToken, data)
+    upDateQuestions(auth.accesToken, data , data.id)
     .then((res)=>{
       console.log(res)
       setIsUpDate(!isUpDate);
       setShowModal(!showModal);
-      ModalWindowOk("Se ha creado la pregunta correctamente");
+      ModalWindowOk("Se ha actualizado la pregunta correctamente");
     })
     .catch((err)=>{
       console.log(err)
       setShowModal(!showModal);
-      ModalWindowOk("Ha ocurrido un error", icon = "error");
+      ModalWindowOk("Ha ocurrido un error");
     })
   }
 
@@ -37,22 +41,21 @@ export default function ModalFormCreateRoom({ isUpDate, setIsUpDate}) {
   return (
     <>
       <button
-        className="btn-yellow"
         type="button"
         onClick={() => setShowModal(true)}
       >
-        Crear Pregunta
+        <FaPencilAlt />
       </button>
       {showModal ? (
         <>
-          <Formik
+          <Formik 
             initialValues={{
-              question: "",
-              incorrect_answers1: "",
-              incorrect_answers2: "",
-              incorrect_answers3: "",
-              correct_answer: "",
-              tips1: "",
+              question: dataRoom.question,
+              incorrect_answers1: dataRoom.incorrect_answers1,
+              incorrect_answers2: dataRoom.incorrect_answers2,
+              incorrect_answers3: dataRoom.incorrect_answers3,
+              correct_answer: dataRoom.correct_answer,
+              tips1: dataRoom.tips1,
             }}
             validate={(values) => {
               let errors = {};
@@ -77,7 +80,7 @@ export default function ModalFormCreateRoom({ isUpDate, setIsUpDate}) {
               return errors;
             }}
             onSubmit={(values) => {
-              createRoom(values);
+              saveRoom(values);
             }}
           >
             {({ errors }) => (
@@ -87,7 +90,7 @@ export default function ModalFormCreateRoom({ isUpDate, setIsUpDate}) {
                     <div className=" border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-gray outline-none focus:outline-none">
                       <div className="text-colortitle font-paragraph flex items-start justify-between p-5 ">
                         <h3 className="text-3xl font-semibold text-yellow">
-                          Crear Pregunta
+                          Editar Pregunta
                         </h3>
                         <button
                           className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
@@ -104,7 +107,7 @@ export default function ModalFormCreateRoom({ isUpDate, setIsUpDate}) {
                             textarea="text"
                             name="question"
                             placeholder="Pregunta"
-                            className="font-title w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-red dark:bg-bglight dark:text-colorparagraph dark:placeholder-gray-500 dark:border-red dark:focus:ring-red dark:focus:border-red"
+                            className="font-title w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-red text-dark dark:placeholder-gray-500 dark:border-red dark:focus:ring-red dark:focus:border-red"
                           />
                           <ErrorMessage
                             name="question"
@@ -123,7 +126,7 @@ export default function ModalFormCreateRoom({ isUpDate, setIsUpDate}) {
                             type="text"
                             name="incorrect_answers1"
                             placeholder="Nombre"
-                            className="font-title w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-red dark:bg-bglight dark:text-colorparagraph dark:placeholder-gray-500 dark:border-red dark:focus:ring-red dark:focus:border-red"
+                            className="font-title w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-red text-dark dark:placeholder-gray-500 dark:border-red dark:focus:ring-red dark:focus:border-red"
                           />
                           <ErrorMessage
                             name="incorrect_answers1"
@@ -144,7 +147,7 @@ export default function ModalFormCreateRoom({ isUpDate, setIsUpDate}) {
                             type="text"
                             name="incorrect_answers2"
                             placeholder="Nombre"
-                            className="font-title w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-red dark:bg-bglight dark:text-colorparagraph dark:placeholder-gray-500 dark:border-red dark:focus:ring-red dark:focus:border-red"
+                            className="font-title w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-red text-dark dark:placeholder-gray-500 dark:border-red dark:focus:ring-red dark:focus:border-red"
                           />
                           <ErrorMessage
                             name="incorrect_answers2"
@@ -164,7 +167,7 @@ export default function ModalFormCreateRoom({ isUpDate, setIsUpDate}) {
                             type="text"
                             name="incorrect_answers3"
                             placeholder="Nombre"
-                            className="font-title w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-red dark:bg-bglight dark:text-colorparagraph dark:placeholder-gray-500 dark:border-red dark:focus:ring-red dark:focus:border-red"
+                            className="font-title w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-red text-dark dark:placeholder-gray-500 dark:border-red dark:focus:ring-red dark:focus:border-red"
                           />
                           <ErrorMessage
                             name="incorrect_answers3"
@@ -191,7 +194,7 @@ export default function ModalFormCreateRoom({ isUpDate, setIsUpDate}) {
                             type="text"
                             name="correct_answer"
                             placeholder="opcion correcta"
-                            className="font-title w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-bglight dark:text-colorparagraph dark:placeholder-gray-500 dark:border-red dark:focus:ring-red dark:focus:border-red"
+                            className="font-title w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 text-dark dark:placeholder-gray-500 dark:border-red dark:focus:ring-red dark:focus:border-red"
                           />
                           <ErrorMessage
                             name="correct_answer"
@@ -211,7 +214,7 @@ export default function ModalFormCreateRoom({ isUpDate, setIsUpDate}) {
                             type="text"
                             name="tips1"
                             placeholder="Tip"
-                            className="font-title w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-bglight dark:text-colorparagraph dark:placeholder-gray-500 dark:border-red dark:focus:ring-red dark:focus:border-red"
+                            className="font-title w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 text-dark dark:placeholder-gray-500 dark:border-red dark:focus:ring-red dark:focus:border-red"
                           />
                           <ErrorMessage
                             name="tips1"

@@ -3,7 +3,7 @@ import axios from "./axios";
 const GET_QUESTIONS = "questions/";
 const DELETE_QUESTIONS = "questions/";
 const CREATE_QUESTIONS = "questions/createquestion";
-const UPDATE_QUESTIONS = "quesions/";
+const UPDATE_QUESTIONS = "questions/";
 
 export function getDataQuestions(tk) {
   return axios.get(GET_QUESTIONS, {

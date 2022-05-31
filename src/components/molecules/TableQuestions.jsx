@@ -8,6 +8,7 @@ import ModalWindowOk from "../atoms/molecules/ModalWindowOk";
 import ModalFormCreateRoom from "./ModalFormCreateRoom";
 
 import { getDataQuestions, deleteDataQuestions } from "../../services/serviceRooms";
+import ModalFormEditRoom from "./ModalFormEditRoom";
 
 
 const TableQuestions = () => {
@@ -106,11 +107,12 @@ const TableQuestions = () => {
     },
     {
       name: "Editar",
-      cell: () => (
-        <button>
-          {" "}
-          <FaTrash />{" "}
-        </button>
+      cell: (data) => (
+          <ModalFormEditRoom 
+          dataRoom={data}
+          isUpDate={isUpDate}
+          setIsUpDate={setIsUpDate}
+          />
     ),
     button: true,},
     {
