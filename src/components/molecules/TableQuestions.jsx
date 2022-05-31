@@ -1,45 +1,76 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import useAuth from "../../hooks/useAuth";
-import axios from "../../services/axios";
 
 import DataTable from "react-data-table-component";
 import { themeEducamas } from "../../Helpers/configTables";
 import { FaTrash } from "react-icons/fa";
+import ModalWindowOk from "../atoms/molecules/ModalWindowOk";
+import ModalFormCreateRoom from "./ModalFormCreateRoom";
 
-import { Link } from "react-router-dom";
+import { getDataQuestions, deleteDataQuestions } from "../../services/serviceRooms";
 
-const GET_DATA = "questions/";
 
 const TableQuestions = () => {
 
+  const [text, setText] =useState("");
+  const [isUpDate, setIsUpDate] = useState(false);
   const theme = themeEducamas
   const [questions, setQuestions] = useState([]);
   const {auth, setAuth} = useAuth();
 
+  const filteredQuestions = () => {
+    let dataFilter = questions.filter((question) =>
+      question.question.toLowerCase().includes(text.toLowerCase())
+    );
+
+    return dataFilter;
+  };
+
   useEffect(() => {
     const data = [];
-    axios.get(GET_DATA, {headers: { "x-access-token": auth.accesToken }})
-      .then((res) => {
-        console.log(res.data);
-        for (let i = 0; i < res.data.length; i++) {
-          data.push({
-            id: res.data[i]._id,
-            question: res.data[i].question,
-            incorrect_answers1: res.data[i].incorrect_answers[0],
-            incorrect_answers2: res.data[i].incorrect_answers[1],
-            incorrect_answers3: res.data[i].incorrect_answers[2],
-            tips1: res.data[i].tips[0],
-            tips2: res.data[i].tips[1],
-            correct_answer: res.data[i].correct_answer,
-          });
-        }
-        setQuestions(data);
-        console.log(data)
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+    getDataQuestions(auth.accesToken)
+    .then((res) =>{
+      for (let i = 0; i < res.data.length; i++) {
+        data.push({
+          id: res.data[i]._id,
+          question: res.data[i].question,
+          incorrect_answers1: res.data[i].incorrect_answers[0],
+          incorrect_answers2: res.data[i].incorrect_answers[1],
+          incorrect_answers3: res.data[i].incorrect_answers[2],
+          tips1: res.data[i].tips[0],
+          tips2: res.data[i].tips[1],
+          correct_answer: res.data[i].correct_answer,
+        });
+      }
+      setQuestions(data);
+      console.log(data)
+    })
+    .catch((err)=>{
+      console.log(err)
+    })
+  }, [isUpDate]);
+
+
+  useEffect(() => {
+    if (questions) {
+      filteredQuestions();
+    }
+  }, [text]);
+
+
+  const handleButtonDelete = (id) => {
+    deleteDataQuestions(auth.accesToken, id)
+    .then((res) =>{
+      console.log(res)
+      setIsUpDate(!isUpDate);
+      ModalWindowOk("Pregunta eliminada");
+    })
+    .catch((err)=>{
+      console.log(err)
+      ModalWindowOk("No se pudo eliminar la pregunta");
+    })
+  };
+
 
 
   const colums = [
@@ -74,15 +105,6 @@ const TableQuestions = () => {
       sortable: true,
     },
     {
-      name: "Eliminar",
-      cell: () => (
-        <button>
-          {" "}
-          <FaTrash />{" "}
-        </button>
-    ),
-    button: true,},
-    {
       name: "Editar",
       cell: () => (
         <button>
@@ -91,17 +113,41 @@ const TableQuestions = () => {
         </button>
     ),
     button: true,},
+    {
+      name: "Eliminar",
+      cell: (data) => (
+        <button onClick={() => handleButtonDelete(data.id)}>
+          {" "}
+          <FaTrash />{" "}
+        </button>
+    ),
+    button: true,},
 
   ];
+
+  const ButtonSearch = useMemo(() => {
+    return (
+      <input
+        type="text"
+        className="text-white bg-gray outline-none border-b-2 text-center"
+        placeholder="Buscar por nombre"
+        onChange={(e) => {
+          setText(e.target.value);
+        }}
+        value={text}
+      />
+    );
+  });
+
 
   return (
     <div>
       <div className="flex justify-between">
         <h1 className="font-bold pt-2 text-2xl text-yellow">Rooms</h1>
         <div className="pr-10 pt-4">
-          <Link to="/create-room">
-            <button className="btn-yellow">Crear room</button>
-          </Link>
+            <ModalFormCreateRoom 
+            isUpDate={isUpDate} 
+            setIsUpDate={setIsUpDate}/>
         </div>
       </div>
       <div className="pt-4 z-0">
@@ -112,13 +158,14 @@ const TableQuestions = () => {
             { questions && (
             <DataTable 
             title={"Rooms"}
-            data={questions}
+            data={filteredQuestions()}
             columns={colums}
             pagination
             theme="educamas"
             highlightOnHover
             responsive="true"
             subHeader={true}
+            subHeaderComponent={ButtonSearch}
             persistTableHead
             progressPending={false}
             />

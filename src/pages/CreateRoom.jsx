@@ -1,5 +1,5 @@
 import React from 'react'
-import FormCreateRoom from '../components/molecules/FormCreateRoom'
+import FormCreateRoom from '../components/molecules/ModalFormCreateRoom'
 
 const CreateRoom = () => {
   return (
