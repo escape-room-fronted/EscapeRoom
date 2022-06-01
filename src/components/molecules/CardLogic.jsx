@@ -2,8 +2,9 @@ import React from "react";
 import ModalClueUser from "./ModalClueUser";
 import { FcIdea } from "react-icons/fc";
 
-const CardLogic = () => {
+const CardLogic = ({questions}) => {
   const [showModal, setShowModal] = React.useState(false);
+  console.log(questions);
   return (
     <>
       <div className="pt-2">
@@ -20,10 +21,7 @@ const CardLogic = () => {
             </button>
           </div>
           <p className="pt-4 font-normal font-hind text-white">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit ipsa
-            provident quibusdam minima velit temporibus voluptates officia
-            tempore, totam in sunt pariatur? Deleniti voluptatum cum repellat
-            esse corporis corrupti expedita!
+            {/* {questions.question} */}
           </p>
         </div>
       </div>
