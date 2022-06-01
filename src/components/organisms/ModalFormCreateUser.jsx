@@ -1,38 +1,38 @@
 import React, { useState } from "react";
+import useAuth from "../../hooks/useAuth";
 import ModalWindowOk from "../atoms/molecules/ModalWindowOk";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { isEmail } from "../../Helpers/helpers.js";
-import axios from "../../services/axios";
-import useAuth from "../../hooks/useAuth";
+import { createUsers } from "../../services/serviceUsers";
 
-export default function ModalFormAdmin({ isUpdate, setIsUpdate }) {
-  const [showModal, setShowModal] = React.useState(false);
+export default function ModalFormCreateUser({ isUpDate, setIsUpDate, rol }) {
+  const [showModal, setShowModal] = useState(false);
   const { auth } = useAuth();
 
-  function createAdmin(values) {
+  function createUser(values) {
     const data = {};
-    data.name = values.admin_name;
-    data.username = values.admin_last_name;
-    data.email = values.admin_email;
-    data.roles = ["admin"];
+    data.name = values.user_name;
+    data.username = values.user_last_name;
+    data.email = values.user_email;
+    if (rol === "user") {
+      data.roles = ["user"];
+    } else if (rol === "admin") {
+      data.roles = ["admin"];
+    }
 
-    console.log(data);
-
-    axios
-      .post("auth/signup", JSON.stringify(data), {
-        headers: {
-          "x-access-token": auth.accesToken,
-          "Content-Type": "application/json",
-        },
-      })
+    createUsers(auth.accesToken, data)
       .then((res) => {
         console.log(res);
         setShowModal(false);
-        setIsUpdate(!isUpdate);
-        ModalWindowOk("guardado exitoso");
+        setIsUpDate(!isUpDate);
+        ModalWindowOk("Guardado Exitoso");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        ModalWindowOk("No se pudo Guardar el Registro");
+      });
   }
+
   return (
     <>
       <button
@@ -40,34 +40,34 @@ export default function ModalFormAdmin({ isUpdate, setIsUpdate }) {
         type="button"
         onClick={() => setShowModal(true)}
       >
-        Crear Administrador
+        Crear Usuario
       </button>
       {showModal ? (
         <>
           <Formik
             initialValues={{
-              admin_email: "",
-              admin_name: "",
-              admin_last_name: "",
+              user_email: "",
+              user_name: "",
+              user_last_name: "",
             }}
             validate={(values) => {
               let errors = {};
-              if (!values.admin_email) {
-                errors.admin_email = "Ingrese un correo electronico.";
-              } else if (!isEmail(values.admin_email)) {
-                errors.admin_email =
+              if (!values.user_email) {
+                errors.user_email = "Ingrese un correo electronico.";
+              } else if (!isEmail(values.user_email)) {
+                errors.user_email =
                   "El correo solo puede contener letras, puntos y _.";
               }
-              if (!values.admin_name) {
-                errors.admin_name = "Ingrese un nombre de administrador.";
+              if (!values.user_name) {
+                errors.user_name = "Ingrese un nombre de usuario.";
               }
-              if (!values.admin_last_name) {
-                errors.admin_last_name = "Ingrese un nombre completo.";
+              if (!values.user_last_name) {
+                errors.user_last_name = "Ingrese un nombre completo.";
               }
               return errors;
             }}
             onSubmit={(values) => {
-              createAdmin(values);
+              createUser(values);
             }}
           >
             {({ errors }) => (
@@ -77,7 +77,9 @@ export default function ModalFormAdmin({ isUpdate, setIsUpdate }) {
                     <div className=" border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-gray outline-none focus:outline-none">
                       <div className="text-colortitle font-paragraph flex items-start justify-between p-5 ">
                         <h3 className="text-3xl font-semibold text-yellow">
-                          Crear Administrador
+                          {rol === "user"
+                            ? "Crear Usuario"
+                            : "Crear Administrador"}
                         </h3>
                         <button
                           className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
@@ -88,58 +90,58 @@ export default function ModalFormAdmin({ isUpdate, setIsUpdate }) {
                         {/* aqui iria el form  */}
                         <div className="mb-6">
                           <label className="block mb-2 font-title text-sm text-white font-semibold">
-                            Nombre
-                          </label>
-                          <Field
-                            type="text"
-                            name="admin_name"
-                            placeholder="Usuario"
-                            className="font-title w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-red dark:bg-bglight dark:text-colorparagraph dark:placeholder-gray-500 dark:border-red dark:focus:ring-red dark:focus:border-red"
-                          />
-                          <ErrorMessage
-                            name="admin_name"
-                            component={() => (
-                              <div className="text-yellow text-sm">
-                                {errors.admin_name}
-                              </div>
-                            )}
-                          />
-                        </div>
-                        <div className="mb-6">
-                          <label className="block mb-2 font-title text-sm text-white font-semibold">
                             Usuario
                           </label>
                           <Field
                             type="text"
-                            name="admin_last_name"
-                            placeholder="Nombre"
+                            name="user_name"
+                            placeholder="Usuario"
                             className="font-title w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-red dark:bg-bglight dark:text-colorparagraph dark:placeholder-gray-500 dark:border-red dark:focus:ring-red dark:focus:border-red"
                           />
                           <ErrorMessage
-                            name="admin_last_name"
+                            name="user_name"
                             component={() => (
                               <div className="text-yellow text-sm">
-                                {errors.admin_last_name}
+                                {errors.user_name}
                               </div>
                             )}
                           />
                         </div>
-
                         <div className="mb-6">
                           <label className="block mb-2 font-title text-sm text-white font-semibold">
-                            Email
+                            Nombre Completo
+                          </label>
+                          <Field
+                            type="text"
+                            name="user_last_name"
+                            placeholder="Nombre"
+                            className="font-title w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-red dark:bg-bglight dark:text-colorparagraph dark:placeholder-gray-500 dark:border-red dark:focus:ring-red dark:focus:border-red"
+                          />
+                          <ErrorMessage
+                            name="user_last_name"
+                            component={() => (
+                              <div className="text-yellow text-sm">
+                                {errors.user_last_name}
+                              </div>
+                            )}
+                          />
+                        </div>
+                        <div className="mb-6">
+                          <label className="block mb-2 font-title text-sm text-white font-semibold">
+                            Email Address
                           </label>
                           <Field
                             type="email"
-                            name="admin_email"
+                            id="email"
+                            name="user_email"
                             placeholder="you@company.com"
                             className="font-title w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-bglight dark:text-colorparagraph dark:placeholder-gray-500 dark:border-red dark:focus:ring-red dark:focus:border-red"
                           />
                           <ErrorMessage
-                            name="admin_email"
+                            name="user_email"
                             component={() => (
                               <div className="text-yellow text-sm">
-                                {errors.admin_email}
+                                {errors.user_email}
                               </div>
                             )}
                           />
@@ -163,7 +165,7 @@ export default function ModalFormAdmin({ isUpdate, setIsUpdate }) {
               </Form>
             )}
           </Formik>
-          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+          <div className="opacity-25 fixed inset-0 z-40 bg-dark"></div>
         </>
       ) : null}
     </>

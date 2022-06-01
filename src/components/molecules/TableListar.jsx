@@ -1,25 +1,24 @@
 import React, { useState, useEffect, useMemo } from "react";
-// import MUIDataTable from "mui-datatables";
-import axios from "../../services/axios";
-import ModalFormUser from "../organisms/ModalFormUser";
 import useAuth from "../../hooks/useAuth";
+
+import DataTable from "react-data-table-component";
+import { FaTrash } from "react-icons/fa";
+import { themeEducamas } from "../../Helpers/configTables";
+
+import ModalFormEdit from "../organisms/ModalFormEdit";
+import ModalFormCreateUser from "../organisms/ModalFormCreateUser";
 import ModalLoadDataExcel from "../molecules/ModalLoadDataExcel";
-import DataTable, { createTheme } from "react-data-table-component";
-import { FaTrash, FaPencilAlt } from "react-icons/fa";
-import "styled-components";
 import ModalWindowOk from "../atoms/molecules/ModalWindowOk";
 
-const DELETE_USER = "users/";
+import { getDataUsers, deleteDataUsers } from "../../services/serviceUsers";
 
 const TableListar = () => {
   const { auth } = useAuth();
-  console.log(auth.accesToken);
+  const theme = themeEducamas;
 
   const [users, setUsers] = useState();
   const [isUpDate, setIsUpDate] = useState(false);
   const [text, setText] = useState("");
-
-  const endpoint = "users/allusers";
 
   const filteredUsers = () => {
     let dataFilter = users.filter((user) =>
@@ -29,39 +28,33 @@ const TableListar = () => {
     return dataFilter;
   };
 
-  const getData = async () => {
-    try {
-      const response = await axios.get(endpoint, {
-        headers: { "x-access-token": auth.accesToken },
+  const getData = () => {
+    getDataUsers(auth.accesToken)
+      .then((res) => {
+        console.log(res.data);
+        if (Array.isArray(res.data)) {
+          setUsers(res.data);
+        } else {
+          setUsers([res.data]);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
       });
-      if (Array.isArray(response.data)) {
-        setUsers(response.data);
-      } else {
-        setUsers([response.data]);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const handleButtonEdit = (data) => {
-    setShowModalEdit(true);
-    console.log(data);
   };
 
   //delete
-  const handleButtonDelete = async (_id) => {
-    try {
-      const response = await axios.delete(`${DELETE_USER}${_id}`, {
-        headers: { "x-access-token": auth.accesToken },
+  const handleButtonDelete = (_id) => {
+    deleteDataUsers(auth.accesToken, _id)
+      .then((res) => {
+        console.log(res);
+        setIsUpDate(!isUpDate);
+        ModalWindowOk("Usuario eliminado");
+      })
+      .catch((err) => {
+        console.log(err);
+        ModalWindowOk("No se pudo eliminar el usuario");
       });
-      console.log(response);
-      setIsUpDate(!isUpDate);
-      ModalWindowOk("Usuario eliminado");
-    } catch (err) {
-      console.log(err);
-      ModalWindowOk("No se pudo eliminar el usuario");
-    }
   };
 
   useEffect(() => {
@@ -93,9 +86,11 @@ const TableListar = () => {
     {
       name: "Editar",
       cell: (data) => (
-        <button onClick={() => handleButtonEdit(data)}>
-          <FaPencilAlt />{" "}
-        </button>
+        <ModalFormEdit
+          data={data}
+          isUpDate={isUpDate}
+          setIsUpDate={setIsUpDate}
+        />
       ),
       button: true,
     },
@@ -109,33 +104,12 @@ const TableListar = () => {
       ),
       button: true,
     },
-  ];
-
-  createTheme(
-    "educamas",
     {
-      text: {
-        primary: "#fff",
-        secondary: "#fff",
-      },
-      background: {
-        default: "#242424",
-      },
-      context: {
-        background: "#cb4b16",
-        text: "#FFFFFF",
-      },
-      divider: {
-        default: "#717171",
-      },
-      action: {
-        button: "rgba(0,0,0,.54)",
-        hover: "rgba(0,0,0,.08)",
-        disabled: "rgba(0,0,0,.12)",
-      },
+      name: "Activar",
+      cell: (data) => <input type="radio"></input>,
+      button: true,
     },
-    "dark"
-  );
+  ];
 
   const ButtonSearch = useMemo(() => {
     return (
@@ -154,11 +128,11 @@ const TableListar = () => {
   return (
     <div>
       <div className="flex gap-4 justify-end pr-10">
-        <ModalFormUser setIsUpDate={setIsUpDate} isUpDate={isUpDate} />
-        {/* <button className="btn-yellow gap-20" type="button">
-          {" "}
-          Cargar usuarios{" "}
-        </button> */}
+        <ModalFormCreateUser
+          setIsUpDate={setIsUpDate}
+          isUpDate={isUpDate}
+          rol="user"
+        />
         <ModalLoadDataExcel
           handleUpdateTable={setIsUpDate}
           handleUpdateListar={isUpDate}
