@@ -5,6 +5,7 @@ const DELETE_USER = "users/";
 const CREATE_USER = "auth/signup"; //Admin or users
 const UPDATE_USER = "users/"; //Admin or users
 
+
 export function getDataUsers(tk) {
   return axios.get(GET_USERS, {
     headers: { "x-access-token": tk },
