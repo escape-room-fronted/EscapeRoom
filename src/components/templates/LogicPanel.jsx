@@ -1,34 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React, {useState, useEffect} from "react";
 import CardLogic from "../molecules/CardLogic";
 import Questions from "../molecules/Questions";
-import { getDataQuestions } from "../../services/serviceRooms";
-import  useAuth  from "../../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
+
+
 
 const LogicPanel = ({handleViewRoom}) => {
 
-  const {auth, setAuth} = useAuth();
-  const [numberQuestion, setNumberQuestion] = useState(0);
-  const [questions, setQuestions] = useState([]);
+  const [numberQuestions, setNumberQuestions] = useState(0);
+  
+  const {questions} = useAuth();
+
+  const [dataQuestions, setDataQuestions] = useState();
 
   useEffect(() => {
-    getDataQuestions(auth.accesToken)
-    .then((res)=>{
-      console.log(res.data)
-      setQuestions(res.data)
-    })
-    .catch((err) =>{
-      console.log(err)
-    })
-  }, []);
+    setDataQuestions(questions)
+  }, [questions]);
 
-
-  return questions &&(
+  
+  return dataQuestions &&  (
 
 
           <div className=" p-4">
             <div className="">
               <div className="flex justify-center">
-                <CardLogic questions={questions[numberQuestion]}/>
+                <CardLogic 
+                dataQuestions={dataQuestions[numberQuestions]} 
+                />
               </div>
               <div className="flex justify-center pt-10">
                 <Questions handleViewRoom={handleViewRoom} 

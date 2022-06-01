@@ -2,7 +2,7 @@ import React from 'react'
 import { AiFillCloseSquare } from 'react-icons/ai';
 
 
-const ModalClueUser = ({state, setState}) => {
+const ModalClueUser = ({state, setState, clue}) => {
     
     
   return (
@@ -34,11 +34,7 @@ const ModalClueUser = ({state, setState}) => {
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
                   <p className="my-4 text-white font-hind text-lg leading-relaxed">
-                    I always felt like I could do anything. That’s the main
-                    thing people are controlled by! Thoughts- their perception
-                    of themselves! They're slowed down by their perception of
-                    themselves. If you're taught you can’t do anything, you
-                    won’t do anything. I was taught I could do everything.
+                  {clue}
                   </p>
                 </div>
                
