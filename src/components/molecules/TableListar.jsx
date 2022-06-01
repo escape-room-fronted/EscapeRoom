@@ -53,7 +53,7 @@ const TableListar = () => {
       })
       .catch((err) => {
         console.log(err);
-        ModalWindowOk("No se pudo eliminar el usuario");
+        ModalWindowOk("No se pudo eliminar el usuario", (icons = "error"));
       });
   };
 

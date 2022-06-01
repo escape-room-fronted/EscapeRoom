@@ -1,10 +1,10 @@
 import Swal from "sweetalert2";
 
-const ModalWindowOk = (text) => {
+const ModalWindowOk = (text, icon = "success") => {
   Swal.fire({
     title: text,
     text: text,
-    icon: "success",
+    icon: icon,
     confirmButtonColor: "#FFC300",
     background: "white",
     color: "#FFC300",

@@ -49,7 +49,7 @@ const TableListarAdmin = () => {
       })
       .catch((err) => {
         console.log(err);
-        ModalWindowOk("No se pudo eliminar el Administrador");
+        ModalWindowOk("No se pudo eliminar el Administrador", (icon = "error"));
       });
   };
 

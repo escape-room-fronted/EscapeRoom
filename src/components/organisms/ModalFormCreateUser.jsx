@@ -29,7 +29,7 @@ export default function ModalFormCreateUser({ isUpDate, setIsUpDate, rol }) {
       })
       .catch((err) => {
         console.log(err);
-        ModalWindowOk("No se pudo Guardar el Registro");
+        ModalWindowOk("No se pudo Guardar el Registro", (icon = "error"));
       });
   }
 

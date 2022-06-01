@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { FaPencilAlt } from "react-icons/fa";
-import axios from "../../services/axios";
 import useAuth from "../../hooks/useAuth";
 import ModalWindowOk from "../atoms/molecules/ModalWindowOk";
 import { updateDataUsers } from "../../services/serviceUsers";
@@ -23,7 +22,7 @@ const ModalFormEdit = ({ data, isUpDate, setIsUpDate }) => {
       })
       .catch((err) => {
         console.log(err);
-        ModalWindowOk("Error Al Guardar");
+        ModalWindowOk("Error Al Guardar", (icon = "error"));
         setShowModal(false);
       });
   };
