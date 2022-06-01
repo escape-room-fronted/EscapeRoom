@@ -9,12 +9,12 @@ const CardLogic = ({dataQuestions, numberQuestions}) => {
 
   return dataQuestions && (
     <>
-      <div className="pt-2">
+      <div className="pt-6">
         <div
           href="#"
           className="block card__animate p-8 max-w-lg bg-gray rounded-lg"
         >
-          <div className="flex justify-between">
+          <div className="flex justify-between gap-10">
             <h5 className="font-hind text-2xl font-bold tracking-tight text-white">
               Pregunta {numberQuestions + 1}
             </h5>

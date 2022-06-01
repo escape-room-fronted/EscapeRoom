@@ -87,7 +87,7 @@ const CardAvatarWelcome = ({
           </div>
 
           <div className="pt-4 flex justify-end pr-10">
-            <button onClick={() => handleViewRoom()} className="btn-dark">
+            <button onClick={() => handleViewRoom()} className="btn-dark z-50">
               Continuar
             </button>
           </div>

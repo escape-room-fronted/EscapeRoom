@@ -22,13 +22,22 @@ const ButtonActivateUser = ({data, setIsUpDate, isUpDate}) => {
       });
     }
 
-  return (
-    <button
-    onClick={() => activateUser()}
-     className='btn-yellow'>
-        Activar
-    </button>
-  )
-}
+  return data.isLoggedIn ? (
+    
+        <button
+          onClick={() => activateUser()}
+          className='btn-yellow'>
+          Activar
+        </button>
+      ): (
+        <button
+          className='btn-yellow bg-green-800'>
+          Activo
+        </button>
+      )
+    }
+    
+  
+
 
 export default ButtonActivateUser

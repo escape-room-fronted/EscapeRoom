@@ -37,9 +37,7 @@ const LogicRoom = () => {
             <div className="pl-2">
               <TimeCounter />
             </div>
-            <div className="my-px p-4 z-20 text-white hover:bg-gray hover:text-yellow">
-              <ModalUserHelp />
-            </div>
+           
           </div>
 
           {isViewLogicRoom === 1 && (
