@@ -1,15 +1,28 @@
 import React, { useEffect, useState } from "react";
+import { randomAnswer } from '../../Helpers/helpers';
 
 const Questions = ({ handleViewRoom, dataQuestions }) => {
-  console.log(dataQuestions);
+
 
   const [dataAnswers, setDataAnswers] = useState();
 
+
+  console.log(dataAnswers);
   useEffect(() => {
-    let data = dataAnswers.incorrect_answers;
-  }, []);
+    console.log("ejecutando");
+    let data = [];
+    if (dataQuestions && data.length === 0) {
+      let random = randomAnswer();
+      data = dataQuestions.incorrect_answers;
+      data = [...data, dataQuestions.correct_answer];
+      data.sort();
+      setDataAnswers(data);
+    }
+  }, []); 
+
+
   return (
-    dataQuestions && (
+    dataAnswers && (
       <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 gap-6 font-hind text-lg">
         {/* <button
           onClick={() => handleViewRoom()}
@@ -18,8 +31,8 @@ const Questions = ({ handleViewRoom, dataQuestions }) => {
           <a>Answer 1</a>
         </button> */}
 
-        {dataQuestions.incorrect_answers.map((item) => (
-          <button className="cursor-pointer card__animate py-4 px-6 text-white hover:text-dark bg-gray hover:bg-yellow rounded-lg">
+        {dataAnswers.map((item) => (
+          <button key={item} className="cursor-pointer card__animate py-4 px-6 text-white hover:text-dark bg-gray hover:bg-yellow rounded-lg">
             {item}
           </button>
         ))}

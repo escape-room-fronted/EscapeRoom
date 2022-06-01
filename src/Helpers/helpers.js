@@ -16,5 +16,5 @@ export const isEmail = (email) => {
 };
 
 export const randomAnswer = () => {
-  return Math.floor(Math.random() * (4 - 1) + 0);
+  return Math.floor(Math.random() * (4 - 1)) + 0;
 };

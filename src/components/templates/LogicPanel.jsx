@@ -12,14 +12,16 @@ const LogicPanel = ({ handleViewRoom }) => {
 
   useEffect(() => {
     setDataQuestions(questions);
+    console.log("ejecutando");
   }, [questions]);
+  
 
   return (
     dataQuestions && (
       <div className=" p-4">
         <div className="">
           <div className="flex justify-center">
-            <CardLogic dataQuestions={dataQuestions[numberQuestions]} />
+            <CardLogic numberQuestions={numberQuestions} dataQuestions={dataQuestions[numberQuestions]} />
           </div>
           <div className="flex justify-center pt-10">
             <Questions

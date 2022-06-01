@@ -2,7 +2,7 @@ import React from "react";
 import ModalClueUser from "./ModalClueUser";
 import { FcIdea } from "react-icons/fc";
 
-const CardLogic = ({dataQuestions}) => {
+const CardLogic = ({dataQuestions, numberQuestions}) => {
   const [showModal, setShowModal] = React.useState(false);
   
   console.log(dataQuestions);
@@ -16,7 +16,7 @@ const CardLogic = ({dataQuestions}) => {
         >
           <div className="flex justify-between">
             <h5 className="font-hind text-2xl font-bold tracking-tight text-white">
-              Pregunta {dataQuestions.question_number}
+              Pregunta {numberQuestions + 1}
             </h5>
             <button type="button" onClick={() => setShowModal(true)}>
               <FcIdea className="text-2xl" />
