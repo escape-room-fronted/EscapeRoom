@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Questions = ({ handleViewRoom, dataQuestions }) => {
   console.log(dataQuestions);
+
+  const [dataAnswers, setDataAnswers] = useState();
+
+  useEffect(() => {
+    let data = dataAnswers.incorrect_answers;
+  }, []);
   return (
     dataQuestions && (
       <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 gap-6 font-hind text-lg">
