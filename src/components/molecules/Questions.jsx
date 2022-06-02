@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import uniqid from 'uniqid';
-
+import uniqid from "uniqid";
 
 const Questions = ({ handleNumberQuestions, dataQuestions }) => {
   const [dataAnswers, setDataAnswers] = useState();
