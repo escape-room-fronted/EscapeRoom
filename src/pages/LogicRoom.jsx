@@ -37,7 +37,6 @@ const LogicRoom = () => {
             <div className="pl-2">
               <TimeCounter />
             </div>
-           
           </div>
 
           {isViewLogicRoom === 1 && (

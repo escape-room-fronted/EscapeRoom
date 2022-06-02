@@ -1,11 +1,41 @@
 import React, { useEffect, useState } from "react";
+import useAuth from "../../hooks/useAuth";
+import { createAnswers } from "../../services/serviceAnswers";
 import uniqid from "uniqid";
 
-const Questions = ({ handleNumberQuestions, dataQuestions }) => {
+const Questions = ({
+  isUseTips,
+  handleNumberQuestions,
+  dataQuestions,
+  handleTimeTips,
+}) => {
   const [dataAnswers, setDataAnswers] = useState();
 
+  const { auth } = useAuth();
+
+  /* console.log(auth);
+  console.log(dataQuestions); */
+
+  const sendDataAnswers = (userAnswer) => {
+    let data = {};
+    data.answer = userAnswer;
+    data.correct_answer =
+      dataQuestions.correct_answer === userAnswer ? true : false;
+    data.use_tip = isUseTips;
+    data.use_answer = false;
+
+    console.log(data);
+
+    createAnswers(data, dataQuestions._id, auth.id)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
-    console.log("ejecutando");
     let data = [];
     if (dataQuestions) {
       data = dataQuestions.incorrect_answers;
@@ -23,7 +53,9 @@ const Questions = ({ handleNumberQuestions, dataQuestions }) => {
             key={uniqid()}
             className="cursor-pointer card__animate py-4 px-6 text-white hover:text-dark bg-gray hover:bg-yellow rounded-lg"
             onClick={() => {
+              sendDataAnswers(item);
               handleNumberQuestions();
+              handleTimeTips();
             }}
           >
             {item}
