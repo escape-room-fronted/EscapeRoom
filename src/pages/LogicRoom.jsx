@@ -9,14 +9,20 @@ import SideBarUser from "../components/molecules/SidebarUser";
 import CardAvatarWelcome from "../components/molecules/CardAvatarWelcome";
 import CardWelcome from "../components/molecules/CardWelcome";
 import LogicPanel from "../components/templates/LogicPanel";
+import { useNavigate, Navigate } from "react-router-dom";
 
 const LogicRoom = () => {
   const [isViewLogicRoom, setIsViewLogicRoom] = useState(1);
 
   const { auth, setAuth, setQuestions } = useAuth();
 
+  const navigate = useNavigate();
+
   const handleViewRoom = () => {
     setIsViewLogicRoom(isViewLogicRoom + 1);
+    if (isViewLogicRoom === 7){
+      navigate("/");
+    }
   };
 
   useEffect(() => {
@@ -64,12 +70,24 @@ const LogicRoom = () => {
           )}
 
           {isViewLogicRoom === 5 && (
+            <div>
+              <button onClick={() =>(handleViewRoom())} 
+              className="btn-yellow">Editor de codigo</button>
+            </div>
+          )}
+
+          {isViewLogicRoom === 6 && (
             <CardAvatarWelcome
               handleViewRoom={handleViewRoom}
               isAvatarJuliyLau={true}
               isTextThree={true}
             />
           )}
+
+          {isViewLogicRoom === 7 && (
+            <Navigate to="/"/>
+          )}
+
 
           <div className="drop-shadow-2xl py-4 2xl:hidden xl:hidde lg:hidden md:hidden bg-dark">
             <div className="grid gris-cols-2 gap-10 justify-center">
