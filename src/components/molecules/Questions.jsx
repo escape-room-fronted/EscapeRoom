@@ -16,7 +16,7 @@ const Questions = ({ isUseTips, handleNumberQuestions, dataQuestions, handleTime
   const sendDataAnswers = (userAnswer) =>{
     let data = {}
     data.answer = userAnswer;
-    data.correct_answer = dataQuestions.correct_answer;
+    data.correct_answer = dataQuestions.correct_answer === userAnswer ? true : false;
     data.use_tip = isUseTips;
     data.use_answer = false;
 
