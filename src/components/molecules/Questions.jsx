@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import uniqid from 'uniqid';
 
 
-const Questions = ({ handleNumberQuestions, dataQuestions }) => {
+const Questions = ({ handleNumberQuestions, dataQuestions, handleTimeTips }) => {
   const [dataAnswers, setDataAnswers] = useState();
 
   useEffect(() => {
-    console.log("ejecutando");
     let data = [];
     if (dataQuestions) {
       data = dataQuestions.incorrect_answers;
@@ -25,6 +24,7 @@ const Questions = ({ handleNumberQuestions, dataQuestions }) => {
             className="cursor-pointer card__animate py-4 px-6 text-white hover:text-dark bg-gray hover:bg-yellow rounded-lg"
             onClick={() => {
               handleNumberQuestions();
+              handleTimeTips()
             }}
           >
             {item}

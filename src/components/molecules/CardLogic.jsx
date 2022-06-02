@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ModalClueUser from "./ModalClueUser";
 import { FcIdea } from "react-icons/fc";
 
-const CardLogic = ({dataQuestions, numberQuestions}) => {
+const CardLogic = ({dataQuestions, numberQuestions, timeTips}) => {
   const [showModal, setShowModal] = React.useState(false);
   
-  console.log(dataQuestions);
+
+  useEffect ( () => {
+    if (timeTips === 20){
+      setShowModal(true)
+    }
+  }, [timeTips])
 
   return dataQuestions && (
     <>
