@@ -58,6 +58,7 @@ const LogicPanel = ({ handleViewRoom }) => {
           </div>
           <div className="flex justify-center pt-10">
             <Questions
+              isUseTips={isUseTips}
               handleTimeTips={handleTimeTips}
               handleViewRoom={handleViewRoom}
               handleNumberQuestions={handleNumberQuestions}
