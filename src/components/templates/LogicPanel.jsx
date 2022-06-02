@@ -4,15 +4,22 @@ import Questions from "../molecules/Questions";
 import useAuth from "../../hooks/useAuth";
 
 const LogicPanel = ({ handleViewRoom }) => {
+
   const [numberQuestions, setNumberQuestions] = useState(0);
-
   const { questions } = useAuth();
-
   const [dataQuestions, setDataQuestions] = useState();
   const [timeTips, setTimeTips] = useState(0);
+  const [isUseTips, setIsUseTips] = useState(false);
+
+  console.log(isUseTips);
   
+  const handleUseTips = () =>{
+    setIsUseTips(true);
+  }
+
   const handleTimeTips = () =>{
     setTimeTips(0);
+    setIsUseTips(false);
   }
 
   const handleNumberQuestions = () => {
@@ -43,6 +50,7 @@ const LogicPanel = ({ handleViewRoom }) => {
         <div className="">
           <div className="flex justify-center">
             <CardLogic
+              handleUseTips={handleUseTips}
               timeTips={timeTips}
               numberQuestions={numberQuestions}
               dataQuestions={dataQuestions[numberQuestions]}

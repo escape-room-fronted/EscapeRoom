@@ -2,15 +2,17 @@ import React, { useEffect } from "react";
 import ModalClueUser from "./ModalClueUser";
 import { FcIdea } from "react-icons/fc";
 
-const CardLogic = ({dataQuestions, numberQuestions, timeTips}) => {
+const CardLogic = ({dataQuestions, numberQuestions, timeTips, handleUseTips}) => {
+
   const [showModal, setShowModal] = React.useState(false);
   
-
   useEffect ( () => {
-    if (timeTips === 20){
-      setShowModal(true)
+    if (timeTips === 10){
+      setShowModal(true);
+      handleUseTips();
     }
   }, [timeTips])
+
 
   return dataQuestions && (
     <>
@@ -33,7 +35,7 @@ const CardLogic = ({dataQuestions, numberQuestions, timeTips}) => {
         </div>
       </div>
 
-      <ModalClueUser clue={dataQuestions.tips[0]} state={showModal} setState={setShowModal} />
+      <ModalClueUser handleUseTips={handleUseTips} clue={dataQuestions.tips[0]} state={showModal} setState={setShowModal} />
     </>
   );
 };
