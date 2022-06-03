@@ -27,12 +27,12 @@ const LogicPanel = ({ handleViewRoom }) => {
     setIsUseTips(false);
   };
 
-  console.log(numberQuestions);
+  console.log(numberQuestion);
 
   const handleNumberQuestions = () => {
     setNumberQuestions((prev) => prev + 1);
     setNumberQuestion((prev) => prev + 1);
-    window.localStorage.setItem("dataNumberQuestion", JSON.stringify (numberQuestion));
+    window.localStorage.setItem("dataNumberQuestion", JSON.stringify ((numberQuestion + 1)));
     console.log(window.localStorage.getItem("dataNumberQuestion"));
     if (numberQuestions === dataQuestions.length - 1) {
       handleViewRoom();
