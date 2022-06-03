@@ -1,22 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ModalClueUser from "./ModalClueUser";
 import { FcIdea } from "react-icons/fc";
 
-const CardLogic = ({dataQuestions}) => {
+const CardLogic = ({dataQuestions, numberQuestions, timeTips, handleUseTips}) => {
+
   const [showModal, setShowModal] = React.useState(false);
   
-  console.log(dataQuestions);
+  useEffect ( () => {
+    if (timeTips === 10){
+      setShowModal(true);
+      handleUseTips();
+    }
+  }, [timeTips])
+
 
   return dataQuestions && (
     <>
-      <div className="pt-2">
+      <div className="pt-6">
         <div
           href="#"
           className="block card__animate p-8 max-w-lg bg-gray rounded-lg"
         >
-          <div className="flex justify-between">
+          <div className="flex justify-between gap-10">
             <h5 className="font-hind text-2xl font-bold tracking-tight text-white">
-              Pregunta {dataQuestions.question_number}
+              Pregunta {numberQuestions + 1}
             </h5>
             <button type="button" onClick={() => setShowModal(true)}>
               <FcIdea className="text-2xl" />
@@ -28,7 +35,7 @@ const CardLogic = ({dataQuestions}) => {
         </div>
       </div>
 
-      <ModalClueUser clue={dataQuestions.tips[0]} state={showModal} setState={setShowModal} />
+      <ModalClueUser handleUseTips={handleUseTips} clue={dataQuestions.tips[0]} state={showModal} setState={setShowModal} />
     </>
   );
 };

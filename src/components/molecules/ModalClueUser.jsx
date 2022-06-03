@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { AiFillCloseSquare } from 'react-icons/ai';
 
 
-const ModalClueUser = ({state, setState, clue}) => {
+const ModalClueUser = ({state, setState, clue, handleUseTips}) => {
     
+  useEffect ( () =>{
+    if (state){
+      handleUseTips();
+    }
+  }, [state])
     
   return (
     <div>

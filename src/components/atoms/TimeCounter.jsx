@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { FaRegClock } from "react-icons/fa";
+import { useAuthLogin } from "../../hooks/useAuthLogin";
+import { useNavigate } from "react-router-dom";
 
 const TimeCounter = () => {
   const [min, setMin] = useState(60);
   const [seg, setSeg] = useState(0);
   const [isGame, setIsGame] = useState(true);
+  const navigate = useNavigate();
+  const { logout } = useAuthLogin();
 
   useEffect(() => {
     const intervalTime = setInterval(() => {
@@ -16,7 +20,11 @@ const TimeCounter = () => {
   function updateTime() {
     setSeg((prev) => {
       if (prev === 0) {
-        if (prev === 0 && min === 0) setIsGame((prev) => false);
+        if (prev === 0 && min === 0) {
+          setIsGame((prev) => false);
+          logout();
+          navigate("/");
+        }
         setMin((prev) => prev - 1);
         return 59;
       } else {
