@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import useAuth from "../hooks/useAuth";
+import { getDataQuestions} from "../services/serviceRooms";
 import TimeCounter from '../components/atoms/TimeCounter'
 import ModalUserHelp from '../components/molecules/ModalUserHelp'
 import { MdExtension } from "react-icons/md";
@@ -16,9 +18,25 @@ const LogicRoom = () => {
 
   const [isViewLogicRoom, setIsViewLogicRoom] = useState(1)
 
+
+  const {auth, setAuth, setQuestions} = useAuth();
+
+
   const handleViewRoom = () =>{
       setIsViewLogicRoom(isViewLogicRoom + 1);
   }
+
+  useEffect(() => {
+    getDataQuestions(auth.accesToken)
+    .then((res)=>{
+      setQuestions(res.data)
+    })
+    .catch((err) =>{
+      console.log(err)
+    })
+  }, []);
+
+
   return (
     <div className="bg-dark">
     <div className="flex flex-row ">
