@@ -50,13 +50,14 @@ const FormLogin = () => {
         userName: dataUser.username,
         rol: isRol(dataUser.roles),
         timecounter: {
-          minutes: 10,
+          minutes: 60,
           seg: 0,
         },
         accesToken,
       };
       setAuth(data);
       window.localStorage.setItem("user", JSON.stringify(data));
+      window.localStorage.setItem("dataNumberQuestion", JSON.stringify(0));
       setIsLoad(false);
       isRol(dataUser.roles[0]) === "user"
         ? navigate("/logic-room")

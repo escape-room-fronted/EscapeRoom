@@ -6,9 +6,10 @@ export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState({});
 
   const [questions, setQuestions] = useState([]);
+  const [numberQuestion, setNumberQuestion] = useState();
 
   return (
-    <AuthContext.Provider value={{ auth, setAuth, questions, setQuestions }}>
+    <AuthContext.Provider value={{ auth, setAuth, questions, setQuestions, numberQuestion, setNumberQuestion }}>
       {children}
     </AuthContext.Provider>
   );
