@@ -13,9 +13,6 @@ const Questions = ({
 
   const { auth } = useAuth();
 
-  /* console.log(auth);
-  console.log(dataQuestions); */
-
   const sendDataAnswers = (userAnswer) => {
     let data = {};
     data.answer = userAnswer;
@@ -23,8 +20,6 @@ const Questions = ({
       dataQuestions.correct_answer === userAnswer ? true : false;
     data.use_tip = isUseTips;
     data.use_answer = false;
-
-    console.log(data);
 
     createAnswers(data, dataQuestions._id, auth.id)
       .then((res) => {

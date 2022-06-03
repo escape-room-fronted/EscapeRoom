@@ -1,28 +1,32 @@
 import React, { useState, useEffect } from "react";
-import useAuth from "../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+import { useAuthLogin } from "../hooks/useAuthLogin";
 import { getDataQuestions } from "../services/serviceRooms";
-import TimeCounter from "../components/atoms/TimeCounter";
-import ModalUserHelp from "../components/molecules/ModalUserHelp";
-import { MdExtension } from "react-icons/md";
-import { HiCode } from "react-icons/hi";
+import useAuth from "../hooks/useAuth";
+
 import SideBarUser from "../components/molecules/SidebarUser";
 import CardAvatarWelcome from "../components/molecules/CardAvatarWelcome";
 import CardWelcome from "../components/molecules/CardWelcome";
 import LogicPanel from "../components/templates/LogicPanel";
-import { useNavigate, Navigate } from "react-router-dom";
+import TimeCounter from "../components/atoms/TimeCounter";
+
+import { MdExtension } from "react-icons/md";
+import { HiCode } from "react-icons/hi";
 
 const LogicRoom = () => {
   const [isViewLogicRoom, setIsViewLogicRoom] = useState(1);
-
-  const { auth, setAuth, setQuestions } = useAuth();
-
+  const { auth, setQuestions } = useAuth();
+  const { logout } = useAuthLogin();
   const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
 
   const handleViewRoom = () => {
     setIsViewLogicRoom(isViewLogicRoom + 1);
-    if (isViewLogicRoom === 7){
-      navigate("/");
-    }
+    console.log(isViewLogicRoom);
   };
 
   useEffect(() => {
@@ -71,23 +75,19 @@ const LogicRoom = () => {
 
           {isViewLogicRoom === 5 && (
             <div>
-              <button onClick={() =>(handleViewRoom())} 
-              className="btn-yellow">Editor de codigo</button>
+              <button onClick={() => handleViewRoom()} className="btn-yellow">
+                Editor de codigo
+              </button>
             </div>
           )}
 
           {isViewLogicRoom === 6 && (
             <CardAvatarWelcome
-              handleViewRoom={handleViewRoom}
+              handleViewRoom={handleLogout}
               isAvatarJuliyLau={true}
               isTextThree={true}
             />
           )}
-
-          {isViewLogicRoom === 7 && (
-            <Navigate to="/"/>
-          )}
-
 
           <div className="drop-shadow-2xl py-4 2xl:hidden xl:hidde lg:hidden md:hidden bg-dark">
             <div className="grid gris-cols-2 gap-10 justify-center">

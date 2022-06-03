@@ -10,8 +10,6 @@ const LogicPanel = ({ handleViewRoom }) => {
   const [timeTips, setTimeTips] = useState(0);
   const [isUseTips, setIsUseTips] = useState(false);
 
-  console.log(isUseTips);
-
   const handleUseTips = () => {
     setIsUseTips(true);
   };
@@ -30,10 +28,7 @@ const LogicPanel = ({ handleViewRoom }) => {
 
   useEffect(() => {
     setDataQuestions(questions);
-    console.log("ejecutando");
   }, [questions]);
-
-  console.log(timeTips);
 
   useEffect(() => {
     const inter = setInterval(() => {
