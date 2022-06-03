@@ -15,8 +15,7 @@ const Questions = ({
 
   const sendDataAnswers = (userAnswer) => {
     let data = {};
-    data.answer = userAnswer;
-    data.correct_answer =
+    data.user_answer =
       dataQuestions.correct_answer === userAnswer ? true : false;
     data.use_tip = isUseTips;
     data.use_answer = false;
