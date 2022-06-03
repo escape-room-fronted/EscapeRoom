@@ -49,6 +49,10 @@ const FormLogin = () => {
         name: dataUser.name,
         userName: dataUser.username,
         rol: isRol(dataUser.roles),
+        timecounter: {
+          minutes: 60,
+          seg: 0,
+        },
         accesToken,
       };
       setAuth(data);

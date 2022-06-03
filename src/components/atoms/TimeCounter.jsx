@@ -2,14 +2,22 @@ import React, { useState, useEffect } from "react";
 import { FaRegClock } from "react-icons/fa";
 import { useAuthLogin } from "../../hooks/useAuthLogin";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const TimeCounter = () => {
-  const [min, setMin] = useState(60);
-  const [seg, setSeg] = useState(0);
   const [isGame, setIsGame] = useState(true);
   const navigate = useNavigate();
   const { logout } = useAuthLogin();
+  const { auth, setAuth } = useAuth();
+  const [min, setMin] = useState(auth.timecounter.minutes || 60);
+  const [seg, setSeg] = useState(auth.timecounter.seg || 0);
 
+  useEffect(() => {
+    setAuth((prev) => {
+      return { ...prev, timecounter: { minutes: min, seg: seg } };
+    });
+    window.localStorage.setItem("user", JSON.stringify(auth));
+  }, [min, seg]);
   useEffect(() => {
     const intervalTime = setInterval(() => {
       updateTime();
