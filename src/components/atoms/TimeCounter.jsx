@@ -5,26 +5,19 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 const TimeCounter = () => {
-  const [min, setMin] = useState(60);
-  const [seg, setSeg] = useState(0);
   const [isGame, setIsGame] = useState(true);
   const navigate = useNavigate();
   const { logout } = useAuthLogin();
   const { auth, setAuth } = useAuth();
+  const [min, setMin] = useState(auth.timecounter.minutes || 60);
+  const [seg, setSeg] = useState(auth.timecounter.seg || 0);
 
-  console.log(auth);
-
-  useEffect(() =>{
-    if (auth){
-      setMin(auth.timecounter.minutes);
-      setSeg(auth.timecounter.seg);
-    }
-    const intervalTime = setInterval(() =>{
-      setAuth({...auth, timecounter:{minutes: min, seg: seg}});
-    }, 1000);
-    return () => clearTimeout(intervalTime);
-  }, [])
-
+  useEffect(() => {
+    setAuth((prev) => {
+      return { ...prev, timecounter: { minutes: min, seg: seg } };
+    });
+    window.localStorage.setItem("user", JSON.stringify(auth));
+  }, [min, seg]);
   useEffect(() => {
     const intervalTime = setInterval(() => {
       updateTime();

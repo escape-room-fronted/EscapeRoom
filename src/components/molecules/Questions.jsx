@@ -8,8 +8,8 @@ const Questions = ({
   handleNumberQuestions,
   dataQuestions,
   handleTimeTips,
-  isUseAnswer
-  }) => {
+  isUseAnswer,
+}) => {
   const [dataAnswers, setDataAnswers] = useState();
 
   const { auth } = useAuth();
@@ -20,7 +20,6 @@ const Questions = ({
       dataQuestions.correct_answer === userAnswer ? true : false;
     data.use_tip = isUseTips;
     data.use_answer = isUseAnswer;
-
 
     createAnswers(data, dataQuestions._id, auth.id)
       .then((res) => {
@@ -41,9 +40,9 @@ const Questions = ({
     }
   }, [dataQuestions]);
 
-  useEffect (() =>{
+  useEffect(() => {
     sendDataAnswers(dataQuestions.correct_answer);
-  }, [isUseAnswer])
+  }, [isUseAnswer]);
 
   return (
     dataAnswers && (

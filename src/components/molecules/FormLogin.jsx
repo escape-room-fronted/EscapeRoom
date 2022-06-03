@@ -50,7 +50,7 @@ const FormLogin = () => {
         userName: dataUser.username,
         rol: isRol(dataUser.roles),
         timecounter: {
-          minutes: 10,
+          minutes: 60,
           seg: 0,
         },
         accesToken,
