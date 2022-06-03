@@ -45,6 +45,7 @@ const LogicRoom = () => {
       <div className="flex flex-row ">
         <main className="pt-20 min-h-screen flex flex-col flex-grow -mr-64 md:mr-0 transition-all duration-150 ease-in">
           <div className="flex justify-between justify-items-center pt-4 px-2">
+            
             <div className="pl-2">
               <TimeCounter />
             </div>

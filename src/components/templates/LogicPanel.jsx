@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import CardLogic from "../molecules/CardLogic";
 import Questions from "../molecules/Questions";
 import useAuth from "../../hooks/useAuth";
+import ModalUserHelp from "../molecules/ModalUserHelp";
 
 const LogicPanel = ({ handleViewRoom }) => {
   const [numberQuestions, setNumberQuestions] = useState(0);
@@ -9,6 +10,12 @@ const LogicPanel = ({ handleViewRoom }) => {
   const [dataQuestions, setDataQuestions] = useState();
   const [timeTips, setTimeTips] = useState(0);
   const [isUseTips, setIsUseTips] = useState(false);
+  const [isUseAnswer, setIsUseAnswer] = useState(false);
+
+
+  const handleUseAnswer = (data) =>{
+    setIsUseAnswer(data);
+  }
 
   const handleUseTips = () => {
     setIsUseTips(true);
@@ -40,6 +47,10 @@ const LogicPanel = ({ handleViewRoom }) => {
   return (
     dataQuestions && (
       <div className=" p-4">
+        <ModalUserHelp handleTimeTips={handleTimeTips}
+        handleNumberQuestions={handleNumberQuestions}
+        handleUseAnswer={handleUseAnswer}/>
+
         <div className="">
           <div className="flex justify-center">
             <CardLogic
@@ -52,6 +63,7 @@ const LogicPanel = ({ handleViewRoom }) => {
           <div className="flex justify-center pt-10">
             <Questions
               isUseTips={isUseTips}
+              isUseAnswer={isUseAnswer}
               handleTimeTips={handleTimeTips}
               handleViewRoom={handleViewRoom}
               handleNumberQuestions={handleNumberQuestions}
