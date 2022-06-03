@@ -9,6 +9,7 @@ import CardAvatarWelcome from "../components/molecules/CardAvatarWelcome";
 import CardWelcome from "../components/molecules/CardWelcome";
 import LogicPanel from "../components/templates/LogicPanel";
 import TimeCounter from "../components/atoms/TimeCounter";
+import EditorCode from "../components/templates/EditorCode";
 
 import { MdExtension } from "react-icons/md";
 import { HiCode } from "react-icons/hi";
@@ -74,11 +75,7 @@ const LogicRoom = () => {
           )}
 
           {isViewLogicRoom === 5 && (
-            <div>
-              <button onClick={() => handleViewRoom()} className="btn-yellow">
-                Editor de codigo
-              </button>
-            </div>
+            <EditorCode handleViewRoom={handleViewRoom} />
           )}
 
           {isViewLogicRoom === 6 && (

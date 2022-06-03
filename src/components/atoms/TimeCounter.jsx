@@ -4,7 +4,7 @@ import { useAuthLogin } from "../../hooks/useAuthLogin";
 import { useNavigate } from "react-router-dom";
 
 const TimeCounter = () => {
-  const [min, setMin] = useState(1);
+  const [min, setMin] = useState(60);
   const [seg, setSeg] = useState(0);
   const [isGame, setIsGame] = useState(true);
   const navigate = useNavigate();

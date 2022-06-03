@@ -15,8 +15,7 @@ body::-webkit-scrollbar {
     border-radius: 10px;
   }
 
-
-  .card__room__landing {
+.card__room__landing {
     filter: drop-shadow(10px 0 20px black);
     min-height: 25rem;
     width: 21rem;
