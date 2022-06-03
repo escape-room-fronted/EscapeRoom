@@ -11,7 +11,7 @@ import ModalWindowOk from "../atoms/molecules/ModalWindowOk";
 const EditorCode = ({ handleViewRoom }) => {
   const [language, setLanguage] = useState("javascript");
   const [theme, setTheme] = useState("vs-dark");
-  const [code, setCode] = useState("//Hola Mundo");
+  const [code, setCode] = useState("//Escape room");
   const [processing, setProcessing] = useState(null);
   const [customInput, setCustomInput] = useState("");
   const [outputDetails, setOutputDetails] = useState(null);
