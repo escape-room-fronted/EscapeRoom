@@ -126,13 +126,14 @@ export const stateuser = [
 export const customStyles = {
   control: (styles) => ({
     ...styles,
+    color: "white !important",
     width: "100%",
     maxWidth: "20rem",
     minWidth: "12rem",
     borderRadius: "5px",
     fontSize: "1rem",
     lineHeight: "1.75rem",
-    backgroundColor: "292929",
+    backgroundColor: "#292929",
     cursor: "pointer",
     border: "2px solid #000000",
     boxShadow: "5px 5px 0px 0px rgba(0,0,0);",
@@ -140,19 +141,18 @@ export const customStyles = {
       border: "2px solid #000000",
       boxShadow: "none",
     },
-    color: "#FFFFFF",
   }),
   option: (styles) => {
     return {
       ...styles,
-      color: "#FFFFFF",
+      color: "white",
       fontSize: "0.8rem",
       lineHeight: "1.75rem",
       width: "100%",
       background: "#1B1B1B",
       ":hover": {
-        backgroundColor: "",
-        color: "#FFC300",
+        backgroundColor: "#FFC300",
+        color: "#1B1B1B",
         cursor: "pointer",
       },
     };
@@ -165,16 +165,20 @@ export const customStyles = {
       border: "2px solid #000000",
       borderRadius: "5px",
       boxShadow: "5px 5px 0px 0px rgba(0,0,0);",
-      color: "#FFFFF",
     };
   },
+  input: (base, state) => ({
+    ...base,
+    '[type="text"]': {
+      fontFamily: "Helvetica, sans-serif !important",
+      fontSize: 13,
+      fontWeight: 900,
+      color: "white !important",
+    },
+  }),
 
-  placeholder: (defaultStyles) => {
-    return {
-      ...defaultStyles,
-      color: "#FFFFF",
-      fontSize: "0.8rem",
-      lineHeight: "1.75rem",
-    };
-  },
+  singleValue: (base) => ({
+    ...base,
+    color: "#ffffff !important",
+  }),
 };
