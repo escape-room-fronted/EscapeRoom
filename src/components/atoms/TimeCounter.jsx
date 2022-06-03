@@ -21,6 +21,7 @@ const TimeCounter = () => {
     }
     const intervalTime = setInterval(() =>{
       setAuth({...auth, timecounter:{minutes: min, seg: seg}});
+      console.log("datos", auth);
     }, 1000);
     return () => clearTimeout(intervalTime);
   }, [])
