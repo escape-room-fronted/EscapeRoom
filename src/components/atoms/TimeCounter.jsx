@@ -12,8 +12,6 @@ const TimeCounter = () => {
   const [min, setMin] = useState(timeCounter?.minutes || 60);
   const [seg, setSeg] = useState(timeCounter?.seg || 0);
 
-  console.log(timeCounter);
-
   useEffect(() => {
     setAuth((prev) => {
       return { ...prev, timecounter: { minutes: min, seg: seg } };
@@ -21,8 +19,10 @@ const TimeCounter = () => {
     setTimeCounter((prev) => {
       return { minutes: min, seg: seg };
     });
-    window.localStorage.setItem("user", JSON.stringify(auth));
-    window.localStorage.setItem("dataTimeUser", JSON.stringify(timeCounter));
+    if (timeCounter && auth) {
+      window.localStorage.setItem("user", JSON.stringify(auth));
+      window.localStorage.setItem("dataTimeUser", JSON.stringify(timeCounter));
+    }
   }, [min, seg]);
   useEffect(() => {
     const intervalTime = setInterval(() => {
