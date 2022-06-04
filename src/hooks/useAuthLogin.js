@@ -1,7 +1,13 @@
 import useAuth from "./useAuth";
 
 export function useAuthLogin() {
-  const { auth, setAuth, setNumberQuestion, setNumberSectionLogic } = useAuth();
+  const {
+    auth,
+    setAuth,
+    setNumberQuestion,
+    setNumberSectionLogic,
+    setTimeCounter,
+  } = useAuth();
 
   //   console.log(isLogin);
   const loginDataPersistent = () => {
@@ -12,14 +18,15 @@ export function useAuthLogin() {
       setNumberSectionLogic(
         JSON.parse(localStorage.getItem("dataNumberSection"))
       );
+      setTimeCounter(JSON.parse(localStorage.getItem("dataTimeUser")));
     }
   };
 
   const logout = () => {
-    localStorage.clear();
+    localStorage.removeItem("user");
     setAuth({});
-    setNumberQuestion(0);
-    setNumberSectionLogic(1);
+    // setNumberQuestion(0);
+    // setNumberSectionLogic(1);
   };
 
   const isUserLogin = () => {

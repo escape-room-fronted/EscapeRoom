@@ -57,8 +57,19 @@ const FormLogin = () => {
       };
       setAuth(data);
       window.localStorage.setItem("user", JSON.stringify(data));
-      window.localStorage.setItem("dataNumberQuestion", JSON.stringify(0));
-      window.localStorage.setItem("dataNumberSection", JSON.stringify(1));
+      if (
+        !window.localStorage.getItem("dataNumberQuestion") &&
+        !window.localStorage.getItem("dataNumberSection") &&
+        !window.localStorage.getItem("dataTimeUser")
+      ) {
+        window.localStorage.setItem("dataNumberQuestion", JSON.stringify(0));
+        window.localStorage.setItem("dataNumberSection", JSON.stringify(1));
+        window.localStorage.setItem(
+          "dataTimeUser",
+          JSON.stringify({ minutes: 60, seg: 0 })
+        );
+      }
+
       setIsLoad(false);
       isRol(dataUser.roles[0]) === "user"
         ? navigate("/logic-room")

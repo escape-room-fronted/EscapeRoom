@@ -8,15 +8,19 @@ const TimeCounter = () => {
   const [isGame, setIsGame] = useState(true);
   const navigate = useNavigate();
   const { logout } = useAuthLogin();
-  const { auth, setAuth } = useAuth();
-  const [min, setMin] = useState(auth.timecounter.minutes || 60);
-  const [seg, setSeg] = useState(auth.timecounter.seg || 0);
+  const { auth, setAuth, timeCounter, setTimeCounter } = useAuth();
+  const [min, setMin] = useState(timeCounter.minutes || 60);
+  const [seg, setSeg] = useState(timeCounter.seg || 0);
 
   useEffect(() => {
     setAuth((prev) => {
       return { ...prev, timecounter: { minutes: min, seg: seg } };
     });
+    setTimeCounter((prev) => {
+      return { minutes: min, seg: seg };
+    });
     window.localStorage.setItem("user", JSON.stringify(auth));
+    window.localStorage.setItem("dataTimeUser", JSON.stringify(timeCounter));
   }, [min, seg]);
   useEffect(() => {
     const intervalTime = setInterval(() => {
