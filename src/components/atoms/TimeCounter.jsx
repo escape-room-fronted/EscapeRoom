@@ -9,8 +9,10 @@ const TimeCounter = () => {
   const navigate = useNavigate();
   const { logout } = useAuthLogin();
   const { auth, setAuth, timeCounter, setTimeCounter } = useAuth();
-  const [min, setMin] = useState(timeCounter.minutes || 60);
-  const [seg, setSeg] = useState(timeCounter.seg || 0);
+  const [min, setMin] = useState(timeCounter?.minutes || 60);
+  const [seg, setSeg] = useState(timeCounter?.seg || 0);
+
+  console.log(timeCounter);
 
   useEffect(() => {
     setAuth((prev) => {

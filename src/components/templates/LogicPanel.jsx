@@ -53,7 +53,7 @@ const LogicPanel = ({ handleViewRoom }) => {
 
   return (
     dataQuestions && (
-      <div className=" p-4">
+      <div>
         <ModalUserHelp
           handleTimeTips={handleTimeTips}
           handleNumberQuestions={handleNumberQuestions}
