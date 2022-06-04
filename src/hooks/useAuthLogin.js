@@ -16,7 +16,7 @@ export function useAuthLogin() {
   };
 
   const logout = () => {
-    localStorage.removeItem("user");
+    localStorage.clear();
     setAuth({});
     setNumberQuestion(0);
     setNumberSectionLogic(1);

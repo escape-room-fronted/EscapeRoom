@@ -37,7 +37,7 @@ const LogicRoom = () => {
     setNumberSectionLogic(numberSectionLogic + 1);
     window.localStorage.setItem(
       "dataNumberSection",
-      JSON.stringify(numberSectionLogic)
+      JSON.stringify(numberSectionLogic + 1)
     );
     console.log(window.localStorage.getItem("dataNumberSection"));
     console.log(isViewLogicRoom);
