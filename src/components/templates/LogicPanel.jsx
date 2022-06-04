@@ -5,12 +5,13 @@ import useAuth from "../../hooks/useAuth";
 import ModalUserHelp from "../molecules/ModalUserHelp";
 
 const LogicPanel = ({ handleViewRoom }) => {
-  const [numberQuestions, setNumberQuestions] = useState(0);
-  const { questions } = useAuth();
+  
+  const { questions, numberQuestion, setNumberQuestion } = useAuth();
   const [dataQuestions, setDataQuestions] = useState();
   const [timeTips, setTimeTips] = useState(0);
   const [isUseTips, setIsUseTips] = useState(false);
   const [isUseAnswer, setIsUseAnswer] = useState(false);
+  const [numberQuestions, setNumberQuestions] = useState(numberQuestion);
 
 
   const handleUseAnswer = (data) =>{
@@ -26,8 +27,13 @@ const LogicPanel = ({ handleViewRoom }) => {
     setIsUseTips(false);
   };
 
+  console.log(numberQuestion);
+
   const handleNumberQuestions = () => {
     setNumberQuestions((prev) => prev + 1);
+    setNumberQuestion((prev) => prev + 1);
+    window.localStorage.setItem("dataNumberQuestion", JSON.stringify ((numberQuestion + 1)));
+    console.log(window.localStorage.getItem("dataNumberQuestion"));
     if (numberQuestions === dataQuestions.length - 1) {
       handleViewRoom();
     }

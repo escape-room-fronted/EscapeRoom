@@ -68,7 +68,7 @@ const LogicRoom = () => {
           )}
 
           {isViewLogicRoom === 4 && (
-            <CardAvatarWelcome>
+            <CardAvatarWelcome
               handleViewRoom={handleViewRoom}
               isAvatarLaura={true}
               isTextTwo={true}

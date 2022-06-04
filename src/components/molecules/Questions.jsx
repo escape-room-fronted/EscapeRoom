@@ -41,7 +41,9 @@ const Questions = ({
   }, [dataQuestions]);
 
   useEffect(() => {
-    sendDataAnswers(dataQuestions.correct_answer);
+    if (dataQuestions) {
+      sendDataAnswers(dataQuestions.correct_answer);
+    }
   }, [isUseAnswer]);
 
   return (
