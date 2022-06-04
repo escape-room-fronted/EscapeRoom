@@ -26,9 +26,19 @@ ___
 <P>🗺️ La tecnología nos ha permitido automatizar procesos en todas las áreas optimizando el tiempo para que se puedan hacer más tareas en menos tiempo y con mayor calidad. Educamás no es la excepción y quiere desarrollar un scape room virtual con dos secciones que tengan diferentes pruebas para que las personas que entren al proceso de selección de alguno de los cursos traten de resolverlas y así poder recolectar datos de interés para el equipo de selección. </P> 
                                                    
  ___
-<!-- MENU DESPLEGABLE -->
-<details>
+
+ ## Tabla de contenidos:
+---
+
+- [Vista de usuarios](#vista-usuario)
+- [Equipo de trabajo](#equipo-de-trabajo)                                                  
+
+                                                   
+                                                   
+<details>      
                                                    <summary> <h2> VISTA DEL USUARIO </h2></summary>
+
+## Vista usuario
        
  ___
                                                    
@@ -78,6 +88,10 @@ ___
 <h2> 
  
 </h2>
+
+## Equipo de trabajo                                                   
+                                                   
+[![Christian Lazo](https://avatars.githubusercontent.com/u/61626114?size=60)](https://github.com/christianlazo2020) [![Daniela Tobar](https://avatars.githubusercontent.com/u/88946723?size=60)](https://github.com/DanielaTob) [![Dargy](https://avatars.githubusercontent.com/u/90289472?size=60)](https://github.com/DargyJML) [![Juan David Quimbayo](https://avatars.githubusercontent.com/u/74111185?size=60)](https://github.com/JDQN) [![Carlos Martinez](https://avatars.githubusercontent.com/u/61025448?size=60)](https://github.com/marvintt) [![Ronald Rosero](https://avatars.githubusercontent.com/u/15052701?size=60)](https://github.com/Ronrook)
                                                    
 Requirements
 -Tailwind CSS
