@@ -21,43 +21,43 @@ export const randomAnswer = () => {
 
 export const languageOptions = [
   {
-    id: 1,
+    id: 63,
     name: "JavaScript",
     label: "JavaScript",
     value: "javascript",
   },
   {
-    id: 2,
+    id: 75,
     name: "C",
     label: "C",
     value: "c",
   },
   {
-    id: 3,
+    id: 76,
     name: "C++",
     label: "C++",
     value: "cpp",
   },
   {
-    id: 4,
+    id: 60,
     name: "Go",
     label: "Go",
     value: "go",
   },
   {
-    id: 5,
+    id: 62,
     name: "Java",
     label: "Java",
     value: "java",
   },
   {
-    id: 6,
+    id: 70,
     name: "Python",
     label: "Python",
     value: "python",
   },
   {
-    id: 7,
+    id: 74,
     name: "Typescript",
     label: "Typescript",
     value: "typescript",

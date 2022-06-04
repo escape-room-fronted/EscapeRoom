@@ -15,10 +15,14 @@ const EditorCode = ({ handleViewRoom }) => {
   const [customInput, setCustomInput] = useState("");
   const [outputDetails, setOutputDetails] = useState(null);
 
+  // console.log(import.meta.env.VITE_APP_RAPID_API_URL);
+  // console.log(import.meta.env.VITE_APP_RAPID_API_HOST);
+  // console.log(import.meta.env.VITE_APP_RAPID_API_KEY);
+
+  // console.log(language);
   const handleLanguajeChange = (data) => {
     setLanguage(data);
   };
-  console.log(theme);
 
   function handleThemeChange(th) {
     setTheme(th);
@@ -45,13 +49,13 @@ const EditorCode = ({ handleViewRoom }) => {
     };
     const options = {
       method: "POST",
-      url: process.env.REACT_APP_RAPID_API_URL,
+      url: import.meta.env.VITE_APP_RAPID_API_URL,
       params: { base64_encoded: "true", fields: "*" },
       headers: {
         "content-type": "application/json",
         "Content-Type": "application/json",
-        "X-RapidAPI-Host": process.env.REACT_APP_RAPID_API_HOST,
-        "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
+        "X-RapidAPI-Host": import.meta.env.VITE_APP_RAPID_API_HOST,
+        "X-RapidAPI-Key": import.meta.env.VITE_APP_RAPID_API_KEY,
       },
       data: formData,
     };
@@ -80,11 +84,11 @@ const EditorCode = ({ handleViewRoom }) => {
   const checkStatus = async (token) => {
     const options = {
       method: "GET",
-      url: process.env.REACT_APP_RAPID_API_URL + "/" + token,
+      url: import.meta.env.VITE_APP_RAPID_API_URL + "/" + token,
       params: { base64_encoded: "true", fields: "*" },
       headers: {
-        "X-RapidAPI-Host": process.env.REACT_APP_RAPID_API_HOST,
-        "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
+        "X-RapidAPI-Host": import.meta.env.VITE_APP_RAPID_API_HOST,
+        "X-RapidAPI-Key": import.meta.env.VITE_APP_RAPID_API_KEY,
       },
     };
     try {

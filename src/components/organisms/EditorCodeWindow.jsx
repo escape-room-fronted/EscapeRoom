@@ -9,7 +9,7 @@ const EditorCodeWindow = ({
   onChangeData,
 }) => {
   const [value, setValue] = useState(code);
-  console.log("Tema de editor", theme);
+  // console.log("Tema de editor", theme);
   const handleEditorChange = (value) => {
     setValue(value);
     onChangeData("code", value);
