@@ -66,7 +66,8 @@ ___
  Tabla del administrdor
 </h2>
                                 
- ![ADMIN](https://user-images.githubusercontent.com/90289472/172026759-4a5ba3d9-f3a6-4a0d-b4d7-ff95c8c6a8a0.png)
+ ![ADMIN(1)](https://user-images.githubusercontent.com/90289472/172026837-4a4dd97b-4bb6-4154-afda-87774089b638.png)
+
 
                                         
  ___                                                 
