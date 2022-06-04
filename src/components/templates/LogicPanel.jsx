@@ -5,7 +5,6 @@ import useAuth from "../../hooks/useAuth";
 import ModalUserHelp from "../molecules/ModalUserHelp";
 
 const LogicPanel = ({ handleViewRoom }) => {
-  
   const { questions, numberQuestion, setNumberQuestion } = useAuth();
   const [dataQuestions, setDataQuestions] = useState();
   const [timeTips, setTimeTips] = useState(0);
@@ -13,10 +12,9 @@ const LogicPanel = ({ handleViewRoom }) => {
   const [isUseAnswer, setIsUseAnswer] = useState(false);
   const [numberQuestions, setNumberQuestions] = useState(numberQuestion);
 
-
-  const handleUseAnswer = (data) =>{
+  const handleUseAnswer = (data) => {
     setIsUseAnswer(data);
-  }
+  };
 
   const handleUseTips = () => {
     setIsUseTips(true);
@@ -32,7 +30,10 @@ const LogicPanel = ({ handleViewRoom }) => {
   const handleNumberQuestions = () => {
     setNumberQuestions((prev) => prev + 1);
     setNumberQuestion((prev) => prev + 1);
-    window.localStorage.setItem("dataNumberQuestion", JSON.stringify ((numberQuestion + 1)));
+    window.localStorage.setItem(
+      "dataNumberQuestion",
+      JSON.stringify(numberQuestion + 1)
+    );
     console.log(window.localStorage.getItem("dataNumberQuestion"));
     if (numberQuestions === dataQuestions.length - 1) {
       handleViewRoom();
@@ -53,9 +54,12 @@ const LogicPanel = ({ handleViewRoom }) => {
   return (
     dataQuestions && (
       <div className=" p-4">
-        <ModalUserHelp handleTimeTips={handleTimeTips}
-        handleNumberQuestions={handleNumberQuestions}
-        handleUseAnswer={handleUseAnswer}/>
+        <ModalUserHelp
+          handleTimeTips={handleTimeTips}
+          handleNumberQuestions={handleNumberQuestions}
+          handleUseAnswer={handleUseAnswer}
+          dataQuestions={dataQuestions[numberQuestions]}
+        />
 
         <div className="">
           <div className="flex justify-center">

@@ -58,6 +58,7 @@ const FormLogin = () => {
       setAuth(data);
       window.localStorage.setItem("user", JSON.stringify(data));
       window.localStorage.setItem("dataNumberQuestion", JSON.stringify(0));
+      window.localStorage.setItem("dataNumberSection", JSON.stringify(1));
       setIsLoad(false);
       isRol(dataUser.roles[0]) === "user"
         ? navigate("/logic-room")

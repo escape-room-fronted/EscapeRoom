@@ -1,9 +1,7 @@
-import { useState } from "react";
 import useAuth from "./useAuth";
 
 export function useAuthLogin() {
-  const { auth, setAuth, setNumberQuestion } = useAuth();
-
+  const { auth, setAuth, setNumberQuestion, setNumberSectionLogic } = useAuth();
 
   //   console.log(isLogin);
   const loginDataPersistent = () => {
@@ -11,6 +9,9 @@ export function useAuthLogin() {
       const data = JSON.parse(localStorage.getItem("user"));
       setAuth(data);
       setNumberQuestion(JSON.parse(localStorage.getItem("dataNumberQuestion")));
+      setNumberSectionLogic(
+        JSON.parse(localStorage.getItem("dataNumberSection"))
+      );
     }
   };
 
@@ -18,6 +19,7 @@ export function useAuthLogin() {
     localStorage.removeItem("user");
     setAuth({});
     setNumberQuestion(0);
+    setNumberSectionLogic(1);
   };
 
   const isUserLogin = () => {
