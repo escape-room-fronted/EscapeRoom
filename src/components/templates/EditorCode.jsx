@@ -4,7 +4,6 @@ import EditorCodeWindow from "../organisms/EditorCodeWindow";
 import LanguagesDropdown from "../organisms/LanguagesDropdown";
 import ThemeDropDown from "../organisms/ThemeDropDown";
 import EditorCodeWindowPrint from "../organisms/EditorCodeWindowPrint";
-import { defineTheme } from "../../Helpers/monacoThemes";
 import axios from "axios";
 import ModalWindowOk from "../atoms/molecules/ModalWindowOk";
 
@@ -22,16 +21,7 @@ const EditorCode = ({ handleViewRoom }) => {
   console.log(theme);
 
   function handleThemeChange(th) {
-    console.log(th);
     setTheme(th);
-
-    if (["light", "vs-dark"].includes(th)) {
-      console.log("entro al if");
-      setTheme(th);
-    } else {
-      console.log("entro al else");
-      defineTheme(th).then((_) => setTheme(th));
-    }
   }
 
   const onChangeData = (action, data) => {
@@ -50,7 +40,6 @@ const EditorCode = ({ handleViewRoom }) => {
     setProcessing(true);
     const formData = {
       language_id: language.id,
-      // encode source code in base64
       source_code: btoa(code),
       stdin: btoa(customInput),
     };
@@ -81,11 +70,6 @@ const EditorCode = ({ handleViewRoom }) => {
         console.log("status", status);
         if (status === 429) {
           console.log("Demasiadas Peticiones", status);
-
-          // showErrorToast(
-          //   `Quota of 100 requests exceeded for the Day! Please read the blog on freeCodeCamp to learn how to setup your own RAPID API Judge0!`,
-          //   10000
-          // );
           ModalWindowOk("Se ha excedido las 100 peticiones del Día");
         }
         setProcessing(false);
@@ -131,7 +115,7 @@ const EditorCode = ({ handleViewRoom }) => {
     <div className="h-full w-100 p-5 bg-gray my-2 ">
       <div className="flex flex-row flex-wrap justify-center md:justify-start gap-5 my-3 mb-5">
         <LanguagesDropdown handleLanguajeChange={handleLanguajeChange} />
-        <ThemeDropDown handleThemeChange={handleThemeChange} theme={theme} />
+        <ThemeDropDown handleThemeChange={handleThemeChange} />
       </div>
       <EditorCodeHeader />
       <EditorCodeWindow

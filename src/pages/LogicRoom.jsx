@@ -15,8 +15,15 @@ import { MdExtension } from "react-icons/md";
 import { HiCode } from "react-icons/hi";
 
 const LogicRoom = () => {
-  const [isViewLogicRoom, setIsViewLogicRoom] = useState(1);
-  const { auth, setQuestions } = useAuth();
+  const {
+    auth,
+    setQuestions,
+    numberSectionLogic,
+    setNumberSectionLogic,
+  } = useAuth();
+  const [isViewLogicRoom, setIsViewLogicRoom] = useState(
+    numberSectionLogic || 1
+  );
   const { logout } = useAuthLogin();
   const navigate = useNavigate();
 
@@ -27,6 +34,12 @@ const LogicRoom = () => {
 
   const handleViewRoom = () => {
     setIsViewLogicRoom(isViewLogicRoom + 1);
+    setNumberSectionLogic(numberSectionLogic + 1);
+    window.localStorage.setItem(
+      "dataNumberSection",
+      JSON.stringify(numberSectionLogic + 1)
+    );
+    console.log(window.localStorage.getItem("dataNumberSection"));
     console.log(isViewLogicRoom);
   };
 
@@ -45,7 +58,6 @@ const LogicRoom = () => {
       <div className="flex flex-row ">
         <main className="pt-20 min-h-screen flex flex-col flex-grow -mr-64 md:mr-0 transition-all duration-150 ease-in">
           <div className="flex justify-between justify-items-center pt-4 px-2">
-            
             <div className="pl-2">
               <TimeCounter />
             </div>

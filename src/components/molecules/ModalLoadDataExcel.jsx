@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { utils, read, writeFile } from "xlsx";
 import axios from "../../services/axios";
 import useAuth from "../../hooks/useAuth";
+import ModalWindowOk from "../atoms/molecules/ModalWindowOk";
 
 const SET_EXCEL = "excel";
 
@@ -19,18 +20,14 @@ const ModalLoadDataExcel = ({ handleUpdateTable, handleUpdateListar }) => {
       });
 
       console.log(response.data);
+      ModalWindowOk("Datos Cargados Correctamente");
       handleUpdateTable(!handleUpdateListar);
     } catch (err) {
       console.log(err);
+      ModalWindowOk("Error, al cargar los datos");
     }
   };
 
-  function make_cols(datas) {
-    let o = [],
-      C = utils.decode_range(datas).e.c + 1;
-    for (var i = 0; i < C; ++i) o[i] = { name: utils.encode_col(i), key: i };
-    return o;
-  }
   function handleFileExcel(event) {
     setViewModal(!viewModal);
 
@@ -50,10 +47,6 @@ const ModalLoadDataExcel = ({ handleUpdateTable, handleUpdateListar }) => {
         const ws = workbook.Sheets[wsname];
         // Le pasamos los datos al metodo utils de la libreria que nos crea un json y lo imprimimos por consola
         const allData = utils.sheet_to_json(ws);
-        // Por el momento estas propiedades no estan en uso
-        // const colums = allData.slice(0, 1);
-        // const data = allData.slice(1);
-        // const codeColums = make_cols(ws["!ref"]);
         console.log(allData);
 
         sendDataUsers(allData);

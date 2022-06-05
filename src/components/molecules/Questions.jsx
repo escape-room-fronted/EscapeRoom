@@ -62,6 +62,7 @@ const Questions = ({
             {item}
           </button>
         ))}
+        {console.log("Renderizando")}
       </div>
     )
   );
