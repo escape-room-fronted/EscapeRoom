@@ -1,6 +1,6 @@
 import React from "react";
 
-const EditorCodeWindowPrint = ({ outputDetails, handleCompile }) => {
+const EditorCodeWindowPrint = ({ outputDetails, handleCompile, handleViewRoom }) => {
   const getOutput = () => {
     let statusId = outputDetails?.status?.id;
 
@@ -44,7 +44,9 @@ const EditorCodeWindowPrint = ({ outputDetails, handleCompile }) => {
         >
           Ejecutar Código
         </button>
-        <button className="btn-green">Enviar</button>
+        <button
+          onClick={handleViewRoom}
+          className="btn-green">Enviar</button>
       </div>
       <div
         className="w-3/4 bg-dark rounded-md p-3 text-green-400"
