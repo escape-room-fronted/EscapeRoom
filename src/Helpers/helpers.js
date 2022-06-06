@@ -182,3 +182,5 @@ export const customStyles = {
     color: "#ffffff !important",
   }),
 };
+
+const prueba = ["Hola Mundo"];
