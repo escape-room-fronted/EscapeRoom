@@ -41,8 +41,9 @@ ___
 ## Imagenes                                                
                                                    
 <details>      
-       
- ___
+ 
+  <summary> <h2> VISTA DEL USUARIO </h2></summary>
+
                                                    
 <h2> 
  Login
@@ -51,11 +52,24 @@ ___
 
  ![LOGIN](https://user-images.githubusercontent.com/90289472/172024573-48f4d473-33a5-406f-becf-0d8014718876.png)                                                  
  ___
+                                                                                                               
+<h2> 
+ Mensaje inicial de ususarios
+</h2>
+                                
+ ![MENSAJE INICIAL USUARIOS](https://user-images.githubusercontent.com/90289472/172074724-b486aa6b-057c-4e07-b412-105bb7f06aff.png)
+                              
+ ___                                                  
+                                                   
+                                                   
+                                                   
+                                                   
 </details>
                                                    
 <details>
-                                                                                                   
- ___
+                                                   
+  <summary> <h2> VISTA DEL ADMINISTRADOR </h2></summary>                                                                                                
+ 
                                                    
 <h2> 
  Tabla de usuarios 
