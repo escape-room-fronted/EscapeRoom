@@ -45,9 +45,9 @@ const CardAvatarWelcome = ({
                     ¡Hola, soy Julian!
                   </h5>
                   <p className="pt-4 font-normal font-hind text-white">
-                  Te acompañare en tu proceso junto a mi amiga Laura, el cual consiste en la realización                     
-                  de la prueba, yo desde la parte lógica y Laura desde el editor de codigo,                     
-                  ánimo, retate a ti mismo, explora tus límites y aprende hasta                    
+                  Te acompañaré en tu proceso junto a mi amiga Laura, el cual consiste en la realización
+                  de la prueba, yo desde la parte lógica y Laura desde el editor de codigo,
+                  ánimo, retate a ti mismo, explora tus límites y aprende hasta
                   donde podrás llegar, nosotros creemos en ti. Dale al boton continuar e iniciemos esta aventura juntos.
                   </p>
                 </div>
@@ -59,9 +59,9 @@ const CardAvatarWelcome = ({
                     ¡Hola, soy Laura!
                   </h5>
                   <p className="pt-4 font-normal font-hind text-white">
-                  Julián me comento que eres una persona que lucha por sus sueños,                    
-                  que avanza ante la adversidad, así que es para mí un gusto ver que llegas hasta acá,                    
-                  aún falta la prueba de editor de código, así que vamos para allá, no te rindas,                      
+                  Julián me comentó que eres una persona que lucha por sus sueños,
+                  que avanza ante la adversidad, así que es para mí un gusto ver que llegas hasta acá,
+                  aún falta la prueba del editor de código, así que vamos para allá, no te rindas,
                   dale click en continuar y avancemos juntos.
                   </p>
                 </div>
@@ -73,11 +73,9 @@ const CardAvatarWelcome = ({
                     ¡Código desbloqueado!
                   </h5>
                   <p className="pt-4 font-normal font-hind text-white">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Sit vero, officiis excepturi suscipit incidunt assumenda
-                    architecto tempora temporibus corporis repellat debitis
-                    exercitationem. Adipisci ea suscipit possimus molestiae ipsa
-                    velit quisquam?
+                  Que gusto ver que has llegado hasta aquí, te felicito por completar el ESCAPE ROOM, 
+                  nos estaremos comunicando contigo para que puedas ver tus resultados mediante el correo electronico, 
+                  asi que en cualquier momento te enviaremos un mensaje con la información y pasos a seguir.
                   </p>
                 </div>
               )}
