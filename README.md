@@ -59,10 +59,40 @@ ___
                                 
  ![MENSAJE INICIAL USUARIOS](https://user-images.githubusercontent.com/90289472/172074724-b486aa6b-057c-4e07-b412-105bb7f06aff.png)
                               
- ___                                                  
+ ___      
+ 
+ <h2> 
+ Descubre a tu primer amigo virtual 
+</h2>
                                                    
                                                    
+ ![primer avatar acompañante](https://user-images.githubusercontent.com/90289472/172077749-9141242c-0715-4aba-8cea-9491b26c105b.png)
+                          
+ ___                                                   
                                                    
+ <h2> 
+ Seccion de preguntas de logica 
+</h2>
+                                                   
+ ![seccion de preguntas](https://user-images.githubusercontent.com/90289472/172077972-3fa8f186-69de-4ee0-8987-e1d7da178177.png)
+                                                
+ ___                                                   
+                                                   
+ <h2> 
+ Descubre a tu segundo amigo virtual  
+</h2>
+                                                   
+ ![segundo avatar acompañante](https://user-images.githubusercontent.com/90289472/172079303-0b6d945e-9edd-4524-a305-e513c6fd920d.png)
+
+ ___                                                   
+                                                   
+ <h2> 
+ Editor de codigo 
+</h2>
+    
+ ![editor de codigo](https://user-images.githubusercontent.com/90289472/172092659-94dae854-d668-4067-9a30-169c35fd9110.png)
+                                               
+                                
                                                    
 </details>
                                                    
@@ -92,8 +122,6 @@ ___
 </h2>
                                 
  ![ADMIN(1)](https://user-images.githubusercontent.com/90289472/172026837-4a4dd97b-4bb6-4154-afda-87774089b638.png)
-
-
                                         
  ___                                                 
                                                    
