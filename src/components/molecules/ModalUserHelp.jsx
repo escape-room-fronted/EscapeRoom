@@ -13,7 +13,8 @@ export default function ModalUserHelp({
 
   return (
     <>
-      <button type="button" onClick={() => setShowModal(true)}>
+    <div className="flex justify-end pr-4">
+      <button className="z-30 bg-yellow card__animate p-4 rounded-lg" type="button" onClick={() => setShowModal(true)}>
         <a href="#" className="flex gap-4 justify-center">
           <span className="font-semibold font-hind text-lg">HELP</span>
           <span className="text-xl text-gray-400">
@@ -21,6 +22,7 @@ export default function ModalUserHelp({
           </span>
         </a>
       </button>
+      </div>
       {showModal ? (
         <>
           <div className="card__animate justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">

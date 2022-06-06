@@ -49,17 +49,13 @@ const FormLogin = () => {
         name: dataUser.name,
         userName: dataUser.username,
         rol: isRol(dataUser.roles),
-        timecounter: {
-          minutes: 60,
-          seg: 0,
-        },
         accesToken,
       };
       setAuth(data);
       window.localStorage.setItem("user", JSON.stringify(data));
       if (
-        !window.localStorage.getItem("dataNumberQuestion") &&
-        !window.localStorage.getItem("dataNumberSection") &&
+        !window.localStorage.getItem("dataNumberQuestion") ||
+        !window.localStorage.getItem("dataNumberSection") ||
         !window.localStorage.getItem("dataTimeUser")
       ) {
         window.localStorage.setItem("dataNumberQuestion", JSON.stringify(0));

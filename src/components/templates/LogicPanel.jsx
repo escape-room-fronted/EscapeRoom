@@ -11,6 +11,7 @@ const LogicPanel = ({ handleViewRoom }) => {
   const [isUseTips, setIsUseTips] = useState(false);
   const [isUseAnswer, setIsUseAnswer] = useState(false);
   const [numberQuestions, setNumberQuestions] = useState(numberQuestion);
+  console.log(numberQuestion, numberQuestions);
 
   const handleUseAnswer = (data) => {
     setIsUseAnswer(data);
@@ -24,8 +25,6 @@ const LogicPanel = ({ handleViewRoom }) => {
     setTimeTips(0);
     setIsUseTips(false);
   };
-
-  console.log(numberQuestion);
 
   const handleNumberQuestions = () => {
     setNumberQuestions((prev) => prev + 1);
@@ -53,7 +52,7 @@ const LogicPanel = ({ handleViewRoom }) => {
 
   return (
     dataQuestions && (
-      <div className=" p-4">
+      <div className="p-6">
         <ModalUserHelp
           handleTimeTips={handleTimeTips}
           handleNumberQuestions={handleNumberQuestions}

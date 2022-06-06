@@ -6,9 +6,12 @@ export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState({});
 
   const [questions, setQuestions] = useState([]);
-  const [numberQuestion, setNumberQuestion] = useState();
-  const [numberSectionLogic, setNumberSectionLogic] = useState();
-  const [timeCounter, setTimeCounter] = useState();
+  const [numberQuestion, setNumberQuestion] = useState(0);
+  const [numberSectionLogic, setNumberSectionLogic] = useState(1);
+  const [timeCounter, setTimeCounter] = useState({
+    minutes: 0,
+    seg: 0,
+  });
 
   return (
     <AuthContext.Provider

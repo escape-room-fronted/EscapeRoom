@@ -9,8 +9,8 @@ const TimeCounter = () => {
   const navigate = useNavigate();
   const { logout } = useAuthLogin();
   const { auth, setAuth, timeCounter, setTimeCounter } = useAuth();
-  const [min, setMin] = useState(timeCounter.minutes || 60);
-  const [seg, setSeg] = useState(timeCounter.seg || 0);
+  const [min, setMin] = useState(timeCounter?.minutes || 60);
+  const [seg, setSeg] = useState(timeCounter?.seg || 0);
 
   useEffect(() => {
     setAuth((prev) => {
@@ -19,8 +19,10 @@ const TimeCounter = () => {
     setTimeCounter((prev) => {
       return { minutes: min, seg: seg };
     });
-    window.localStorage.setItem("user", JSON.stringify(auth));
-    window.localStorage.setItem("dataTimeUser", JSON.stringify(timeCounter));
+    if (timeCounter && auth) {
+      window.localStorage.setItem("user", JSON.stringify(auth));
+      window.localStorage.setItem("dataTimeUser", JSON.stringify(timeCounter));
+    }
   }, [min, seg]);
   useEffect(() => {
     const intervalTime = setInterval(() => {

@@ -16,7 +16,7 @@ const SideBarUser = () => {
 
 
          <div className='pt-28'>
-             <li className="my-px p-4 text-white card__animate bg-gray hover:bg-yellow">
+             <li className="my-px p-4 text-white card__animate bg-gray hover:bg-yellow rounded-lg">
              <a
                  href="#"
                  className="flex gap-4 justify-center">
@@ -30,7 +30,7 @@ const SideBarUser = () => {
 
 
          <div className='pt-10'>
-             <li className="my-px p-4 text-white card__animate bg-gray hover:bg-yellow">
+             <li className="my-px p-4 text-white card__animate bg-gray hover:bg-yellow rounded-lg">
              <a
                  href="#"
                  className="flex gap-4 justify-center">
