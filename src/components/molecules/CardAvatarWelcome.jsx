@@ -59,11 +59,10 @@ const CardAvatarWelcome = ({
                     ¡Hola, soy Laura!
                   </h5>
                   <p className="pt-4 font-normal font-hind text-white">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Sit vero, officiis excepturi suscipit incidunt assumenda
-                    architecto tempora temporibus corporis repellat debitis
-                    exercitationem. Adipisci ea suscipit possimus molestiae ipsa
-                    velit quisquam?
+                  Julián me comento que eres una persona que lucha por sus sueños,                    
+                  que avanza ante la adversidad, así que es para mí un gusto ver que llegas hasta acá,                    
+                  aún falta la prueba de editor de código, así que vamos para allá, no te rindas,                      
+                  dale click en continuar y avancemos juntos.
                   </p>
                 </div>
               )}
