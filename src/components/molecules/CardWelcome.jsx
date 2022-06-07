@@ -16,8 +16,8 @@ const CardWelcome = ({ handleViewRoom }) => {
           <p className="pt-4 font-normal font-hind text-white">
             El tiempo está en tu contra. Necesitas realizar tu misión en menos
             de una hora. Tu primera misión es resolver en menos de 30 minutos
-            diversas pruebas de lógica, para así desbloqear la primera misión y
-            continuar con tu segunda misisón, la cual es resolver en menos de 30
+            diversas pruebas de lógica, para así desbloquear la primera misión y
+            continuar con tu segunda misión, la cual es resolver en menos de 30
             minutos una prueba de código.
             <br /> El tiempo empieza ahora, ¿Serás capaz de cumplir tu misión?
           </p>
