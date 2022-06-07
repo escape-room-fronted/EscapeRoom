@@ -12,14 +12,14 @@ const EditorCode = ({ handleViewRoom }) => {
   const [theme, setTheme] = useState("vs-dark");
   const [code, setCode] = useState("//Escape room");
   const [processing, setProcessing] = useState(null);
-  const [customInput, setCustomInput] = useState("");
+  const [customInput, setCustomInput] = useState("console.log('hola mundo');");
   const [outputDetails, setOutputDetails] = useState(null);
 
   // console.log(import.meta.env.VITE_APP_RAPID_API_URL);
   // console.log(import.meta.env.VITE_APP_RAPID_API_HOST);
   // console.log(import.meta.env.VITE_APP_RAPID_API_KEY);
 
-  // console.log(language);
+  console.log(code);
   const handleLanguajeChange = (data) => {
     setLanguage(data);
   };
@@ -47,6 +47,7 @@ const EditorCode = ({ handleViewRoom }) => {
       source_code: btoa(code),
       stdin: btoa(customInput),
     };
+    console.log("Datos que envio", formData);
     const options = {
       method: "POST",
       url: import.meta.env.VITE_APP_RAPID_API_URL,
@@ -94,6 +95,7 @@ const EditorCode = ({ handleViewRoom }) => {
     try {
       let response = await axios.request(options);
       let statusId = response.data.status?.id;
+      console.log("Estado de id", statusId);
 
       // Processed - we have a result
       if (statusId === 1 || statusId === 2) {

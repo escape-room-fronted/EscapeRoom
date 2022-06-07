@@ -1,35 +1,36 @@
 import React from "react";
 
 const EditorCodeWindowPrint = ({ outputDetails, handleCompile }) => {
+  // console.log(outputDetails);
   const getOutput = () => {
     let statusId = outputDetails?.status?.id;
 
     if (statusId === 6) {
       // compilation error
       return (
-        <pre className="px-2 py-1 font-normal text-xs text-red-500">
+        <p className="px-2 py-1 font-normal text-xs text-red-500">
           {atob(outputDetails?.compile_output)}
-        </pre>
+        </p>
       );
     } else if (statusId === 3) {
       return (
-        <pre className="px-2 py-1 font-normal text-xs text-green-500">
+        <p className="px-2 py-1 font-normal text-xs text-green-500">
           {atob(outputDetails.stdout) !== null
             ? `${atob(outputDetails.stdout)}`
             : null}
-        </pre>
+        </p>
       );
     } else if (statusId === 5) {
       return (
-        <pre className="px-2 py-1 font-normal text-xs text-red-500">
+        <p className="px-2 py-1 font-normal text-xs text-red-500">
           {`Time Limit Exceeded`}
-        </pre>
+        </p>
       );
     } else {
       return (
-        <pre className="px-2 py-1 font-normal text-xs text-red-500">
+        <p className="px-2 py-1 font-normal text-xs text-red-500">
           {atob(outputDetails?.stderr)}
-        </pre>
+        </p>
       );
     }
   };

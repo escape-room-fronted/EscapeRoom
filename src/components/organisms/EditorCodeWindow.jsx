@@ -25,7 +25,7 @@ const EditorCodeWindow = ({
       value={value}
       theme={theme}
       defaultValue="// Hola Mundo"
-      //   onChange={handleEditorChange}
+      onChange={handleEditorChange}
     />
   );
 };

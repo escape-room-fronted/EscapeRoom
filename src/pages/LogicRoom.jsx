@@ -32,7 +32,6 @@ const LogicRoom = () => {
     navigate("/");
   };
 
-  console.log(isViewLogicRoom, "afas", numberSectionLogic);
   const handleViewRoom = () => {
     setIsViewLogicRoom(isViewLogicRoom + 1);
     setNumberSectionLogic(numberSectionLogic + 1);
