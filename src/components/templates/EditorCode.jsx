@@ -131,6 +131,7 @@ const EditorCode = ({ handleViewRoom }) => {
         onChangeData={onChangeData}
       />
       <EditorCodeWindowPrint
+        handleViewRoom={handleViewRoom}
         outputDetails={outputDetails}
         handleCompile={handleCompile}
       />
