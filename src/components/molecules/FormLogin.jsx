@@ -110,7 +110,7 @@ const FormLogin = () => {
                 errors.password = "Ingrese una Contraseña";
               }
 
-              if (values.recaptcha === false) {
+              if (!values.recaptcha) {
                 errors.recaptcha = "Eres un robot ?";
               }
 
