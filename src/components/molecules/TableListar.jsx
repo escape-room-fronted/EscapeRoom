@@ -11,6 +11,7 @@ import ModalLoadDataExcel from "../molecules/ModalLoadDataExcel";
 import ModalWindowOk from "../atoms/molecules/ModalWindowOk";
 
 import { getDataUsers, deleteDataUsers } from "../../services/serviceUsers";
+import ButtonActivateUser from "../atoms/ButtonActivateUser";
 
 const TableListar = () => {
   const { auth } = useAuth();
@@ -106,7 +107,12 @@ const TableListar = () => {
     },
     {
       name: "Activar",
-      cell: (data) => <input type="radio"></input>,
+      cell: (data) => 
+      <ButtonActivateUser 
+      data={data} 
+      isUpDate={isUpDate}
+      setIsUpDate={setIsUpDate}
+      />,
       button: true,
     },
   ];

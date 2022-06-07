@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { isRol, isEmail } from "../../Helpers/helpers";
 import Loader from "../templates/loader/Loader";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const LOGIN_URL = "auth/signin";
 const GET_USER = "users/getuser";
@@ -13,7 +14,12 @@ const FormLogin = () => {
   const { setAuth } = useAuth();
   const [isLogin, setIsLogin] = useState(false);
   const [isLoad, setIsLoad] = useState(false);
+  const [disableSubmit, setDisableSubmit] = useState(true);
   const navigate = useNavigate();
+  console.log(disableSubmit);
+  const changeCatpcha = (value) => {
+    setDisableSubmit(true);
+  };
 
   const getUser = async (tk) => {
     try {
@@ -53,6 +59,19 @@ const FormLogin = () => {
       };
       setAuth(data);
       window.localStorage.setItem("user", JSON.stringify(data));
+      if (
+        !window.localStorage.getItem("dataNumberQuestion") ||
+        !window.localStorage.getItem("dataNumberSection") ||
+        !window.localStorage.getItem("dataTimeUser")
+      ) {
+        window.localStorage.setItem("dataNumberQuestion", JSON.stringify(0));
+        window.localStorage.setItem("dataNumberSection", JSON.stringify(1));
+        window.localStorage.setItem(
+          "dataTimeUser",
+          JSON.stringify({ minutes: 60, seg: 0 })
+        );
+      }
+
       setIsLoad(false);
       isRol(dataUser.roles[0]) === "user"
         ? navigate("/logic-room")
@@ -76,6 +95,7 @@ const FormLogin = () => {
             initialValues={{
               email: "",
               password: "",
+              recaptcha: "",
             }}
             validate={(values) => {
               let errors = {};
@@ -90,13 +110,17 @@ const FormLogin = () => {
                 errors.password = "Ingrese una Contraseña";
               }
 
+              if (values.recaptcha === false) {
+                errors.recaptcha = "Eres un robot ?";
+              }
+
               return errors;
             }}
             onSubmit={(values, { resetForm }) => {
               verifyUser(values);
             }}
           >
-            {({ errors }) => (
+            {({ errors, setFieldValue, setSubmitting }) => (
               <Form
                 className="bg-gray card__form p-10 min-w-full"
                 autoComplete="off"
@@ -146,9 +170,34 @@ const FormLogin = () => {
                     )}
                   />
                 </div>
+                <div className="flex justify-center mb-2">
+                  <ReCAPTCHA
+                    theme="dark"
+                    sitekey="6Ld4Ak0gAAAAAMmZSc0_EybaL5XivkxxeCe5q0c7"
+                    onChange={(value) => {
+                      setFieldValue("recaptcha", value);
+                      setDisableSubmit(false);
+                    }}
+                  />
+                  <ErrorMessage
+                    name="recaptcha"
+                    component={() => (
+                      <div className="text-yellow text-sm">
+                        {errors.recaptcha}
+                      </div>
+                    )}
+                  />
+                  ,
+                </div>
 
                 <div className="flex justify-end">
-                  <button className="btn-yellow text-sm">Login</button>
+                  <button
+                    type="submit"
+                    disabled={disableSubmit}
+                    className="btn-yellow text-sm"
+                  >
+                    Login
+                  </button>
                 </div>
                 {isLogin && (
                   <div className="text-yellow text-sm text-center pt-5">

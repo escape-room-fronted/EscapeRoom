@@ -13,7 +13,7 @@ const ViewAdmin = () => {
         <div className="flex flex-row min-h-screen ">
           <SideBarAdmin handleShow={setIstable} />
 
-          <main className=" bg-dark flex flex-col flex-grow -ml-64 md:ml-0 transition-all duration-150 ease-in">
+          <main className="overflow-scroll bg-dark flex flex-col flex-grow -ml-64 md:ml-0 transition-all duration-150 ease-in">
             <div className="flex flex-col flex-grow p-4">
               {isTable === 1 && <TableListar />}
               {isTable === 2 && <TableQuestions />}
