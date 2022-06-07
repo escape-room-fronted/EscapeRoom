@@ -1,6 +1,6 @@
 import React from "react";
 
-const EditorCodeWindowPrint = ({ outputDetails, handleCompile }) => {
+const EditorCodeWindowPrint = ({ outputDetails, handleCompile, handleViewRoom }) => {
   // console.log(outputDetails);
   const getOutput = () => {
     let statusId = outputDetails?.status?.id;
